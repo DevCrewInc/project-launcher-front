@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import 'styles/globals.css';
 import fotoman from 'fotoman.jpeg'
 import UpperBar from 'components/UpperBar';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import {getUsuarios} from '../graphql/usuarios/queries'
 import {toast} from 'react-toastify';
 import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
+import {borrarUsuario} from '../graphql/usuarios/mutaciones';
+
 
 
 
@@ -13,7 +15,7 @@ import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 const ListaUsuarios = () => {
 
     const{data,error,loading} = useQuery(getUsuarios);
-
+    const[eliminarUsuario, {data: confirmacion, error: errorEliminacion, loading: loadingEliminacion}]= useMutation(borrarUsuario);
 
     useEffect (()=>{
         if (data){
@@ -45,7 +47,7 @@ const ListaUsuarios = () => {
                         {data && data.Usuarios.map((usuario)=>{
 
                             return (
-                                <FilasTablas usuario={usuario}/>    
+                                <FilasTablas usuario={usuario} eliminarUsuario={eliminarUsuario}/>    
                             )
                         
                         }) }
@@ -57,7 +59,7 @@ const ListaUsuarios = () => {
     )
 }
 
-const FilasTablas = ({usuario})=>{
+const FilasTablas = ({usuario, eliminarUsuario})=>{
 
     return (
 
@@ -81,10 +83,12 @@ const FilasTablas = ({usuario})=>{
                         <td className="text-center">
                             <button className = "status-button mx-1 my-1 px-2 ">{usuario.estado}</button>
                         </td>
-                        <td className = "flex justify-center items-center space-x-2">
+                        <td className = "flex justify-center align-middle items-center space-x-2">
                             <ModalDetalleProyecto/>
-                            <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                            <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                            <i className = "self fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                            <i onClick={() => {
+                                eliminarUsuario({variables: {_id: usuario._id} });
+                            }} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                         </td>
                     </tr>
                 </tbody>

@@ -10,7 +10,7 @@ const TablaProyectos = ({propsTablas, nombreQuery,title}) => {
 
     useEffect(() => {
         if (data){
-            console.log('datos proyectos', data[nombreQuery]);
+            console.log('datos proyectos', data);
         }
         
     },[data]);

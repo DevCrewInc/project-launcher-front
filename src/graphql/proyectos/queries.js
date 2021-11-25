@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
-const getProyectoTabla =gql`
+const getProyectosAdmin =gql`
 query Proyectos {
-    Proyectos {
+    ListaProyectosAdmin {
         _id
         nombre
         fechaInicio
@@ -16,6 +16,24 @@ query Proyectos {
     }
 }
 `;
+
+const getListaProyectosEstudiantes = gql`
+    query ProyectosEstudiantes{
+        ListaProyectosEstudiante{
+            _id
+            nombre
+            fechaInicio
+            fechaFin
+            lider{
+                identificacion
+                nombre
+            }
+            faseProyecto
+            estadoProyecto 
+        }
+    }
+`;
+
 
 const getSolicitudesNuevosProyectos = gql`
     query SolicitudesProyectos {
@@ -36,4 +54,4 @@ const getSolicitudesNuevosProyectos = gql`
 `;
 
 
-export {getProyectoTabla, getSolicitudesNuevosProyectos}
+export {getProyectosAdmin, getSolicitudesNuevosProyectos, getListaProyectosEstudiantes}
