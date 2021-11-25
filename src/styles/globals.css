@@ -19,6 +19,10 @@
   height: 600px;
 }
 
+.submitButton{
+  background-color: #A5143A ;
+}
+
 .sidebar {
   background-color: #252323;
   border-radius: 19.3103px;
