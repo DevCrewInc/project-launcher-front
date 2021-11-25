@@ -9,6 +9,16 @@
   font-family: Poppins;
 }
 
+.fondoLogin{
+  background-color: #252323;
+}
+
+.modal-login{
+  margin-right: 150px;
+  width: 400px;
+  height: 600px;
+}
+
 .sidebar {
   background-color: #252323;
   border-radius: 19.3103px;
