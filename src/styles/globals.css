@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*LAYAOUT*/
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.sidebar {
+  background-color: #252323;
+  border-radius: 19.3103px;
+  
+}
+
+.sidebar-route {
+  @apply rounded-3xl flex w-full cursor-pointer items-center pl-4 py-1;
+}
+
+
+.sidebar-route-active{
+  background-color: #A5143A;
+}
+
+.sidebar-route-disable:hover{
+  background-color:#444343
+}
+
+.button-new-project{
+  margin-top:100px;
+  color: white;
+  background-color: #A5143A;
+  padding: 13px;
+  margin-left: 198px;
+  position: absolute;
+  display: flex;
+  justify-content: end;
+}
+
+.button-new-project:hover{
+  visibility: visible;
+  position: absolute;
+  background-color: #A5143A;
+  padding: 13px;
+  width: 120px;
+  justify-content: end;
+  border-radius: 20px;
+  content: "Completed!" important!;
+  transition: width 2s;
+}
+
+.background-image{
+  background-image: url()
+}
+
+/*MODAL AVANCE*/
+.avance_Date{
+  color:#A5143A;
+}
+
+.observaciones{
+  color: #898989;
+  font-size: 14px;
+}
+
+.user-img{
+  width: 55px;
+  height: 55px;
+  position: relative;
+  overflow: hidden;
+}
+
+/*TABLAS PROYECTOS Y USUARIOS*/
+.tabs{
+  font-size: 18px;
+  color: #d0d0d0;
+  font-weight: 400;
+  padding: 6px;
+}
+
+.tabs:hover{
+  color: #A5143A;
+  font-weight: 500;
+  border-bottom: 2px solid;
+  padding: 6px;
+}
+
+.tabs:active{
+  color: #A5143A;
+  font-weight: 500;
+  padding: 6px;
+}
+
+.status-button {
+  color: #28B446;
+  background-color: #C0EA7D;
+  border-radius: 8rem;
+}
+
+.inactivo-button {
+  color: #A5143A;
+  background-color: #EA7D7D;
+  border-radius: 8rem;
+}
+
+.status-button:hover {
+  background-color: #afe05f;
+}
+
+
+.sidebar-li:active{
+  background-color: #c5ebff;
+}
+
+.thead-color{
+  background-color: #F4F4F4;
+}
+
+.tbody-border{
+  border-bottom: 1px solid;
+  border-color: #ebebeb;
+}
+
+.input-tablas {
+  color: #636363;
+}
+
+/*PROYECTO*/
+.date-budget{
+  color: #A5143A;
+  font-size: 14px;
+}
+
+.border-tripulantes{
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.14);
+}
+
+.btn-estado-proyecto {
+  color: #343434;
+  background-color: #DBDBDB;
+  border-radius: 8rem;
+}
+
+/*NUEVO PROYECTO*/
+.objetivos-dialogo{
+  font-style: bold;
+  color: black;
+  font-size: 16px;
+}
+
+.add-button{
+  font-size: 13px;
+  background-color: #9f9f9f;
+  color: white;
+}
+
+.add-button:hover{
+  background-color: #c91c4a;
+  box-shadow: 0px 0px 2px rgba(33, 33, 33, 0.5)
+}
+
+.filled-button{
+  font-size: 13px;
+  background-color: #A5143A;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.filled-button:hover{
+  background-color: #c91c4a;
+  box-shadow: 0px 0px 2px rgba(33, 33, 33, 0.5)
+}
+
+/*DETALLE PROYECTO*/
+.tabs-modal{
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.tabs-modal:hover{
+  color: #A5143A;
+  font-weight: 500;
+  border-bottom: 2px solid;
+  padding-bottom: 6px;
+  
+}
+
+.tabs-modal:active{
+  color: #A5143A;
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 2px solid;
+  padding-bottom: 6px;
+}
+
+.outlined-button{
+  font-size: 13px;
+  font-weight: 500;
+  border: 2px solid;
+  border-color: #A5143A;
+  color: #A5143A;
+  border-radius: 6px;
+}
+
+.outlined-button:hover{
+  font-size: 13px;
+  font-weight: 500;
+  border: 2px solid;
+  border-color: #A5143A;
+  background-color: #ae123c22;
+  color: #A5143A;
+  border-radius: 6px;
+}
+
+/* PERFIL*/
+.id-perfil{
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.nombre-perfil{
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.rol-perfil{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.filled-button-perfil{
+  font-size: 12px;
+  background-color: #A5143A;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.filled-button-perfil:hover{
+  background-color: #c91c4a;
+  box-shadow: 0px 0px 2px rgba(33, 33, 33, 0.5)
+}
+
+.outlined-button-perfil{
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid;
+  border-color: #A5143A;
+  color: #A5143A;
+  border-radius: 6px;
+}
+
+.outlined-button-perfil:hover{
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid;
+  border-color: #A5143A;
+  background-color: #ae123c22;
+  color: #A5143A;
+  border-radius: 6px;
+}
+
+.tabs-perfil{
+  font-size: 15px;
+  color: #d0d0d0;
+  font-weight: 400;
+  padding: 6px;
+}
+
+.tabs-perfil:hover{
+  color: #A5143A;
+  font-weight: 500;
+  border-bottom: 2px solid;
+  padding: 6px;
+}
+
+.tabs-perfil:active{
+  color: #A5143A;
+  font-weight: 500;
+  padding: 6px;
+}
+
+.texto-perfil{
+  font-size:13px;
+  font-weight: 300;
+}
