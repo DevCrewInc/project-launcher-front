@@ -1,15 +1,27 @@
 import React, { useEffect } from 'react';
 import useFormData from 'hooks/useFormData';
 import backgroundImage from '../../media/Group1610.png'
+import { useMutation } from '@apollo/client';
+import { REGISTRO } from 'graphql/auth/mutaciones';
 
 
 const Registro = () => {
 
-    const{ form, formData, updateFormData} = useFormData();
-    const submitForm = (e) => {
-      e.preventdefault();
+    const{form, formData, updateFormData} = useFormData();
+    const[registro, {data: dataRegistro, error: errorRegistro, loading: loadingRegistro}]= useMutation(REGISTRO);
+   
+
+    const submitForm = async (e) => {
+      e.preventDefault();
+      await registro({variables: formData});
     }
+
+    useEffect(() => {
+      console.log("registro", dataRegistro)
+      }, [dataRegistro]);
     
+
+
   return (
     <>
       <main>
@@ -28,19 +40,19 @@ const Registro = () => {
                           </g>
                       </svg>
                   </div>
-                  <form className="self-center w-80 flex flex-col mt-5" onSubmit={submitForm} onChange={updateFormData} ref={form}>
-                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" placeholder="Email"></input>
-                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" placeholder="Identificación"></input>
-                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" placeholder="Nombre usuario"></input>
-                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" type="password" placeholder="Contraseña"></input>
+                  <form className="self-center w-80 flex flex-col mt-5" ref={form} onSubmit= {submitForm} onChange={updateFormData}>
+                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" name='correo' type= 'email'  placeholder="Email"/>
+                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" name='identificacion' type= 'text'  placeholder="Identificación"/>
+                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" name='nombre' type= 'text'  placeholder="Nombre usuario"/>
+                      <input className="rounded-l border bg-gray-100 mt-5 h-10 p-2" name='contrasena'   type="password" placeholder="Contraseña"/>
                       <div>
-                          <select className="rounded-l border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
+                          <select name='rol'  className="rounded-l border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
                               <option disabled value="">Selecciona</option>
                               <option >ESTUDIANTE</option>
                               <option >LIDER</option>
                           </select>
                       </div>
-                      <input className="rounded-l border submitButton mt-12 h-10 p-2 text-white" type="submit" placeholder="Identificacion"></input>
+                      <input  className="rounded-l border submitButton mt-12 h-10 p-2 text-white" type="submit" value="Guardar"/>
                   </form>
               </div>
           </div>
