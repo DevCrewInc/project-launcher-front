@@ -3,11 +3,13 @@ import useFormData from 'hooks/useFormData';
 import backgroundImage from '../../media/Group1610.png'
 import { useMutation } from '@apollo/client';
 import { REGISTRO } from 'graphql/auth/mutaciones';
+import { useNavigate } from 'react-router';
 
 
 
 const Registro = () => {
-
+    
+    const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
     const[registro, {data: dataRegistro, error: errorRegistro, loading: loadingRegistro}]= useMutation(REGISTRO);
    
@@ -18,9 +20,12 @@ const Registro = () => {
     }
 
     useEffect(() => {
-      console.log("registro", dataRegistro)
-      }, [dataRegistro]);
-    
+        if (dataRegistro) {
+          if (dataRegistro.registro.token) {
+            navigate('/');
+          }
+        }
+      }, [dataRegistro, navigate]);
 
 
   return (

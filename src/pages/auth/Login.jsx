@@ -1,5 +1,6 @@
 
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import backgroundImage from '../../media/Group_1611.png'
 
 const Login = () => {
@@ -44,7 +45,9 @@ const Login = () => {
                                 <input className="rounded-full cursor-pointer submitButton mt-8 h-10 p-2 text-white" type="submit" value="Login"/>
                             </div>
                             <a className="text-xs font-normal cursor-pointer text-center mt-12">¿Aún no tienes cuenta?</a>
-                            <input className="signUpButton cursor-pointer bg-white rounded-full border mt-5 h-10 p-2" type="submit" value="Sing up"/>
+                            <NavLink  to= '/registro'className="signUpButton text-center cursor-pointer bg-white rounded-full border mt-5 h-10 p-2">
+                                <span >Sign Up</span>
+                            </NavLink>
                         </form>
                     </div>
                 </div>

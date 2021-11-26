@@ -34,12 +34,12 @@ function App() {
               <Route path='/' element={<Login/>} />
               <Route path='/registro' element={<Registro/>} />
             <Route path='/' element={<PrivateLayout/>}>
-              <Route path='dialogos' element={<Dialogos/>}/>
-              <Route path='proyectos' element={<ListaProyectos/>}/>
-              <Route path='usuarios' element={<ListaUsuarios />} />
-              <Route path='solicitudes' element={<Solicitudes />} />
-              <Route path='dialogos' element={<Dialogos/>}/>
-              <Route path='proyectos1' element={<Proyectos1/>} />
+              <Route path='page/dialogos' element={<Dialogos/>}/>
+              <Route path='page/proyectos' element={<ListaProyectos/>}/>
+              <Route path='page/usuarios' element={<ListaUsuarios />} />
+              <Route path='page/solicitudes' element={<Solicitudes />} />
+              <Route path='page/dialogos' element={<Dialogos/>}/>
+              <Route path='page/proyectos1' element={<Proyectos1/>} />
             </Route>
           </Routes>
         </BrowserRouter>
