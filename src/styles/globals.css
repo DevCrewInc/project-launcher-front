@@ -14,9 +14,11 @@
 }
 
 .modal-login{
-  margin-right: 150px;
+  margin-right: 250px;
   width: 400px;
   height: 600px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
+  font-weight: 200;
 }
 
 .submitButton{
