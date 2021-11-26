@@ -10,11 +10,11 @@
 }
 
 .fondoLogin{
-  background-color: #252323;
+  background-color: #060505;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
 }
 
 .modal-login{
-  margin-right: 250px;
   width: 400px;
   height: 600px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
@@ -22,7 +22,12 @@
 }
 
 .submitButton{
-  background-color: #A5143A ;
+  background-color: #A5143A;
+}
+
+.signUpButton{
+  border-color:#A5143A;
+  color: #A5143A;
 }
 
 .sidebar {
