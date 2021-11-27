@@ -15,6 +15,8 @@ const TablaProyectos = ({propsTablas, nombreQuery,title}) => {
         
     },[data]);
 
+    
+
     return (
 
         <div >

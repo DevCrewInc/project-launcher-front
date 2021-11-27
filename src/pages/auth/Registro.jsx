@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import useFormData from 'hooks/useFormData';
 import backgroundImage from '../../media/Group1610.png'
 import { useMutation } from '@apollo/client';
 import { REGISTRO } from 'graphql/auth/mutaciones';
 import { useNavigate } from 'react-router';
-
+import useFormData from 'hooks/useFormData';
 
 
 const Registro = () => {
@@ -22,7 +21,12 @@ const Registro = () => {
     useEffect(() => {
         if (dataRegistro) {
           if (dataRegistro.registro.token) {
-            navigate('/');
+            // navigate('/');
+            console.log(dataRegistro.registro.token)
+          }
+          else{
+              console.log("ok genial")
+                
           }
         }
       }, [dataRegistro, navigate]);

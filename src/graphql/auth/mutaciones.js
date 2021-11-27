@@ -21,5 +21,19 @@ const REGISTRO = gql`
 }
 `;
 
-export {REGISTRO};
+const LOGIN = gql`
+  mutation login(
+    $correo: String!,
+    $contrasena:String!,
+    ){
+    login(
+      correo: $correo,
+      contrasena: $contrasena
+      ){
+        token
+        error
+    }
+}`;
+
+export {REGISTRO,LOGIN};
 

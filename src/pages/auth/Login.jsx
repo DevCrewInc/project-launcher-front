@@ -1,9 +1,42 @@
-
-import React from 'react'
+import { useEffect } from 'react';
 import {NavLink} from 'react-router-dom'
 import backgroundImage from '../../media/Group_1611.png'
+import { useMutation } from '@apollo/client';
+import { LOGIN } from 'graphql/auth/mutaciones';
+import { useNavigate } from 'react-router';
+import useFormData from 'hooks/useFormData';
+import { useAuth } from 'context/useAuth';
+
 
 const Login = () => {
+
+    const{setToken}=useAuth();
+
+
+    const navigate = useNavigate();
+    const{form, formData, updateFormData} = useFormData();
+    const[login, {data:dataLogin, error: errorLogin, loading: loadingLogin}]= useMutation(LOGIN);
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        await login({variables: formData});
+        
+
+      }
+
+      useEffect(() => {
+        if (dataLogin) {
+            if(dataLogin.login.token){
+                setToken(dataLogin.login.token)
+                navigate('/page/proyectos');
+
+            }else{
+                console.log("error")
+            }
+      
+        }
+      }, [dataLogin]);
+
     return (
         <>
 
@@ -37,9 +70,9 @@ const Login = () => {
                         </svg>
                     </div>
                     <div className="flex justify-center">
-                        <form className="flex flex-col w-80 mt-8">
-                                <input className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" placeholder="Email"></input>
-                                <input className="font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" type="password" placeholder="Contraseña"></input>
+                        <form className="flex flex-col w-80 mt-8" ref={form} onChange={updateFormData} onSubmit={submitForm}>
+                                <input className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2"  name="correo"  type="email"placeholder="Email"></input>
+                                <input className="font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" name="contrasena" type="password" placeholder="Contraseña"></input>
                         
                             <div className="flex flex-col">
                                 <input className="rounded-full cursor-pointer submitButton mt-8 h-10 p-2 text-white" type="submit" value="Login"/>
