@@ -1,12 +1,26 @@
 import Sidebar from 'components/Sidebar';
 import { Outlet } from 'react-router';
-import React,{ useEffect} from 'react';
+import { useEffect} from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useUser } from 'context/userContext';
+import { useNavigate } from 'react-router';
+
 
 
 
 const PrivateLayout = () => {
+  const navigate = useNavigate();
+
+  const{userData}=useUser();
+
+  useEffect(() =>{
+
+    if(userData.estado==="PENDIENTE"){
+      navigate('/');
+
+    }
+  },[])
 
   
   return (

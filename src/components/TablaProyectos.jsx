@@ -4,16 +4,9 @@ import { useEffect } from 'react';
 import Tabs from 'components/Tabs';
 
 
-const TablaProyectos = ({propsTablas, nombreQuery,title}) => {
+const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
-    const{data,error,loading} = useQuery(propsTablas);
-
-    useEffect(() => {
-        if (data){
-            console.log('datos proyectos', data);
-        }
-        
-    },[data]);
+    const{data,error,loading} = useQuery(propsTablasProyectos);
 
     
 

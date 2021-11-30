@@ -1,6 +1,6 @@
 import React from 'react'
-import TablaProyectos from '../components/TablaProyectos'
-import {getListaProyectosEstudiantes} from '../graphql/proyectos/queries'
+import TablaProyectos from '../../../components/TablaProyectos'
+import {getListaProyectosEstudiantes} from '../../../graphql/admin/queries'
 import UpperBar from 'components/UpperBar'
 import {useState,useEffect} from 'react';
 import { useUser } from 'context/userContext';
@@ -18,7 +18,7 @@ const ListaProyectos = () => {
             <a onClick={()=>{setChangeTab(true)}} className="tabs">Todos</a>
             <a onClick={()=>{setChangeTab(true)}} className="tabs">Mis proyectos</a>
         </div>
-        <TablaProyectos propsTablas={getListaProyectosEstudiantes} nombreQuery='ListaProyectosEstudiante'/>
+        <TablaProyectos propsTablasProyectos={getListaProyectosEstudiantes} nombreQuery='ListaProyectosEstudiante'/>
         </>
     )
 }

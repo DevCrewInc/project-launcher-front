@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Component, useEffect,useState } from 'react';
 import backgroundImage from '../../media/Group1610.png'
 import { useMutation } from '@apollo/client';
 import { REGISTRO } from 'graphql/auth/mutaciones';
@@ -11,6 +11,7 @@ const Registro = () => {
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
     const[registro, {data: dataRegistro, error: errorRegistro, loading: loadingRegistro}]= useMutation(REGISTRO);
+    const [hidden,setHidden]=useState(false)
    
 
     const submitForm = async (e) => {
@@ -30,6 +31,9 @@ const Registro = () => {
           }
         }
       }, [dataRegistro, navigate]);
+
+
+     
 
 
   return (
@@ -68,18 +72,26 @@ const Registro = () => {
                     </div>
                     <div className="flex justify-center">
                         <form className="flex flex-col w-80 mt-6"  ref={form} onSubmit= {submitForm} onChange={updateFormData}>
-                                <input className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" name='correo' type= 'email' placeholder="Email"></input>
+                                <input  className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" name='correo' type= 'email' placeholder="Email"></input>
                                 <input className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" name='nombre' type= 'text' placeholder="Nombre usuario"></input>
                                 <input className=" font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2" name='identificacion' type= 'text' placeholder="Identificación"></input>
                                 <input className="font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2"  name='contrasena' type="password" placeholder="Contraseña"></input>
+                               
                             <div>
-                                <select name='rol'  className="rounded-xl border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
+                                <select name='rol'onChange={(e)=>{
+                                                if(e.target.value==="ESTUDIANTE"){
+                                                    setHidden(true)
+                                                }else if(e.target.value==="LIDER"){
+                                                    setHidden(false)
+                                                }
+                                            }}className="rounded-xl border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
                                     <option disabled value="">Selecciona</option>
-                                    <option >ESTUDIANTE</option>
-                                    <option >LIDER</option>
+                                    <option value= "ESTUDIANTE">ESTUDIANTE</option>
+                                    <option value= "LIDER" >LIDER</option>
                                 </select>
+                                {hidden?(<input className="font-light rounded-xl border bg-gray-100 mt-5 h-10 p-2"  name='contrasena' type="password" placeholder="Contraseña"></input>):
+                                (null)}
                             </div>
-                        
                             <div className="flex flex-col">
                                 <input className="rounded-full cursor-pointer submitButton mt-12 h-10 p-2 text-white" type="submit" value="Enviar datos"/>
                             </div>
@@ -97,3 +109,4 @@ const Registro = () => {
 }
 
 export default  Registro;
+

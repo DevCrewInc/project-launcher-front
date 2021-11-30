@@ -4,9 +4,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useState, useEffect, useRef } from 'react';
+import { useUser } from 'context/userContext';
 
 
 const ModalPerfil = ({icon}) => {
+  const { userData } = useUser();
+
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
 

@@ -1,33 +1,24 @@
-import { useEffect } from 'react';
 import 'styles/globals.css';
 import fotoman from 'fotoman.jpeg'
 import UpperBar from 'components/UpperBar';
 import { useQuery, useMutation } from '@apollo/client';
-import {getUsuarios} from '../graphql/usuarios/queries'
 import {toast} from 'react-toastify';
 import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
-import {borrarUsuario} from '../graphql/usuarios/mutaciones';
+import {borrarUsuario} from '../graphql/mutations';
+import PrivateComponent from './private/PrivateComponents';
 
 
 
 
 
-const ListaUsuarios = () => {
 
-    const{data,error,loading} = useQuery(getUsuarios);
+const TablaUsuario = ({propsTablasUsuarios,nombreQuery}) => {
+
+    const{data,error,loading} = useQuery(propsTablasUsuarios);
     const[eliminarUsuario, {data: confirmacion, error: errorEliminacion, loading: loadingEliminacion}]= useMutation(borrarUsuario);
 
-    useEffect (()=>{
-        if (data){
-            console.log(data)
-        }
-    } )
 
-    useEffect(() => {
-        if (error) {
-            toast.error('Error consultando los usuarios');
-        }
-    }, [error]);
+
 
     return (
         <div >
@@ -44,7 +35,7 @@ const ListaUsuarios = () => {
                                 <th>Acción</th>
                             </tr>
                         </thead> 
-                        {data && data.Usuarios.map((usuario)=>{
+                        {data && data[nombreQuery].map((usuario)=>{
 
                             return (
                                 <FilasTablas usuario={usuario} eliminarUsuario={eliminarUsuario}/>    
@@ -86,13 +77,15 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
                         <td className = "flex justify-center align-middle items-center space-x-2">
                             <ModalDetalleProyecto/>
                             <i className = "self fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                            <i onClick={() => {
-                                eliminarUsuario({variables: {_id: usuario._id} });
-                            }} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                            <PrivateComponent roleList={['ADMINISTRADOR']}>
+                                <i onClick={() => {
+                                    eliminarUsuario({variables: {_id: usuario._id} });
+                                }} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                            </PrivateComponent>
                         </td>
                     </tr>
                 </tbody>
         )
 }
 
-export default ListaUsuarios
+export default TablaUsuario
