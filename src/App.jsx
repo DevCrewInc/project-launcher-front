@@ -3,7 +3,7 @@ import 'styles/globals.css';
 import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from 'context/userContext';
-import {ApolloProvider, ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
+import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
 import ListaUsuarios from 'pages/ListaUsuarios';
 import 'styles/globals.css';
 import Dialogos from 'pages/Dialogos'

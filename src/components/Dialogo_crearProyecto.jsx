@@ -1,15 +1,11 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Avatar from '@mui/material/Avatar';
-import { TextareaAutosize } from '@material-ui/core';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { Box} from '@mui/system';
-import { Typography } from '@mui/material';
+
 import fotoman from 'fotoman.jpeg';
 
 

@@ -308,3 +308,47 @@
   font-size:13px;
   font-weight: 300;
 }
+
+/* boton nuevo proyecto */
+
+.wrapper .button-new{
+  display: flex;
+  height: 42px;
+  width: 42px;
+  padding-left: 16px;
+  overflow: hidden;
+  color: white;
+  background: #A5143A;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  position: absolute;
+  margin-left: 198px;
+  margin-top:100px;
+}
+
+.wrapper .button-new:hover{
+  width: 170px;
+}
+
+.wrapper .button-new icon-new{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  color: white;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+}
+
+.wrapper .button-new icon-new i{
+  font-size: 20px;
+}
+
+.wrapper .button-new span{
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 10px;
+
+}

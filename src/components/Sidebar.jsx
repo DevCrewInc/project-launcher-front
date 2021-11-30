@@ -38,10 +38,17 @@ const SidebarLinks = () => {
 
 const ButtonNewProject = () =>{
   return(
-    <div className="">
-      <button className="rounded-full button-new-project"><i class="fas fa-plus"></i> </button>
-        {/* <button className="button-new-project-extended rounded-full w-40 text-white "> Nuevo Proyecto</button> */}
-    </div>
+    // <div className="">
+    //   <button className="rounded-full button-new-project"><i class="fas fa-plus"></i> </button>
+    //     {/* <button className="button-new-project-extended rounded-full w-40 text-white "> Nuevo Proyecto</button> */}
+    // </div>
+    <div class="wrapper">
+        <div class="button-new">
+          <div class="icon-new self-center"><i class="fas fa-plus"></i>
+            <span>Crear proyecto</span>
+          </div>
+        </div>
+  </div>
     
   );
 }
