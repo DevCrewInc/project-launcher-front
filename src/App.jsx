@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react';
+import React, { useState} from 'react';
 import 'styles/globals.css';
 import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -12,8 +12,7 @@ import Solicitudes from 'pages/rol/admin/Solicitudes';
 // import ListaProyectos from 'pages/ListaProyectos';
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
-import { AuthContext } from 'context/useAuth';
-import jwt_decode from 'jwt-decode';
+
 import Administracion from 'pages/rol/admin/Administracion';
 import ListaEstudiantes from 'pages/rol/lider/ListaEstudiantes';
 
@@ -30,47 +29,11 @@ const client = new ApolloClient({
 
 function App() {
   const [userData, setUserData] = useState({});
-  const [authData, setAuthData] = useState();
-
-
-  const setToken = (token) => {
-    console.log('set token', token);
-    setAuthData(token);
-    if (token) {
-      localStorage.setItem('token', JSON.stringify(token));
-    } else {
-      localStorage.removeItem('token');
-    }
-  };
-
-  useEffect(() => {
-    if (authData) {
-      const decoded = jwt_decode(authData);
-      setUserData({
-        _id: decoded._id,
-        nombre: decoded.nombre,
-        identificacion: decoded.identificacion,
-        correo: decoded.correo,
-        rol: decoded.rol,
-        estado:decoded.estado
-      });
-    }else if (localStorage.getItem('token')){
-      const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
-      setUserData({
-        _id: decoded._id,
-        nombre: decoded.nombre,
-        identificacion: decoded.identificacion,
-        correo: decoded.correo,
-        rol: decoded.rol,
-      })
-      }
-  }, [authData]);
-
+  
 
 
   return (
     <ApolloProvider client = {client}>
-      <AuthContext.Provider value={{authData, setAuthData, setToken}}>
         <UserContext.Provider value={{ userData, setUserData}}>
           <BrowserRouter>
             <Routes>
@@ -88,7 +51,6 @@ function App() {
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>
-      </AuthContext.Provider>
     </ApolloProvider>
       
 

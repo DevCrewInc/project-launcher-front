@@ -6,7 +6,11 @@ const REGISTRO = gql`
     $identificacion: String!,
     $correo: String!,
     $rol: Enum_Rol!,
-    $contrasena: String!) 
+    $contrasena: String!,
+    $facultad:Enum_Facultad
+    $semestre:Enum_Semestre
+    ) 
+    
     {
   registro(
     nombre: $nombre, 
@@ -14,6 +18,8 @@ const REGISTRO = gql`
     correo: $correo,
     rol: $rol, 
     contrasena: $contrasena
+    semestre:$semestre
+    facultad:$facultad
     ){
       token
       error

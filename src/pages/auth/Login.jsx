@@ -1,18 +1,13 @@
 import { useEffect } from 'react';
 import {NavLink} from 'react-router-dom'
-import backgroundImage from '../../media/Group_1611.png'
 import { useMutation } from '@apollo/client';
 import { LOGIN } from 'graphql/auth/mutaciones';
 import { useNavigate } from 'react-router';
 import useFormData from 'hooks/useFormData';
-import { useAuth } from 'context/useAuth';
 
 
 const Login = () => {
-
-    const{setToken}=useAuth();
-
-
+ 
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
     const[login, {data:dataLogin, error: errorLogin, loading: loadingLogin}]= useMutation(LOGIN);
@@ -27,8 +22,8 @@ const Login = () => {
       useEffect(() => {
         if (dataLogin) {
             if(dataLogin.login.token){
-                setToken(dataLogin.login.token)
-                navigate('/page/proyectos');
+                localStorage.setItem('token', JSON.stringify(dataLogin.login.token));
+                navigate('/page/lider/estudiantes');
 
             }else{
                 console.log("error")

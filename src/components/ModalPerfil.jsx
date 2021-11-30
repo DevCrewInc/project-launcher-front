@@ -61,15 +61,15 @@ const ModalPerfil = ({icon}) => {
                 <div className="flex items-center ">
                   <img className="rounded-full h-20" src={fotoman}/>
                   <div className="ml-6">
-                    <h1 className="id-perfil text-gray-300 font-normal">Id Estudiante</h1>
-                    <h1 className="nombre-perfil font-semidold"> Juan Camilo Pérez</h1>
-                    <h1 className="rol-perfil font-normal"> Estudiante</h1>
+                    <h1 className="id-perfil text-gray-300 font-normal">{userData._id}</h1>
+                    <h1 className="nombre-perfil font-semidold"> {userData.nombre}</h1>
+                    <h1 className="rol-perfil font-normal"> {userData.rol}</h1>
                   </div>
                 </div>  
-                <div className="space-x-4 flex">
+                {/* <div className="space-x-4 flex">
                   <button className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
                   <button className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
-                </div>
+                </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
                   <a className="tabs-perfil">Datos personales</a>
@@ -82,20 +82,21 @@ const ModalPerfil = ({icon}) => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className=" font-medium">Documento</label>
-                <input className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" placeholder="Doc identidad" />
+                <input className="text-sm w-full font-light  rounded-lg h-7 pl-2" defaultValue={userData.identificacion}/>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <input className="text-sm font-light w-full bg-gray-100 rounded-lg h-7 pl-2" placeholder="ejemplo@ejemplo.com" />
+                <input className="text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={userData.correo} />
               </div>
               <div>
                 <label className=" font-medium">Celular</label>
-                <input className=" text-sm font-light w-full bg-gray-100 rounded-lg h-7 pl-2" placeholder="Número celular" />
+                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={userData.celular}/>
               </div>
-              <div></div>
+              {userData.rol==="ESTUDIANTE"?(
+              <>
               <div>
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue="">
+                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={userData.facultad}>
                   <option disabled type="String" value="">Selecciona facultad</option>
                   <option type="String">Artes</option>
                   <option type="String">Ingeniería</option>
@@ -104,7 +105,7 @@ const ModalPerfil = ({icon}) => {
               </div>
               <div>
                 <label className=" font-medium">Semestre</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue="">
+                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={userData.semestre}>
                   <option disabled type="String" value="">Selecciona semestre</option>
                   <option type="String">Primero</option>
                   <option type="String">Segundo</option>
@@ -112,6 +113,9 @@ const ModalPerfil = ({icon}) => {
                 </select>
               </div>
               
+              
+              </>):null}
+       
             </div>
           <div className="grid mt-8 mb-6">
               <label className=" font-medium">Acerca de mi</label>
