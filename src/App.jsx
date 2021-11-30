@@ -22,7 +22,7 @@ import jwt_decode from 'jwt-decode';
 // });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://devcrewserver.herokuapp.com/graphql',
   cache: new InMemoryCache()
 })
 

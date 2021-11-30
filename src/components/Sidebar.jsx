@@ -45,7 +45,7 @@ const ButtonNewProject = () =>{
     <div class="wrapper">
         <div class="button-new">
           <div class="icon-new self-center"><i class="fas fa-plus"></i>
-            <span>Crear proyecto</span>
+            <span>New</span>
           </div>
         </div>
   </div>
