@@ -10,7 +10,7 @@ import { useAuth } from 'context/useAuth';
 
 const Login = () => {
 
-    // const{setToken}=useAuth();
+    const{setToken}=useAuth();
 
 
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Login = () => {
       useEffect(() => {
         if (dataLogin) {
             if(dataLogin.login.token){
-                // setToken(dataLogin.login.token)
+                setToken(dataLogin.login.token)
                 navigate('/page/proyectos');
 
             }else{

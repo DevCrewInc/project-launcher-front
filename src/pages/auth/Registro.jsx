@@ -21,7 +21,7 @@ const Registro = () => {
     useEffect(() => {
         if (dataRegistro) {
           if (dataRegistro.registro.token) {
-            // navigate('/');
+            navigate('/');
             console.log(dataRegistro.registro.token)
           }
           else{

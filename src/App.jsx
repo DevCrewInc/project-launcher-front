@@ -31,43 +31,43 @@ function App() {
   const [authData, setAuthData] = useState();
 
 
-  // const setToken = (token) => {
-  //   console.log('set token', token);
-  //   setAuthData(token);
-  //   if (token) {
-  //     localStorage.setItem('token', JSON.stringify(token));
-  //   } else {
-  //     localStorage.removeItem('token');
-  //   }
-  // };
+  const setToken = (token) => {
+    console.log('set token', token);
+    setAuthData(token);
+    if (token) {
+      localStorage.setItem('token', JSON.stringify(token));
+    } else {
+      localStorage.removeItem('token');
+    }
+  };
 
-  // useEffect(() => {
-  //   if (authData) {
-  //     const decoded = jwt_decode(authData);
-  //     setUserData({
-  //       _id: decoded._id,
-  //       nombre: decoded.nombre,
-  //       identificacion: decoded.identificacion,
-  //       correo: decoded.correo,
-  //       rol: decoded.rol,
-  //     });
-  //   }else if (localStorage.getItem('token')){
-  //     const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
-  //     setUserData({
-  //       _id: decoded._id,
-  //       nombre: decoded.nombre,
-  //       identificacion: decoded.identificacion,
-  //       correo: decoded.correo,
-  //       rol: decoded.rol,
-  //     })
-  //     }
-  // }, [authData]);
+  useEffect(() => {
+    if (authData) {
+      const decoded = jwt_decode(authData);
+      setUserData({
+        _id: decoded._id,
+        nombre: decoded.nombre,
+        identificacion: decoded.identificacion,
+        correo: decoded.correo,
+        rol: decoded.rol,
+      });
+    }else if (localStorage.getItem('token')){
+      const decoded = jwt_decode(JSON.parse(localStorage.getItem('token')));
+      setUserData({
+        _id: decoded._id,
+        nombre: decoded.nombre,
+        identificacion: decoded.identificacion,
+        correo: decoded.correo,
+        rol: decoded.rol,
+      })
+      }
+  }, [authData]);
 
 
 
   return (
     <ApolloProvider client = {client}>
-      <AuthContext.Provider value={{authData, setAuthData}}>
+      <AuthContext.Provider value={{authData, setAuthData, setToken}}>
         <UserContext.Provider value={{ userData, setUserData}}>
           <BrowserRouter>
             <Routes>
