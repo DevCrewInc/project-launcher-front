@@ -25,9 +25,21 @@
   background-color: #A5143A;
 }
 
+
 .signUpButton{
   border-color:#A5143A;
   color: #A5143A;
+}
+
+.submitButton:hover{
+  background-color: #CF254D;
+}
+
+
+.signUpButton:hover{
+  border-color:#CF254D;
+  color: #CF254D;
+  background-color: #cf254d2c;
 }
 
 .sidebar {
