@@ -75,7 +75,7 @@ function App() {
                 <Route path='/registro' element={<Registro/>} />
               <Route path='/' element={<PrivateLayout/>}>
                 <Route path='page/dialogos' element={<Dialogos/>}/>
-                <Route path='page/proyectos' element={<ListaProyectos/>}/>
+                <Route path='page/proyectos' element={<ListaProyectos />}/>
                 <Route path='page/usuarios' element={<ListaUsuarios />} />
                 <Route path='page/solicitudes' element={<Solicitudes />} />
                 <Route path='page/dialogos' element={<Dialogos/>}/>
