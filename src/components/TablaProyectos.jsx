@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { useEffect } from 'react';
-import Tabs from 'components/Tabs';
+import PrivateComponent from './private/PrivateComponents';
 
 
 const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
@@ -20,7 +19,7 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                     <tr>
                         <th>Id</th>
                         <th className="w-2" >Nombre</th>
-                        <th >Inicio y Fin</th>
+                        <th >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
                         <th >Estado</th>
@@ -73,8 +72,10 @@ const FilasTablaProyectos = ({proyecto}) =>{
 
             <td className = "flex justify-center items-center space-x-2">
                 <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
-                <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+                    <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                    <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                </PrivateComponent>
             </td>
         </tr>
     </tbody>

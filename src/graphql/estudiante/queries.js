@@ -6,7 +6,6 @@ const getListaProyectosEstudiantes = gql`
             _id
             nombre
             fechaInicio
-            fechaFin
             lider{
                 identificacion
                 nombre

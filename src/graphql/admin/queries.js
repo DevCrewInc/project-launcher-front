@@ -6,7 +6,6 @@ query Proyectos {
         _id
         nombre
         fechaInicio
-        fechaFin
         lider{
             identificacion
             nombre

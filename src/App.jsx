@@ -9,7 +9,7 @@ import 'styles/globals.css';
 import Dialogos from 'pages/Dialogos'
 import Proyectos1 from 'pages/Proyectos1';
 import Solicitudes from 'pages/rol/admin/Solicitudes';
-// import ListaProyectos from 'pages/ListaProyectos';
+import ListarProyectos from 'pages/rol/estudiantes/ListarProyectos'
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
 
@@ -41,7 +41,7 @@ function App() {
                 <Route path='/registro' element={<Registro/>} />
               <Route path='/' element={<PrivateLayout/>}>
                 <Route path='page/dialogos' element={<Dialogos/>}/>
-                {/* <Route path='page/proyectos' element={<ListaProyectos />}/> */}
+                <Route path='page/estudiante/proyectos' element={<ListarProyectos />}/>
                 <Route path='page/lider/estudiantes' element={<ListaEstudiantes />} />
                 <Route path='page/solicitudes' element={<Solicitudes />} />
                 <Route path='page/administracion' element={<Administracion />} />
