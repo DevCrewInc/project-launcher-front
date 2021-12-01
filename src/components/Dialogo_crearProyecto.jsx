@@ -3,21 +3,11 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { createTheme } from '@mui/material/styles';
 import { Box} from '@mui/system';
-
 import fotoman from 'fotoman.jpeg';
 
 
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#C71745',
-      dark: '#A5143A'
-    }
-  },
-});
 
 
 export default function ScrollDialog() {
@@ -73,7 +63,7 @@ export default function ScrollDialog() {
                       <img className="rounded-full w-9 h-9" src={fotoman}/>
                           <div className = "flex flex-col ">
                               <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
-                              <span className = "text-xs font-medium text-blue-500">2345 <i class="far fa-flag"></i></span>
+                              <span className = "text-xs font-medium text-blue-500">2345 <i className="far fa-flag"></i></span>
                           </div>
                       </div>
                     </div>
@@ -105,13 +95,13 @@ export default function ScrollDialog() {
                   <div className="pt-2 mt-3 flex justify-between space-x-4">
                     <input required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100 " placeholder="Objetivo general" type="text" id="fname" name=""></input>
                     <div className="self-center">
-                      <button className="add-button bg-green w-6 h-6 rounded-full "><i class="p-2 fas fa-plus fa-xs text-center"></i></button> 
+                      <button className="add-button bg-green w-6 h-6 rounded-full "><i clasName="p-2 fas fa-plus fa-xs text-center"></i></button> 
                     </div> 
                   </div>
                   <div className="pt-2 mt-2 flex justify-between space-x-4">
                     <input required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname" name=""></input>
                     <div className="self-center">
-                      <button className="add-button bg-green w-6 h-6 rounded-full"><i class="p-2 fas fa-plus fa-xs"></i></button> 
+                      <button className="add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></button> 
                     </div>
                   </div>
                   <div className="text-center">

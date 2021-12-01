@@ -69,7 +69,7 @@
   margin-left: 198px;
   position: absolute;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .button-new-project:hover{
@@ -84,9 +84,6 @@
   transition: width 2s;
 }
 
-.background-image{
-  background-image: url()
-}
 
 /*MODAL AVANCE*/
 .avance_Date{

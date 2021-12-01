@@ -5,7 +5,7 @@ const UpperBar = ({icon , title}) => {
         <>
             <div className="space-x-3 flex w-full self-center">
                 <svg width="50" height="50" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d={icon} fill="#252323" stroke="black" stroke-width="0.4"/>
+                    <path d={icon} fill="#252323" stroke="black" strokeWidth="0.4"/>
                 </svg>
 
                 <span className = "font-bold text-2xl w-full self-center">{title}</span>

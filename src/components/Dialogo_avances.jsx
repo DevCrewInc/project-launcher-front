@@ -1,25 +1,13 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Avatar from '@mui/material/Avatar';
-import { TextareaAutosize } from '@material-ui/core';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box} from '@mui/system';
-import { Typography } from '@mui/material';
 
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#C71745',
-      dark: '#A5143A'
-    }
-  },
-});
+
 
 export default function ScrollDialog() {
   const [open, setOpen] = React.useState(false);
@@ -64,7 +52,7 @@ export default function ScrollDialog() {
             <h1 className="mt-3 text-sm text-gray-300 font-normal">Id Avance</h1>
             <div className="flex justify-between">
             <input className="w-full rounded-sm" placeholder="Titulo de tu avance" type="text" id="fname" name=""></input>
-              <i class="far fa-check-circle self-center text-gray-400 pl-3"></i>
+              <i className="far fa-check-circle self-center text-gray-400 pl-3"></i>
             </div>
             
             <div className="flex justify-between">

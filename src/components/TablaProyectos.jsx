@@ -31,7 +31,7 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                 data[nombreQuery].map((proyecto) => {
                     return(
                         <>
-                            <FilasTablaProyectos proyecto={proyecto}/>
+                            <FilasTablaProyectos key={proyecto._id}  proyecto={proyecto}/>
                         </>
                     )
                 })}
@@ -44,8 +44,8 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
 const FilasTablaProyectos = ({proyecto}) =>{
     return(
-        <tbody className = "tbody-border text-sm text-gray-400">  
-        <tr>
+        <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
+        <tr key={proyecto._id}>
             <td className="text-center">
                 <input type="text" placeholder = {proyecto._id} className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2"/>
             </td>

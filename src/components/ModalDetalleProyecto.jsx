@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -59,7 +58,7 @@ const ModalDetalleProyecto = ({icon}) => {
                   <img className="rounded-full w-9 h-9" src={fotoman}/>
                       <div className = "flex flex-col ">
                         <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
-                        <span className = "text-xs font-medium text-blue-500">2345 <i class="far fa-flag"></i></span>
+                        <span className = "text-xs font-medium text-blue-500">2345 <i className="far fa-flag"></i></span>
                       </div>
                   </div>
                 </div>
@@ -85,8 +84,8 @@ const ModalDetalleProyecto = ({icon}) => {
           <div className="">
             <DialogContent>
                 <div className="space-x-8 cursor-pointer">
-                    <a className="tabs-modal">Objetivos generales</a>
-                    <a className="tabs-modal">Objetivos específicos</a>
+                    <button className="tabs-modal">Objetivos generales</button>
+                    <button className="tabs-modal">Objetivos específicos</button>
                 </div>
             
                 <div className="pt-2 mt-4 flex-col h-20 text-left overflow-auto">
