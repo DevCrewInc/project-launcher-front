@@ -1,11 +1,15 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
+import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import { useState } from 'react';
 
 
 const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
-    const{data,error,loading} = useQuery(propsTablasProyectos);
+    const{data,error,loading} = useQuery(propsTablasProyectos,{
+        pollInterval:200
+    });
 
     
 
@@ -42,6 +46,13 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 }
 
 const FilasTablaProyectos = ({proyecto}) =>{
+
+
+   
+
+
+    const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
+
     return(
         <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
         <tr key={proyecto._id}>
@@ -64,8 +75,8 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
-                {proyecto.estadoProyecto === "ACTIVO" ? <button className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button> : (
-                    <button className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
+                {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
+                    <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
                 )}
             </td>
 
