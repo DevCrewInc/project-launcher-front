@@ -4,7 +4,7 @@ import {getSolicitudesNuevosProyectos} from '../../../graphql/admin/queries'
 import UpperBar from 'components/UpperBar'
 import Tabs from 'components/Tabs'
 
-const ListaProyectos = () => {
+const ListaNuevosProyectos = () => {
 
     const tabs =[{
         title:"Usuario",
@@ -22,4 +22,4 @@ const ListaProyectos = () => {
     )
 }
 
-export default ListaProyectos
+export default ListaNuevosProyectos

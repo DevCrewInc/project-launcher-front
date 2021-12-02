@@ -5,9 +5,10 @@ import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 
 
 
-const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
+const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
+        variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
 
@@ -92,4 +93,4 @@ const FilasTablaProyectos = ({proyecto}) =>{
     )
 }
 
-export default TablaProyectos;
+export default TablaProyectosUser;

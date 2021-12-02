@@ -13,7 +13,7 @@ const Administracion = () => {
         to:""
     },{
         title:"Proyecto",
-        to:"proyectos"
+        to:"nuevosProyectos"
     }]
 
     return (
