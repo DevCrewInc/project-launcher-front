@@ -9,16 +9,16 @@ import jwt_decode from 'jwt-decode';
 
 
 const Login = () => {
- 
+
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
     const[login, {data:dataLogin, error: errorLogin, loading: loadingLogin}]= useMutation(LOGIN);
-   
-    const decode= async ()=>{  
-            const decoded = await jwt_decode(JSON.parse(localStorage.getItem('token')));
 
-              localStorage.setItem('userData',JSON.stringify(decoded))
-              console.log(JSON.parse(localStorage.getItem('userData'))._id);
+    const decode= async ()=>{  
+        const decoded = await jwt_decode(JSON.parse(localStorage.getItem('token')));
+
+            localStorage.setItem('userData',JSON.stringify(decoded))
+            console.log(JSON.parse(localStorage.getItem('userData'))._id);
             
     }
 
@@ -26,10 +26,10 @@ const Login = () => {
     const submitForm = async (e) => {
         e.preventDefault();
         await login({variables: formData});
-      }
+    }
 
-      useEffect(() => {
-          
+    useEffect(() => {
+
         if (dataLogin) {
             if(dataLogin.login.token){
                 localStorage.setItem('token', JSON.stringify(dataLogin.login.token));
@@ -45,14 +45,13 @@ const Login = () => {
                         }
                     } 
                 }
-               
-             
+
             }else{
                 console.log("error")
             }
-      
+
         }
-      }, [dataLogin]);
+    }, [dataLogin]);
 
     return (
         <>

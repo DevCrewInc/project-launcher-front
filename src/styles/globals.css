@@ -165,8 +165,13 @@
   border-color: #ebebeb;
 }
 
-.input-tablas {
-  color: #636363;
+.encabezado-tablas{
+  color: #252323;
+}
+
+.texto-tablas{
+  color: #252323;
+  font-size: 14px;
 }
 
 /*PROYECTO*/

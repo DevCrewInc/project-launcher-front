@@ -54,16 +54,16 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
 
     return (
 
-        <tbody className = " tbody-border text-sm text-gray-400">  
-                    <tr >
+        <tbody className = " tbody-border text-sm">  
+                    <tr className="texto-tablas">
                         <td className="text-center w-14">
-                            <input type="text" placeholder = {usuario._id} className =" overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2"/>
+                            <input type="text" placeholder = {usuario._id} className ="w-14 px-2"/>
                         </td>
                         <td className="text-center w-18">
                             <input type="text" placeholder = {usuario.nombre} className ="input-tablas text-center"/>
                         </td>
                         <td className="text-center p-2 w-14">
-                        <img className="rounded-full w-" src={fotoman}/>
+                        <img className="rounded-full" src={fotoman}/>
                         </td>
                         <td className="text-center">
                             <input className="text-gray-600 cursor-pointer bg-white text-center" type="text" value={usuario.identificacion}/>
