@@ -14,7 +14,7 @@ import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
 
 
-const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
+const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasUsuarios,{
         pollInterval:200
@@ -60,35 +60,28 @@ const FilasTablas = ({usuario})=>{
 
     return (
 
-        <tbody className = "texto-tablas tbody-border text-gray-400">  
+        <tbody className = " tbody-border text-sm text-gray-400">  
                     <tr >
                         <td className="text-center w-14">
                             <span type="text" placeholder = {usuario._id} className =" overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{usuario._id}</span>
                         </td>
                         <td className="text-center w-18">
-                            <span className=" bg-white" type="button" >{usuario.nombre}</span>
+                            <span className="text-gray-600  bg-white" type="button" >{usuario.nombre}</span>
                         </td>
                         <td className="text-center p-2 w-14">
                             <img className="rounded-full w-" src={fotoman}/>
                         </td>
                         <td className="text-center">
-                            <span className="bg-white" type="button" >{usuario.identificacion}</span>
+                            <span className="text-gray-600  bg-white" type="button" >{usuario.identificacion}</span>
                         </td>
-                        <td className="text-center">
-                            <span className=" bg-white" type="button" >{usuario.rol}</span>
+                        <td className="text-center">    
+                            <span className="text-gray-600  bg-white" type="button" >{usuario.rol}</span>
                         </td>
-                        <td className="text-center">
-                            <select required onChange={(e) => {editarEstadoUsuario({variables: {_id: usuario._id ,estado:e.target.value}})}} className="text-sm font-light bg-gray-100 rounded-lg h-7 pl-2" name="estado" defaultValue="">
-                                <option disabled type="String" value="">{usuario.estado}</option>
-                                {usuario.estado==="AUTORIZADO"?null:(
-                                 <>
-                                    <option type="String">AUTORIZADO</option>
-                                 </>   
-                                )}
-                                
-                                <option type="String">NO_AUTORIZADO</option>
-                            </select>
-                        </td>
+                        <td className = "text-center">
+                            {usuario.estado === "PENDIENTE" ? <button onClick={()=>{editarEstadoUsuario({variables: {_id: usuario._id, estado:"AUTORIZADO"}})}} className = " inactivo-button mx-1 my-1 px-2">{usuario.estado}</button > : (
+                                <span  className = " status-button px-2 my-1">{usuario.estado}</span> 
+                            )}
+                         </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
                             <ModalDetalleProyecto/>
                           
@@ -100,7 +93,4 @@ const FilasTablas = ({usuario})=>{
         )
 }
 
-export default TablaUsuarioAdmin
-
-
-// <i className = "self fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+export default TablaUsuariosLider
