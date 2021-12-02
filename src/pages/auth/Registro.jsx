@@ -123,14 +123,34 @@ const Registro = () => {
                                     <>
                                     <select required name='semestre' className="rounded-lg border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
                                     <option disabled value="">Semestre</option>
-                                    <option >PRIMERO</option>
-                                    <option >SEGUNDO</option>
+                                    <option type="String">PRIMERO</option>
+                                    <option type="String">SEGUNDO</option>
+                                    <option type="String">TERCERO </option>
+                                    <option type="String">CUARTO </option>
+                                    <option type="String">QUINTO </option>
+                                    <option type="String">SEXTO </option>
+                                    <option type="String">SEPTIMO </option>
+                                    <option type="String">OCTAVO </option>
+                                    <option type="String">NOVENO </option>
+                                    <option type="String">DECIMO </option>
                                 </select>
 
                                 <select required name='facultad' className="rounded-lg border bg-gray-100 mt-5 h-10 px-2 w-80" defaultValue="">
                                     <option disabled value="">Facultad</option>
-                                    <option >ARTES</option>
-                                    <option >CIENCIAS_AGRARIAS</option>
+                                    <option type="String">ARTES</option>
+                                    <option type="String">CIENCIAS_AGRARIAS</option>
+                                    <option type="String">CIENCIAS_ECONOMICAS </option>
+                                    <option type="String">CIENCIAS_EXACTAS_NATURALES  </option>
+                                    <option type="String">CIENCIAS_FARMACEUTICAS_ALIMENTARIAS  </option>
+                                    <option type="String">CIENCIAS_SOCIALES_HUMANAS  </option>
+                                    <option type="String">COMUNICACIONES </option>
+                                    <option type="String">DERECHO_CIENCIAS_POLITICAS  </option>
+                                    <option type="String">EDUCACION </option>
+                                    <option type="String">ENFERMERIA  </option>
+                                    <option type="String">INGENIERIA  </option>
+                                    <option type="String">MEDICINA  </option>
+                                    <option type="String">ODONTOLOGIA   </option>
+                                    <option type="String">SALUD_PUBLICA  </option>
                                 </select>
                             </>):
                             (null)}

@@ -24,7 +24,12 @@ const useFormObjetivos = (initial) => {
             }]
         }else if(key.includes("presupuesto")){
             obj[key] = parseFloat(value);
+
         }
+        // else if(key.includes("fechaEstimada")){
+        //     obj[key] = toString(value);
+        // }
+
         else{
             obj[key] = value
         }
