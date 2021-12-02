@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from 'graphql/auth/mutaciones';
 import { useNavigate } from 'react-router';
 import useFormData from 'hooks/useFormData';
-import { useUser } from 'context/userContext';
 import jwt_decode from 'jwt-decode';
 
 
@@ -14,52 +13,46 @@ const Login = () => {
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
     const[login, {data:dataLogin, error: errorLogin, loading: loadingLogin}]= useMutation(LOGIN);
-    const{userData,setUserData}=useUser();
    
     const decode= async ()=>{  
             const decoded = await jwt_decode(JSON.parse(localStorage.getItem('token')));
-             setUserData({
-              _id: decoded._id,
-              nombre: decoded.nombre,
-              identificacion: decoded.identificacion,
-              correo: decoded.correo,
-              rol: decoded.rol,
-              estado:decoded.estado,
-              semestre:decoded.semestre,
-              facultad:decoded.facultad,
-              celular:decoded.celular,
-              aboutMe:decoded.aboutMe
-            })
+
+              localStorage.setItem('userData',JSON.stringify(decoded))
+              console.log(JSON.parse(localStorage.getItem('userData'))._id);
+            
     }
 
 
     const submitForm = async (e) => {
         e.preventDefault();
         await login({variables: formData});
-        
-
       }
 
       useEffect(() => {
           
         if (dataLogin) {
             if(dataLogin.login.token){
-                
                 localStorage.setItem('token', JSON.stringify(dataLogin.login.token));
                 decode()
-                if(userData){
-                    if(userData.estado==="AUTORIZADO"){
-                        navigate('/page/lider/estudiantes');
-                    }  
+                if(localStorage.getItem('userData')){
+                    if(JSON.parse(localStorage.getItem('userData')).estado==="AUTORIZADO"){
+                        if(JSON.parse(localStorage.getItem('userData')).rol==="ADMINISTRADOR"){
+                            navigate('/page/administracion');
+                        }else if(JSON.parse(localStorage.getItem('userData')).rol==="LIDER"){
+                            navigate('/page/lider/estudiantes')
+                        }else if(JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"){
+                            navigate('/page/estudiante/proyectos')
+                        }
+                    } 
                 }
-            
-                
+               
+             
             }else{
                 console.log("error")
             }
       
         }
-      }, [dataLogin,userData]);
+      }, [dataLogin]);
 
     return (
         <>
@@ -123,7 +116,7 @@ const Login = () => {
                         <div className="flex flex-col">
                             <input className="rounded-full cursor-pointer submitButton mt-8 h-10 p-2 text-white" type="submit" value="Login"/>
                         </div>
-                        <span className="text-xs font-normal text-center mt-12">¿Aún no tienes cuenta?</span>
+                        <span className="text-xs font-normal  text-center mt-12">¿Aún no tienes cuenta?</span>
                         <NavLink  to= '/registro'className="signUpButton text-center cursor-pointer bg-white rounded-full border mt-5 h-10 p-2">
                             <span >Sign Up</span>
                         </NavLink>

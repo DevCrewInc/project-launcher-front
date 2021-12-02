@@ -2,19 +2,18 @@ import React, { useState} from 'react';
 import 'styles/globals.css';
 import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { UserContext } from 'context/userContext';
+import { ConsultaContext } from 'context/ConsultaContext';
 import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
 // import ListaUsuarios from 'pages/ListaUsuarios';
 import 'styles/globals.css';
 import Dialogos from 'pages/Dialogos'
 import Proyectos1 from 'pages/Proyectos1';
-import Solicitudes from 'pages/rol/admin/Solicitudes';
 import ListarProyectos from 'pages/rol/estudiantes/ListarProyectos'
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
-
 import Administracion from 'pages/rol/admin/Administracion';
 import ListaEstudiantes from 'pages/rol/lider/ListaEstudiantes';
+import ListaUsuarios from 'pages/rol/admin/ListaUsuarios';
 
 // import PrivateRoute from 'components/PrivateRoute';
 // const httpLink = createHttpLink({
@@ -28,13 +27,14 @@ const client = new ApolloClient({
 })
 
 function App() {
-  const [userData, setUserData] = useState({});
+  const [consulta, setConsulta] = useState(true);
+  
   
 
 
   return (
     <ApolloProvider client = {client}>
-        <UserContext.Provider value={{ userData, setUserData}}>
+        <ConsultaContext.Provider value={{consulta, setConsulta}}>
           <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login/>} />
@@ -43,14 +43,14 @@ function App() {
                 <Route path='page/dialogos' element={<Dialogos/>}/>
                 <Route path='page/estudiante/proyectos' element={<ListarProyectos />}/>
                 <Route path='page/lider/estudiantes' element={<ListaEstudiantes />} />
-                <Route path='page/solicitudes' element={<Solicitudes />} />
                 <Route path='page/administracion' element={<Administracion />} />
+                <Route path='page/usuarios' element={<ListaUsuarios />} />
                 <Route path='page/dialogos' element={<Dialogos/>}/>
                 <Route path='page/proyectos1' element={<Proyectos1/>} />
               </Route>
             </Routes>
           </BrowserRouter>
-        </UserContext.Provider>
+        </ConsultaContext.Provider>
     </ApolloProvider>
       
 

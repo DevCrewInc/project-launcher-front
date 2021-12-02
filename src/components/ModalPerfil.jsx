@@ -4,11 +4,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useState, useEffect, useRef } from 'react';
-import { useUser } from 'context/userContext';
+
 
 
 const ModalPerfil = ({icon}) => {
-  const { userData } = useUser();
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -64,9 +63,9 @@ const ModalPerfil = ({icon}) => {
                 <div className="flex items-center ">
                   <img className="rounded-full h-20" src={fotoman}/>
                   <div className="ml-6">
-                    <h1 className="id-perfil text-gray-300 font-normal">{userData._id}</h1>
-                    <h1 className="nombre-perfil font-semidold"> {userData.nombre}</h1>
-                    <h1 className="rol-perfil font-normal"> {userData.rol}</h1>
+                    <h1 className="id-perfil text-gray-300 font-normal">{JSON.parse(localStorage.getItem('userData'))._id}</h1>
+                    <h1 className="nombre-perfil font-semidold"> {JSON.parse(localStorage.getItem('userData')).nombre}</h1>
+                    <h1 className="rol-perfil font-normal"> {JSON.parse(localStorage.getItem('userData')).rol}</h1>
                   </div>
                 </div>  
                 {/* <div className="space-x-4 flex">
@@ -85,21 +84,21 @@ const ModalPerfil = ({icon}) => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className=" font-medium">Documento</label>
-                <input className="text-sm w-full font-light  rounded-lg h-7 pl-2" defaultValue={userData.identificacion}/>
+                <input className="text-sm w-full font-light  rounded-lg h-7 pl-2" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <input className="text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={userData.correo} />
+                <input className="text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
               </div>
               <div>
                 <label className=" font-medium">Celular</label>
-                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={userData.celular}/>
+                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-2" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
               </div>
-              {userData.rol==="ESTUDIANTE"?(
+              {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
               <div>
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={userData.facultad}>
+                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
                   <option disabled type="String" value="">Selecciona facultad</option>
                   <option type="String">Artes</option>
                   <option type="String">Ingeniería</option>
@@ -108,7 +107,7 @@ const ModalPerfil = ({icon}) => {
               </div>
               <div>
                 <label className=" font-medium">Semestre</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={userData.semestre}>
+                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="saleStatus" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
                   <option disabled type="String" value="">Selecciona semestre</option>
                   <option type="String">Primero</option>
                   <option type="String">Segundo</option>

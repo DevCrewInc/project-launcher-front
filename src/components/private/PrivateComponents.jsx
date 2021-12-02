@@ -1,11 +1,10 @@
-import { useUser } from 'context/userContext';
+
 
 
 const PrivateComponent = ({ roleList, children }) => {
-  const { userData } = useUser();
 
   
-  if (roleList.includes(userData.rol)) {
+  if (roleList.includes(JSON.parse(localStorage.getItem('userData')).rol)) {
     return children;
   }
 
