@@ -10,7 +10,7 @@
 }
 
 .fondoLogin{
-  background-color: rgb(18, 18, 18);
+  background-color: #0a0b0b;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
 }
 
@@ -40,6 +40,15 @@
   border-color:#CF254D;
   color: #CF254D;
   background-color: #cf254d2c;
+}
+
+.back-button{
+  background-color: #7e7e7e;
+
+}
+
+.back-button:hover{
+  background-color: #acacac;
 }
 
 .sidebar {
@@ -105,17 +114,20 @@
 /*TABLAS PROYECTOS Y USUARIOS*/
 .tabs{
   font-size: 18px;
+  border-bottom: 2px solid white;
   color: #d0d0d0;
   font-weight: 400;
   padding: 6px;
 }
 
 .tabs:hover{
-  color: #A5143A;
-  font-weight: 500;
+  font-size: 18px;
   border-bottom: 2px solid;
+  color: #A5143A;
+  font-weight: 400;
   padding: 6px;
 }
+
 
 .tabs:active{
   color: #A5143A;
