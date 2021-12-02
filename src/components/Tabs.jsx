@@ -1,11 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-const Tabs = ({tab1, tab2}) => {
+const Tabs = ({tabs}) => {
     return (
         <>
-            <div className="my-4 space-x-2 mt-8 cursor-pointer">
-                <button className="tabs">{tab1}</button>
+
+            <div  className="my-4 space-x-2 mt-8 flex " > 
+                {tabs.map((tab)=>{
+
+                    return(
+                        <NavLink to={tab.to}>
+                            <button className="tabs">{tab.title}</button> 
+                        </NavLink>
+                    )
+
+                })}
+              
             </div>
         
         </>

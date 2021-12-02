@@ -5,9 +5,10 @@ import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 
 
 
-const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
+const TablaMisProyectosEstudiante = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
+        variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
 
@@ -75,21 +76,17 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
-                {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
-                    <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
+                {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
+                    <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
                 )}
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
                 <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
-                <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                    <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                    <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                </PrivateComponent>
             </td>
         </tr>
     </tbody>
     )
 }
 
-export default TablaProyectos;
+export default TablaMisProyectosEstudiante;

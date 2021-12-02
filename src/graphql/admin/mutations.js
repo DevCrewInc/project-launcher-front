@@ -9,5 +9,23 @@ mutation EditarEstadoUsuario($_id: String!, $estado: Enum_EstadoUsuario!) {
 `
 
 
+const EditarEstadoProyecto = gql`
+mutation EditarEstadoProyecto(
+  $_id: String!, 
+  $estadoProyecto: Enum_EstadoProyecto!, 
+  $faseProyecto: Enum_FaseProyecto!
+  ) {
+  editarEstadoProyecto(
+    _id: $_id, 
+    estadoProyecto: $estadoProyecto, 
+    faseProyecto: $faseProyecto
+    ) 
+    {
+      estadoProyecto
+    
+  }
+}
+`
 
-export{EditarEstadoUsuario}
+
+export{EditarEstadoUsuario, EditarEstadoProyecto}

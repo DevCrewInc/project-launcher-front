@@ -4,8 +4,7 @@ import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 
 
-
-const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
+const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
         pollInterval:200
@@ -75,8 +74,8 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
-                {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
-                    <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
+                {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
+                    <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
                 )}
             </td>
 
@@ -92,4 +91,4 @@ const FilasTablaProyectos = ({proyecto}) =>{
     )
 }
 
-export default TablaProyectos;
+export default TablaProyectosEstudiantes;

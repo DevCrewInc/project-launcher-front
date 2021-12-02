@@ -25,7 +25,24 @@ query Estudiantes {
 }
 
 `
+const getProyectos =gql`
+  query ProyectosLider($_id: String!) {
+    ProyectosLider(_id: $_id) {
+        _id
+        nombre
+        fechaInicio
+        lider{
+            identificacion
+            nombre
+        }
+        faseProyecto
+        estadoProyecto 
+    
+    }
+  }
+
+`
 
 
 
-export {getSolicitudesEstudiantes,getEstudiantes};
+export {getSolicitudesEstudiantes,getEstudiantes,getProyectos};

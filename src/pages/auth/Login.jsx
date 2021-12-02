@@ -41,7 +41,7 @@ const Login = () => {
                         }else if(JSON.parse(localStorage.getItem('userData')).rol==="LIDER"){
                             navigate('/page/lider/estudiantes')
                         }else if(JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"){
-                            navigate('/page/estudiante/proyectos')
+                            navigate('/page/estudiantes/proyectos')
                         }
                     } 
                 }
