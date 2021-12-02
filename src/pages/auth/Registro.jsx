@@ -22,7 +22,6 @@ const Registro = () => {
         if (dataRegistro) {
           if (dataRegistro.registro.token) {
             navigate('/');
-            console.log(dataRegistro.registro.token)
           }
           else{
               console.log("ok genial")
