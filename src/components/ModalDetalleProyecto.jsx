@@ -6,7 +6,7 @@ import { Box} from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useState, useEffect, useRef } from 'react';
 
-const ModalDetalleProyecto = ({icon}) => {
+const ModalDetalleProyecto = ({proyecto}) => {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
 
@@ -35,7 +35,7 @@ const ModalDetalleProyecto = ({icon}) => {
   return (
     <>
       <div>
-        <i onClick={handleClickOpen('paper')} className = "fas fa-eye p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+        <i onClick={handleClickOpen('paper')} className = "fas fa-plus p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
         
         <Dialog
           className= "bg-black bg-opacity-50"
@@ -49,16 +49,16 @@ const ModalDetalleProyecto = ({icon}) => {
             <Box>
               <div className="flex justify-between">
                 <div className="w-64">
-                  <h1 className="mt-5 leading-6">Para titulos largos se puede poner limite de caracteres</h1>
-                  <h1 className="mt-2 text-sm text-gray-300 font-normal">Id Proyecto</h1>
+                  <h1 className="mt-5 leading-6">{proyecto.nombre}</h1>
+                  <h1 className="mt-2 text-sm text-gray-300 font-normal">{proyecto._id}</h1>
                 </div>
                 
                 <div className="flex mt-5 self-baseline">
                   <div className="flex space-x-4">
                   <img className="rounded-full w-9 h-9" src={fotoman}/>
                       <div className = "flex flex-col ">
-                        <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
-                        <span className = "text-xs font-medium text-blue-500">2345 <i className="far fa-flag"></i></span>
+                        <span className = "font-semibold text-sm">{proyecto.lider.nombre}</span>
+                        <span className = "text-xs font-medium text-blue-500">{proyecto.lider.identificacion} <i className="far fa-flag"></i></span>
                       </div>
                   </div>
                 </div>
@@ -66,19 +66,18 @@ const ModalDetalleProyecto = ({icon}) => {
               <div className= "flex space-x-4 mt-2">
                 <div className= "space-x-2">
                   <i className = "far fa-calendar-alt date-budget"/>
-                    <span className = "date-budget">Feb 01- Dic 12</span>
+                    <span className = "date-budget">{proyecto.fechaInicio}</span>
                 </div>
                 <div className= "space-x-2">
                   <i className = "fas fa-calculator date-budget"/>
-                    <span className = "date-budget">Feb 01- Dic 12</span>
+                    <span className = "date-budget">$ {proyecto.presupuesto}</span>
                 </div>
               </div>
             </Box>
           </DialogTitle>
 
           <p className="my-2 mx-6 text-sm text-justify h-58 overflow-auto ">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          {proyecto.descripcionProyecto}
           </p>
 
           <div className="">
