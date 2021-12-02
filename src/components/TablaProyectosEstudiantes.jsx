@@ -56,22 +56,22 @@ const FilasTablaProyectos = ({proyecto}) =>{
         <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
         <tr key={proyecto._id}>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto._id}</span>
+                <span className =" w-14 px-2">{proyecto._id}</span>
             </td>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
+                <span className =" w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
+                <span className =" w-14 px-2">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
-            <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
+            <span className =" w-14 px-2">{proyecto.lider.identificacion}</span>
             </td>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.nombre}</span>
+                <span className =" w-14 px-2">{proyecto.lider.nombre}</span>
             </td>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
+                <span className =" w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
                 {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
