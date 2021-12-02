@@ -115,7 +115,6 @@ const ModalcrearProyecto=()=> {
                       <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className=" cursor-pointer add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
 
                     </div>
-               
                   </div>
                   {objetivosEspecificos.map((objetivo,index)=>{
                     console.log(formData)

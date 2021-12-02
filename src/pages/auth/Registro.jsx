@@ -11,27 +11,27 @@ const Registro = () => {
     const{form, formData, updateFormData} = useFormData();
     const[registro, {data: dataRegistro, error: errorRegistro, loading: loadingRegistro}]= useMutation(REGISTRO);
     const [hidden,setHidden]=useState(false)
-   
+
 
     const submitForm = async (e) => {
-      e.preventDefault();
-      await registro({variables: formData});
+    e.preventDefault();
+    await registro({variables: formData});
     }
 
     useEffect(() => {
         if (dataRegistro) {
-          if (dataRegistro.registro.token) {
+            if (dataRegistro.registro.token) {
             navigate('/');
-          }
-          else{
-              console.log("ok genial")
-                
-          }
         }
-      }, [dataRegistro, navigate]);
+        else{
+            console.log("ok genial")
+                
+        }
+        }
+    }, [dataRegistro, navigate]);
 
 
-     
+
 
 
   return (
