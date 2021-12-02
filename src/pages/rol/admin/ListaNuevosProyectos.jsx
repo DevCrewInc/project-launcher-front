@@ -7,10 +7,10 @@ import Tabs from 'components/Tabs'
 const ListaNuevosProyectos = () => {
 
     const tabs =[{
-        title:"Usuario",
+        title:"Usuarios Nuevos",
         to:"/page/administracion"
     },{
-        title:"Proyecto",
+        title:"Proyectos Nuevos",
         to:""
     }]
     return (

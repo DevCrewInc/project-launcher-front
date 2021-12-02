@@ -5,7 +5,7 @@ import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 
 
 
-const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
+const TablaMisProyectosEstudiante = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
         variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
@@ -83,14 +83,10 @@ const FilasTablaProyectos = ({proyecto}) =>{
 
             <td className = "flex justify-center items-center space-x-2">
                 <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
-                <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                    <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                    <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                </PrivateComponent>
             </td>
         </tr>
     </tbody>
     )
 }
 
-export default TablaProyectosUser;
+export default TablaMisProyectosEstudiante;

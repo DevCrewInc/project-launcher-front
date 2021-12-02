@@ -9,10 +9,10 @@ import {getSolicitudesUsuarios} from '../../../graphql/admin/queries'
 const Administracion = () => {
 
     const tabs =[{
-        title:"Usuario",
+        title:"Usuarios Nuevos",
         to:""
     },{
-        title:"Proyecto",
+        title:"Proyectos Nuevos",
         to:"nuevosProyectos"
     }]
 
