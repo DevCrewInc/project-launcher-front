@@ -81,9 +81,9 @@ const FilasTablas = ({usuario})=>{
                             <select required onChange={(e) => {editarEstadoUsuario({variables: {_id: usuario._id ,estado:e.target.value}})}} className="text-sm font-light bg-gray-100 rounded-lg h-7 pl-2" name="estado" defaultValue="">
                                 <option disabled type="String" value="">{usuario.estado}</option>
                                 {usuario.estado==="AUTORIZADO"?null:(
-                                 <>
+                                <>
                                     <option type="String">AUTORIZADO</option>
-                                 </>   
+                                </>
                                 )}
                                 
                                 <option type="String">NO_AUTORIZADO</option>
@@ -91,7 +91,6 @@ const FilasTablas = ({usuario})=>{
                         </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
                             <ModalDetalleProyecto/>
-                          
                             <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
                         </td>
