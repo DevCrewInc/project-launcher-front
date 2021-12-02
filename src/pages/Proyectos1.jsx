@@ -93,13 +93,13 @@ const Proyectos1 = () => {
 
 
                 <div className = "flex flex-col">
-                        <div className="font-medium mt-12">
+                        <div className="mt-12">
                             <span className=" text-lg">Avances</span>
                         </div>
                         <div className="mt-6">
                             <table class="table-auto text-center ">
-                                <thead>
-                                    <tr className="thead-color encabezado-tablas leading-10">
+                                <thead className="text-gray-700">
+                                    <tr className="thead-color text-sm leading-10">
                                         <th class="w-1/5">ID Avance</th>
                                         <th class="w-1/5">Nombre Avance</th>
                                         <th class="w-1/5">Fecha</th>
