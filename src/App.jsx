@@ -15,6 +15,7 @@ import Administracion from 'pages/rol/admin/Administracion';
 import ListaEstudiantes from 'pages/rol/lider/ListaEstudiantes';
 import ListaUsuarios from 'pages/rol/admin/ListaUsuarios';
 import ListaProyectosLider from 'pages/rol/lider/ListaProyectosLider';
+import ListaTodosProyectos from 'pages/rol/admin/ListaTodosProyectos';
 
 // import PrivateRoute from 'components/PrivateRoute';
 // const httpLink = createHttpLink({
@@ -43,6 +44,7 @@ function App() {
               <Route path='/' element={<PrivateLayout/>}>
                 <Route path='page/dialogos' element={<Dialogos/>}/>
                 <Route path='page/administracion/nuevosProyectos' element={<ListaNuevosProyectos />}/>
+                <Route path='page/administracion/proyectos' element={<ListaTodosProyectos />}/>
                 <Route path='page/lider/estudiantes' element={<ListaEstudiantes />} />
                 <Route path='page/lider/proyectos' element={<ListaProyectosLider   />} />
                 <Route path='page/administracion' element={<Administracion />} />
