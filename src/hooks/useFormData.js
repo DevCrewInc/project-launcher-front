@@ -10,6 +10,7 @@ const useFormData = (initial) => {
     const obj = {};
     fd.forEach((value, key) => {
         obj[key] = value;
+        
 
     });
 
