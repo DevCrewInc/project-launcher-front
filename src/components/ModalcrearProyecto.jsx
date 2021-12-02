@@ -5,21 +5,23 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box} from '@mui/system';
 import fotoman from 'fotoman.jpeg';
-import useFormData from 'hooks/useFormData';
-
+import useFormObjetivos from 'hooks/useFormObjetivo';
+import { useMutation } from '@apollo/client';
+import { CrearProyecto } from 'graphql/lider/mutaciones';
 
 
 
 
 const ModalcrearProyecto=()=> {
   const datePick = new Date().toISOString().split("T")[0];
+  const[crearProyecto, {data: dataCrearProyecto, error: errorCrearProyecto, loading: loadingCrearProyecto}]= useMutation(CrearProyecto);
 
-  const{form, formData, updateFormData} = useFormData();
+  const{form, formData, updateFormData} = useFormObjetivos();
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
-  const [objetivosEspecificos,setObejetivosEspecificos]=useState([ ])
-  const [objetivos,setObejitvos]=useState([])
+  const [objetivosEspecificos,setObejetivosEspecificos]=useState([])
+
 
 
   const handleClickOpen = (scrollType) => () => {
@@ -41,6 +43,11 @@ const ModalcrearProyecto=()=> {
     }
   }, [open]);
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+    await crearProyecto({variables: formData});
+  }
+
   
 
   return (
@@ -61,13 +68,13 @@ const ModalcrearProyecto=()=> {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
           > 
-            <form ref={form} onChange={updateFormData}>
+            <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
                 <DialogTitle id="scroll-dialog-title">
                 
                 <Box>
                   <div className="flex justify-between mt-3">
                     <div>
-                      <input required name="nombre" className="w-full rounded-sm" placeholder="Nombre del proyecto" type="text" id="fname" name=""/>
+                      <input required name="nombre" className="w-full rounded-sm" placeholder="Nombre del proyecto" type="text" id="fname" />
                     </div>
                 
                     <div className="flex self-center">
@@ -98,7 +105,8 @@ const ModalcrearProyecto=()=> {
                       <input required type="number" name="presupuesto" className= "date-icon date-budget bg-gray-100"/>
                   </div>
                 </div>
-                <textarea required className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review" name="descripcion" rows="7" cols="75"></textarea> 
+                <textarea required className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review" name=""  rows="7" cols="75"></textarea> 
+                <input type="text" name="lider" className="hidden" value={JSON.parse(localStorage.getItem('userData'))._id} ></input>
               </DialogContent>
 
               <div>
@@ -119,10 +127,9 @@ const ModalcrearProyecto=()=> {
                   </div>
                   {objetivosEspecificos.map((objetivo,index)=>{
                     console.log(formData)
-                    console.log(objetivos)
-
+                    console.log()
                     return (
-                      <input onChange={(e)=>{setObejitvos([...objetivos,e.target.value])}} required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`Especifico${index}`}></input>)
+                      <input  required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
 
                     })} 
                   <div className="text-center">
@@ -139,3 +146,4 @@ const ModalcrearProyecto=()=> {
 
 export default ModalcrearProyecto;
 
+// onChange={(e)=>{setObejitvos([...objetivos,e.target.value])}}
