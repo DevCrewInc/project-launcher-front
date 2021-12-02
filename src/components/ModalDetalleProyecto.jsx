@@ -88,10 +88,17 @@ const ModalDetalleProyecto = ({proyecto}) => {
                 </div>
             
                 <div className="pt-2 mt-4 flex-col h-20 text-left overflow-auto">
-                  <span className="w-full text-sm">1.Objetivo general ljdlkjaldkjaklsdjsklajdklsajdklsadlksja sdkjasdjsdkjsahjkdhsa</span>
-                  <span className="w-full text-sm"> <br/>2.Objetivo general ljdlkjaldkjaklsdjsklajdklsajdklsadlksja sdkjasdjsdkjsahjkdhsa</span>
-                  <span className="w-full text-sm"> <br/>3.Objetivo general ljdlkjaldkjaklsdjsklajdklsajdklsadlksja sdkjasdjsdkjsahjkdhsa</span>
-                  <span className="w-full text-sm"> <br/>4.Objetivo general ljdlkjaldkjaklsdjsklajdklsajdklsadlksja sdkjasdjsdkjsahjkdhsa</span>
+                  {proyecto.objetivos.map((objetivo)=>{
+                    if(objetivo.tipo === "GENERAL"){
+                      return(
+                        <>
+                          <span className="w-full text-sm">  <br/>{objetivo.tipo}</span>
+                          <span className="w-full text-sm">  <br/>{objetivo.descripcion}</span>
+                        </>
+                      )
+                    } 
+                  })}
+                 
                 </div>
 
               </DialogContent>

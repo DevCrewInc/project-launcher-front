@@ -36,6 +36,10 @@ const getSolicitudesNuevosProyectos = gql`
             fechaFin
             descripcionProyecto
             presupuesto
+            objetivos {
+                descripcion
+                tipo
+            }
             
         }
     }
