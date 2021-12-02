@@ -21,8 +21,8 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                         <th >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
-                        <th >Estado</th>
                         <th >Fase</th>
+                        <th >Estado</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -46,22 +46,22 @@ const FilasTablaProyectos = ({proyecto}) =>{
         <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
         <tr key={proyecto._id}>
             <td className="text-center">
-                <input type="text" placeholder = {proyecto._id} className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2"/>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto._id}</span>
             </td>
             <td className="text-center">
-                <input type="text" placeholder = {proyecto.nombre} className ="overflow-hidden whitespace-nowrap overflow-ellipsis input-tablas"/>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
-                <input type="text" placeholder = {proyecto.fechaInicio} className ="text-center input-tablas w-20"/>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
-                <input type="text" placeholder = {proyecto.lider.identificacion} className ="text-center input-tablas w-24"/>
+            <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
             </td>
             <td className="text-center">
-                <input type="text" placeholder = {proyecto.lider.nombre} className ="text-center input-tablas w-38"/>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.nombre}</span>
             </td>
             <td className="text-center">
-                <input type="text" placeholder = {proyecto.faseProyecto} className ="text-center input-tablas w-24"/>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
                 {proyecto.estadoProyecto === "ACTIVO" ? <button className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button> : (

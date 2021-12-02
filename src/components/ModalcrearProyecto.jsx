@@ -95,7 +95,7 @@ const ModalcrearProyecto=()=> {
                 <div className= "flex space-x-4">
                   <div className= "space-x-2">
                     {/* <i className= "far fa-calendar-alt date-budget"/> */}
-                    <input required className= "date-icon date-budget bg-gray-100" type="date" min={datePick}/>
+                    <input name="fechaEstimada" required className= "date-icon date-budget bg-gray-100" type="date" min={datePick}/>
                       {/* <input required className= "date-icon date-budget bg-gray-100" type="date" min="01/02/1900" max="2030/12/31"/> */}
                       {/* https://mui.com/components/date-range-picker/ */}
                       
@@ -105,7 +105,7 @@ const ModalcrearProyecto=()=> {
                       <input required type="number" name="presupuesto" className= "date-icon date-budget bg-gray-100"/>
                   </div>
                 </div>
-                <textarea required className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review" name=""  rows="7" cols="75"></textarea> 
+                <textarea required name="descripcionProyecto" className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review"  rows="7" cols="75"></textarea> 
                 <input type="text" name="lider" className="hidden" value={JSON.parse(localStorage.getItem('userData'))._id} ></input>
               </DialogContent>
 

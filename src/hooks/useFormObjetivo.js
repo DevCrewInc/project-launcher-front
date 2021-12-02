@@ -10,8 +10,6 @@ const useFormObjetivos = (initial) => {
     const obj = {"objetivos":[]};
     fd.forEach((value, key) => {
 
-        
-
         if(key.includes("ESPECIFICO")){
             obj["objetivos"]=[...obj.objetivos,{
                 tipo:"ESPECIFICO",
@@ -26,10 +24,6 @@ const useFormObjetivos = (initial) => {
             obj[key] = parseFloat(value);
 
         }
-        // else if(key.includes("fechaEstimada")){
-        //     obj[key] = toString(value);
-        // }
-
         else{
             obj[key] = value
         }
