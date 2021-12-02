@@ -105,7 +105,10 @@ export default function ScrollDialog() {
                     </div>
                   </div>
                   <div className="text-center">
-                      <input className="w-1/3 h-7 filled-button mt-8 mb-5" type="submit" value="CREAR PROYECTO" />
+                    <input required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname" name=""></input>
+                    <div className="self-center">
+                      <button className="add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></button> 
+                    </div>
                   </div>
                 </DialogContent>
               </div>

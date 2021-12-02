@@ -74,13 +74,13 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
                         <td className="text-center">
                             <button className = "status-button mx-1 my-1 px-2 ">{usuario.estado}</button>
                         </td>
-                        <td className = "flex justify-center align-middle items-center space-x-2">
+                        <td className = "flex justify-center items-center space-x-2 mt-4">
                             <ModalDetalleProyecto/>
-                            <i className = "self fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                            <i className = "fas fa-pen p-1  text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                             <PrivateComponent roleList={['ADMINISTRADOR']}>
-                                <i onClick={() => {
-                                    eliminarUsuario({variables: {_id: usuario._id} });
-                                }} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                            <i onClick={() => {
+                                eliminarUsuario({variables: {_id: usuario._id} });
+                            }} className = "fas fa-trash p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                             </PrivateComponent>
                         </td>
                     </tr>

@@ -45,10 +45,10 @@ const ButtonNewProject = () =>{
     <div className="wrapper">
         <div className="button-new">
           <div className="icon-new self-center"><i className="fas fa-plus"></i>
-            <span>New</span>
+            <span>Crear proyecto</span>
           </div>
         </div>
-  </div>
+    </div>
     
   );
 }

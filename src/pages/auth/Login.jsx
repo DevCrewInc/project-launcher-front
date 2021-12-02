@@ -78,7 +78,7 @@ const Login = () => {
                             <path d="M701.198 189.609H835.243V421.713H701.198V189.609Z" fill="#CD1F4C"/>
                             <path d="M768.22 8C715.308 67.5322 701.639 154.025 701.198 189.609L749.701 213.528L835.243 189.609C828.188 96.058 788.063 29.4091 768.22 8Z" fill="#CD1F4C"/>
                             <path d="M741.217 449.066H794.783L807.89 499.213H728.11L741.217 449.066Z" fill="#CF264D"/>
-                            <ellipse cx="766.783" cy="177.353" rx="26.7831" ry="27.3529" fill="#121212"/>
+                            <ellipse cx="766.783" cy="177.353" rx="26.7831" ry="27.3529" fill="#0a0b0b"/>
                         </g>
                         <defs>
                         <filter id="filter0_d_0_1" x="0" y="404" width="1830" height="217" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
