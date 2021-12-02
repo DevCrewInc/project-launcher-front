@@ -117,7 +117,7 @@ const Login = () => {
                             <input className="rounded-full cursor-pointer submitButton mt-8 h-10 p-2 text-white" type="submit" value="Login"/>
                         </div>
                         <span className="text-xs font-normal  text-center mt-12">¿Aún no tienes cuenta?</span>
-                        <NavLink  to= '/registro'className="signUpButton text-center cursor-pointer bg-white rounded-full border mt-5 h-10 p-2">
+                        <NavLink  to= '/registro' className="signUpButton text-center cursor-pointer bg-white rounded-full border mt-5 h-10 p-2">
                             <span >Sign Up</span>
                         </NavLink>
                     </form>

@@ -1,18 +1,25 @@
-import * as React from 'react';
+import { useState,useRef,useEffect } from 'react';
 
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box} from '@mui/system';
 import fotoman from 'fotoman.jpeg';
+import useFormData from 'hooks/useFormData';
 
 
 
 
 
 const ModalcrearProyecto=()=> {
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
+  const datePick = new Date().toISOString().split("T")[0];
+
+  const{form, formData, updateFormData} = useFormData();
+
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState('paper');
+  const [objetivosEspecificos,setObejetivosEspecificos]=useState([ ])
+  const [objetivos,setObejitvos]=useState([])
 
 
   const handleClickOpen = (scrollType) => () => {
@@ -24,8 +31,8 @@ const ModalcrearProyecto=()=> {
     setOpen(false);
   };
 
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
+  const descriptionElementRef = useRef(null);
+  useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement !== null) {
@@ -54,13 +61,13 @@ const ModalcrearProyecto=()=> {
             aria-labelledby="scroll-dialog-title"
             aria-describedby="scroll-dialog-description"
           > 
-            <form>
+            <form ref={form} onChange={updateFormData}>
                 <DialogTitle id="scroll-dialog-title">
                 
                 <Box>
                   <div className="flex justify-between mt-3">
                     <div>
-                      <input required className="w-full rounded-sm" placeholder="Nombre del proyecto" type="text" id="fname" name=""/>
+                      <input required name="nombre" className="w-full rounded-sm" placeholder="Nombre del proyecto" type="text" id="fname" name=""/>
                     </div>
                 
                     <div className="flex self-center">
@@ -81,39 +88,51 @@ const ModalcrearProyecto=()=> {
                 <div className= "flex space-x-4">
                   <div className= "space-x-2">
                     {/* <i className= "far fa-calendar-alt date-budget"/> */}
-                    <input required className= "date-icon date-budget bg-gray-100" type="date"/>
+                    <input required className= "date-icon date-budget bg-gray-100" type="date" min={datePick}/>
                       {/* <input required className= "date-icon date-budget bg-gray-100" type="date" min="01/02/1900" max="2030/12/31"/> */}
                       {/* https://mui.com/components/date-range-picker/ */}
                       
                   </div>
                   <div className= "space-x-2">
                     <i className = "fas fa-calculator date-budget"/>
-                      <input required type="number" className= "date-icon date-budget bg-gray-100"/>
+                      <input required type="number" name="presupuesto" className= "date-icon date-budget bg-gray-100"/>
                   </div>
                 </div>
-                <textarea required className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review" name="w3review" rows="7" cols="75"></textarea> 
+                <textarea required className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review" name="descripcion" rows="7" cols="75"></textarea> 
               </DialogContent>
 
               <div>
                 <DialogContent>
                   <span className="objetivos-dialogo">Objetivos generales y específicos</span>
                   <div className="pt-2 mt-3 flex justify-between space-x-4">
-                    <input required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100 " placeholder="Objetivo general" type="text" id="fname" name=""></input>
+                    <input required name="GENERAL" className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100 " placeholder="Objetivo general" type="text" id="fname"></input>
+                    <div className="self-center">
+                    </div> 
                   </div>
                   <div className="pt-2 mt-2 flex justify-between space-x-4">
-                    <input required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname" name=""></input>
+                    <input name="ESPECIFICO" required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname"></input>
                     <div className="self-center">
-                      <button className="add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></button> 
+                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className=" cursor-pointer add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
+
                     </div>
+               
                   </div>
-                  
+                  {objetivosEspecificos.map((objetivo,index)=>{
+                    console.log(formData)
+                    console.log(objetivos)
+
+                    return (
+                      <input onChange={(e)=>{setObejitvos([...objetivos,e.target.value])}} required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`Especifico${index}`}></input>)
+
+                    })} 
+                  <div className="text-center">
+                      <input className="w-1/3 h-7 filled-button mt-8 mb-5" type="submit" value="CREAR PROYECTO" />
+                  </div>
                 </DialogContent>
               </div>
             </form>
             
           </Dialog>
-      
-      
     </div>
   );
 }
