@@ -55,7 +55,7 @@ const Proyectos1 = () => {
                             <button className="font-semibold">Tripulantes</button>
                             <div className="flex">
                                 <button className="text-gray-400 font-semibold">Solicitudes</button>
-                                <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-3 ml-1">1</div>
+                                <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">1</div>
                             </div>
                             
 
@@ -106,7 +106,6 @@ const Proyectos1 = () => {
                                         <th class="w-1/5">Responsable</th>
                                         <th class="w-1/5">Revisión</th>
                                         <th class="w-1/5 pr-6">Acciones</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -80,7 +80,7 @@ const ModalcrearProyecto=()=> {
                     <div className="flex self-center">
                       <div className="flex space-x-4">
                       <img className="rounded-full w-9 h-9" src={fotoman}/>
-                          <div className = "flex flex-col ">
+                          <div className = "flex flex-col">
                               <span className = "font-semibold text-sm">{JSON.parse(localStorage.getItem('userData')).nombre}</span>
                               <span className = "text-xs font-medium text-blue-500">{JSON.parse(localStorage.getItem('userData')).identificacion} <i className="far fa-flag"></i></span>
                           </div>
@@ -120,7 +120,7 @@ const ModalcrearProyecto=()=> {
                   <div className="pt-2 mt-2 flex justify-between space-x-4">
                     <input name="ESPECIFICO" required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname"></input>
                     <div className="self-center">
-                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className=" cursor-pointer add-button bg-green w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
+                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className=" cursor-pointer add-button w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
 
                     </div>
                   </div>
@@ -128,11 +128,11 @@ const ModalcrearProyecto=()=> {
                     console.log(formData)
                     console.log()
                     return (
-                      <input  required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
+                      <input required className="w-full h-8 text-sm rounded-sm mt-3 pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
 
                     })} 
                   <div className="text-center">
-                      <input className="w-1/3 h-7 filled-button mt-8 mb-5" type="submit" value="CREAR PROYECTO" />
+                      <input className="w-1/3 h-7 cursor-pointer filled-button mt-8 mb-5" type="submit" value="CREAR PROYECTO" />
                   </div>
                 </DialogContent>
               </div>

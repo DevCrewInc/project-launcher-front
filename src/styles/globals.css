@@ -213,7 +213,7 @@
   background-color: #A5143A;
   color: white;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: 100px;
 }
 
 .filled-button:hover{
@@ -246,7 +246,7 @@
 .outlined-button{
   font-size: 13px;
   font-weight: 500;
-  border: 2px solid;
+  border: 1px solid;
   border-color: #A5143A;
   color: #A5143A;
   border-radius: 6px;
@@ -255,7 +255,7 @@
 .outlined-button:hover{
   font-size: 13px;
   font-weight: 500;
-  border: 2px solid;
+  border: 1px solid;
   border-color: #A5143A;
   background-color: #ae123c22;
   color: #A5143A;
