@@ -1,7 +1,7 @@
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import React from 'react';
-import PrivateComponent from './private/PrivateComponents';
-import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import ModalDetalleProyecto from './ModalDetalleProyecto';
+
 
 
 const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
@@ -49,7 +49,6 @@ const FilasTablaProyectos = ({proyecto}) =>{
    
 
 
-    const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
         <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
@@ -76,7 +75,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                <i className = "fas fa-plus m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                <ModalDetalleProyecto proyecto={proyecto}/> 
             </td>
         </tr>
     </tbody>

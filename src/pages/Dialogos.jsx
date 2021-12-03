@@ -2,7 +2,7 @@ import Dialogo_avances from 'components/Dialogo_avances';
 import ModalcrearProyecto from 'components/ModalcrearProyecto';
 import ModalPerfil from 'components/ModalPerfil';
 import React from 'react';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
+
 
 
 const Dialogos = () => {
@@ -12,7 +12,6 @@ const Dialogos = () => {
                <div>
                     <Dialogo_avances/>
                     <ModalcrearProyecto/>
-                    <ModalDetalleProyecto/>
                     <ModalPerfil/>
                 </div>
                 

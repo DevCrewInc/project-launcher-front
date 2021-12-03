@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
@@ -27,7 +26,6 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
                 <table className = "w-full table-auto mt-2">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
@@ -62,9 +60,6 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = "texto-tablas tbody-border text-gray-400">  
                     <tr >
-                        <td className="text-center w-14">
-                            <span type="text" placeholder = {usuario._id} className =" overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{usuario._id}</span>
-                        </td>
                         <td className="text-center w-18">
                             <span className=" bg-white" type="button" >{usuario.nombre}</span>
                         </td>

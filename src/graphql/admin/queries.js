@@ -14,6 +14,11 @@ query Proyectos {
         estadoProyecto 
         fechaFin
         descripcionProyecto
+        presupuesto
+        objetivos {
+            descripcion
+            tipo
+        }
     }
 }
 `;

@@ -3,7 +3,6 @@ import fotoman from 'fotoman.jpeg'
 import UpperBar from 'components/UpperBar';
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import PrivateComponent from './private/PrivateComponents';
 
@@ -26,7 +25,6 @@ const TablaUsuario = ({propsTablasUsuarios,nombreQuery}) => {
                 <table className = "w-full table-auto mt-8">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
@@ -56,9 +54,6 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
 
         <tbody className = " tbody-border text-sm">  
                     <tr className="texto-tablas">
-                        <td className="text-center w-14">
-                            <input type="text" placeholder = {usuario._id} className ="w-14 px-2"/>
-                        </td>
                         <td className="text-center w-18">
                             <input type="text" placeholder = {usuario.nombre} className ="input-tablas text-center"/>
                         </td>
@@ -75,7 +70,7 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
                             <button className = "status-button mx-1 my-1 px-2 ">{usuario.estado}</button>
                         </td>
                         <td className = "flex justify-center items-center space-x-2 mt-4">
-                            <ModalDetalleProyecto/>
+                            
                             <i className = "fas fa-pen p-1  text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                             <PrivateComponent roleList={['ADMINISTRADOR']}>
                             <i onClick={() => {
