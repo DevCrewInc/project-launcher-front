@@ -13,7 +13,7 @@ const UpperBar = ({icon , title}) => {
                 <div className ="wrapper-search w-full flex justify-end self-center">
                     <div className= "button-search bg-white border border-gray-500 rounded-full">
                         <div className= "flex">
-                            <i className="icon-search fas fa-search text-gray-500 self-center"></i>
+                            <i className="icon-search fas fa-search text-gray-900 self-center"></i>
                             <input className= "outline-none w-30 h-10 rounded-full pl-3" type="text" placeholder="hola"/>
                         </div>
                         
