@@ -371,7 +371,7 @@ progress::-webkit-progress-value {
 }
 
 .wrapper .button-new:hover{
-  width: 170px;
+  width: 180px;
   display: flex;
 
 }
