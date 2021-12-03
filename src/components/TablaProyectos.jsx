@@ -2,6 +2,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import ModalDetalleProyecto from './ModalDetalleProyecto';
+
 
 
 
@@ -26,7 +28,7 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
                         <th >Fase</th>
-                        <th >Estado</th>
+                        <th >Aceptar</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -76,14 +78,14 @@ const FilasTablaProyectos = ({proyecto}) =>{
             </td>
             <td className = "text-center">
                 {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
-                    <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
+                   <ModalDetalleProyecto proyecto={proyecto}/> 
                 )}
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                {/* <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> */}
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                    <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                    {/* <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/> */}
                     <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                 </PrivateComponent>
             </td>

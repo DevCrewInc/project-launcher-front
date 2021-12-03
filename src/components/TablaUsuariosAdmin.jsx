@@ -90,7 +90,7 @@ const FilasTablas = ({usuario})=>{
                             </select>
                         </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
-                            <ModalDetalleProyecto/>
+                            {/* <ModalDetalleProyecto/> */}
                             <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
                         </td>

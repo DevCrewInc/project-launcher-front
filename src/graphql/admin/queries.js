@@ -12,6 +12,8 @@ query Proyectos {
         }
         faseProyecto
         estadoProyecto 
+        fechaFin
+        descripcionProyecto
     }
 }
 `;
@@ -30,6 +32,14 @@ const getSolicitudesNuevosProyectos = gql`
             }
             faseProyecto
             estadoProyecto 
+           
+            fechaFin
+            descripcionProyecto
+            presupuesto
+            objetivos {
+                descripcion
+                tipo
+            }
             
         }
     }
