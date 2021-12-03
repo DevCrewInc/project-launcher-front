@@ -54,8 +54,8 @@ const ModalcrearProyecto=()=> {
     <div>
         <div onClick={handleClickOpen('paper')} className="wrapper">
               <div className="button-new">
-                <div className="icon-new self-center"><i className="fas fa-plus"></i>
-                  <span>New</span>
+                <div className="icon-new self-center flex justify-between"><i className="self-center fas fa-plus"></i>
+                  <span>Crear proyecto </span>
                 </div>
               </div>
         </div>

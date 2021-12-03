@@ -26,7 +26,7 @@ const Proyectos1 = () => {
                         </div>
                 <div className = "flex">
                     <div>
-                        <p className = "text-justify mt-8">
+                        <p className = "text-sm text-justify mt-8">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit harum, commodi ullam repellendus, 
                             soluta labore eos placeat, fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
                             explicabo id, fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
@@ -36,7 +36,7 @@ const Proyectos1 = () => {
                             <span className=" text-lg">TABS Objetivos Generales</span>
                         </div>
                         <div>
-                            <p className = "mt-6"> 
+                            <p className = "mt-6 text-sm"> 
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit harum, commodi ullam repellendus, 
                                 soluta labore eos placeat, fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
                                 explicabo id,fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
@@ -46,15 +46,18 @@ const Proyectos1 = () => {
                     </div> 
                 </div>
             </div>
-            <div className="w-full pl-12">
-                <div className = "flex items-start ">
-                    <button className = "btn-estado-proyecto px-4 my-1">desarrollo</button>
+            <div className="w-full pl-16">
+                <div className = "flex items-start">
+                    <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
                 </div>
-                <div className = "flex flex-col w-full">
+                <div className = "flex flex-col w-80">
                         <div className = "flex justify-between font-semibold mt-14 text-lg">
                             <button className="font-semibold">Tripulantes</button>
                             <div className="flex">
-                                <button className="text-gray-400 font-semibold">Solicitudes</button>
+                                <div>
+                                    
+                                </div>
+                                <button className="text-gray-400 font-semibold hover:text-blue-700 hover:shado">Solicitudes</button>
                                 <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">1</div>
                             </div>
                             
@@ -62,7 +65,7 @@ const Proyectos1 = () => {
                         </div>
                     <div className="overflow-y-auto h-30 mt-10">
                         {/* TRIPULANTES */}
-                        <div className = "border-tripulantes flex items-center pb-4">
+                        <div className = " cursor-pointer border-tripulantes flex items-center pb-4">
                                 <img src={fotoman} className = "rounded-full w-12 mr-4"/>
                                 <div className = "flex flex-col ">
                                     <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
@@ -74,7 +77,7 @@ const Proyectos1 = () => {
                         {/* SOLICITUDES */}
                         <div className="mt-8">
                         <div className = "border-tripulantes items-center py-4">
-                            <div className="flex">
+                            <div className="flex cursor-pointer">
                                 <img src={fotoman} className = "rounded-full w-12 h-12 mr-4"/>
                                 <div className = "flex flex-col">
                                     <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
@@ -93,7 +96,7 @@ const Proyectos1 = () => {
 
 
                 <div className = "flex flex-col">
-                        <div className="mt-12">
+                        <div className="font-medium mt-12">
                             <span className=" text-lg">Avances</span>
                         </div>
                         <div className="mt-6">

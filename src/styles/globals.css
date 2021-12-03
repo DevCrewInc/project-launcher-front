@@ -151,6 +151,22 @@
   background-color: #afe05f;
 }
 
+progress {
+  border-radius: 7px; 
+  width: 50%;
+  height: 22px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #DBDBDB;
+  border-radius: 100px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #A5143A;
+  border-radius: 100px;
+}
+
 
 .sidebar-li:active{
   background-color: #c5ebff;
@@ -351,11 +367,13 @@
   transition: all 0.3s ease-out;
   position: absolute;
   margin-left: 198px;
-  margin-top:100px;
+  margin-top: 100px;
 }
 
 .wrapper .button-new:hover{
   width: 170px;
+  display: flex;
+
 }
 
 .wrapper .button-new icon-new{
@@ -363,18 +381,21 @@
   height: 30px;
   width: 30px;
   color: white;
-  border-radius: 50px;
+  border-radius: 20px;
   box-sizing: border-box;
-  line-height: 60px;
+
 }
 
 .wrapper .button-new icon-new i{
   font-size: 20px;
+
 }
+
 
 .wrapper .button-new span{
   font-size: 15px;
   font-weight: 400;
-  margin-left: 10px;
+  margin-left: 12px;
+  width: 170px;
 
 }
