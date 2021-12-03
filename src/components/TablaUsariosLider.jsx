@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
@@ -27,7 +26,6 @@ const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
                 <table className = "w-full table-auto mt-6">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
@@ -62,9 +60,6 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = " tbody-border text-sm text-gray-400">  
                     <tr >
-                        <td className="text-center w-14">
-                            <span type="text" placeholder = {usuario._id} className =" overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{usuario._id}</span>
-                        </td>
                         <td className="text-center w-18">
                             <span className="text-gray-600  bg-white" type="button" >{usuario.nombre}</span>
                         </td>
@@ -83,7 +78,6 @@ const FilasTablas = ({usuario})=>{
                             )}
                          </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
-                            <ModalDetalleProyecto/>
                           
                             <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
