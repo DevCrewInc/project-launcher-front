@@ -383,14 +383,11 @@ progress::-webkit-progress-value {
   color: white;
   border-radius: 20px;
   box-sizing: border-box;
- 
 
 }
 
 .wrapper .button-new icon-new i{
   font-size: 20px;
-
-  
 
 }
 
@@ -403,3 +400,39 @@ progress::-webkit-progress-value {
   padding-left: 2px;
 
 }
+
+/* SEARCH BUTTON */
+
+.wrapper-search .button-search{
+  height: 42px;
+  width: 42px;
+  padding-left: 14px;
+  overflow: hidden;
+  color: #252323;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  margin-left: 203px;
+  border-color: #252323;
+
+}
+
+.wrapper-search .button-search:hover{
+  width: 210px;
+  display: flex;
+}
+
+.wrapper-search .button-search icon-search{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  color: #252323;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.wrapper-search .button-search icon-search i{
+  font-size: 20px;
+  color: #252323;
+}
+
