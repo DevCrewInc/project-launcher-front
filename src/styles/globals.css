@@ -357,7 +357,7 @@ progress::-webkit-progress-value {
   display: flex;
   height: 42px;
   width: 42px;
-  padding-left: 16px;
+  padding-left: 14px;
   overflow: hidden;
   color: white;
   background: #A5143A;
@@ -366,7 +366,7 @@ progress::-webkit-progress-value {
   box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease-out;
   position: absolute;
-  margin-left: 198px;
+  margin-left: 203px;
   margin-top: 100px;
 }
 
@@ -383,11 +383,13 @@ progress::-webkit-progress-value {
   color: white;
   border-radius: 20px;
   box-sizing: border-box;
+ 
 
 }
 
 .wrapper .button-new icon-new i{
   font-size: 20px;
+  
 
 }
 
@@ -397,5 +399,6 @@ progress::-webkit-progress-value {
   font-weight: 400;
   margin-left: 12px;
   width: 170px;
+  padding-left: 2px;
 
 }
