@@ -26,7 +26,6 @@ const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
                 <table className = "w-full table-auto mt-6">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
@@ -61,9 +60,6 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = " tbody-border text-sm text-gray-400">  
                     <tr >
-                        <td className="text-center w-14">
-                            <span type="text" placeholder = {usuario._id} className =" overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{usuario._id}</span>
-                        </td>
                         <td className="text-center w-18">
                             <span className="text-gray-600  bg-white" type="button" >{usuario.nombre}</span>
                         </td>

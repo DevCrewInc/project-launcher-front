@@ -25,7 +25,6 @@ const TablaUsuario = ({propsTablasUsuarios,nombreQuery}) => {
                 <table className = "w-full table-auto mt-8">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
@@ -55,9 +54,6 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
 
         <tbody className = " tbody-border text-sm">  
                     <tr className="texto-tablas">
-                        <td className="text-center w-14">
-                            <input type="text" placeholder = {usuario._id} className ="w-14 px-2"/>
-                        </td>
                         <td className="text-center w-18">
                             <input type="text" placeholder = {usuario.nombre} className ="input-tablas text-center"/>
                         </td>

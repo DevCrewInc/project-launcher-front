@@ -1,16 +1,15 @@
-import { useQuery, useMutation } from '@apollo/client';
-import React from 'react';
-import PrivateComponent from './private/PrivateComponents';
-import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import { useQuery } from '@apollo/client';
+import {useEffect} from 'react';
 
 
 
-const TablaMisProyectosEstudiante = ({propsTablasProyectos, nombreQuery}) => {
+const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
         variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
+
 
     
 
@@ -21,7 +20,6 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-auto mt-2">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th>Id</th>
                         <th className="w-2" >Nombre</th>
                         <th >Fecha Inicio</th>
                         <th >Identificación</th>
@@ -32,10 +30,10 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos, nombreQuery}) => {
                     </tr>
                 </thead>
                 {data &&
-                data[nombreQuery].map((proyecto) => {
+                data.Usuario.inscripciones.map((inscripcion) => {
                     return(
                         <>
-                            <FilasTablaProyectos key={proyecto._id}  proyecto={proyecto}/>
+                            <FilasTablaProyectos key={inscripcion._id}  proyecto={inscripcion.proyecto}/>
                         </>
                     )
                 })}
@@ -52,14 +50,11 @@ const FilasTablaProyectos = ({proyecto}) =>{
    
 
 
-    const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
+    
 
     return(
         <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
         <tr key={proyecto._id}>
-            <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto._id}</span>
-            </td>
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 

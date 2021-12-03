@@ -5,8 +5,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box} from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useState, useEffect, useRef } from 'react';
+import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import {  useMutation } from '@apollo/client';
+import PrivateComponent from './private/PrivateComponents';
+import { mutacionCrearInscripcion } from 'graphql/estudiante/mutations';
+
 
 const ModalDetalleProyecto = ({proyecto}) => {
+  const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
+  const[crearInscripcion, {data:inscripcionData, error:inscripcionError, loading:inscripcionLoading}]=useMutation(mutacionCrearInscripcion);
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
 
@@ -103,9 +110,13 @@ const ModalDetalleProyecto = ({proyecto}) => {
 
               </DialogContent>
               <div className="text-center space-x-4 mt-8 mb-10">
-                <button className="w-1/5 h-7 filled-button ">ACEPTAR</button>
-                <button className="w-1/5 h-7 outlined-button ">RECHAZAR</button>
-                <button className="w-1/3 h-7 filled-button  ">UNIRME</button>
+                <PrivateComponent roleList="ADMINISTRADOR">
+                  <button className="w-1/5 h-7 filled-button" onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} >ACEPTAR</button>
+                  <button className="w-1/5 h-7 outlined-button ">RECHAZAR</button>
+                </PrivateComponent>
+                <PrivateComponent roleList="ESTUDIANTE">
+                  <button className="w-1/3 h-7 filled-button" onClick={()=>{crearInscripcion({variables: {proyecto: proyecto._id, estudiante:JSON.parse(localStorage.getItem('userData'))._id}})}}>UNIRME</button>
+                </PrivateComponent>
               </div>
             
           </div>

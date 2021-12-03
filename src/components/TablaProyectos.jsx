@@ -22,7 +22,6 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-auto mt-2">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th>Id</th>
                         <th className="w-2" >Nombre</th>
                         <th >Fecha Inicio</th>
                         <th >Identificación</th>
@@ -58,9 +57,6 @@ const FilasTablaProyectos = ({proyecto}) =>{
     return(
         <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
         <tr key={proyecto._id}>
-            <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto._id}</span>
-            </td>
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
