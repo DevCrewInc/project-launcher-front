@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
@@ -83,7 +82,6 @@ const FilasTablas = ({usuario})=>{
                             )}
                          </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
-                            <ModalDetalleProyecto/>
                           
                             <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     

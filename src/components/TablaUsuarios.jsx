@@ -3,7 +3,6 @@ import fotoman from 'fotoman.jpeg'
 import UpperBar from 'components/UpperBar';
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import PrivateComponent from './private/PrivateComponents';
 
@@ -75,7 +74,6 @@ const FilasTablas = ({usuario, eliminarUsuario})=>{
                             <button className = "status-button mx-1 my-1 px-2 ">{usuario.estado}</button>
                         </td>
                         <td className = "flex justify-center items-center space-x-2 mt-4">
-                            <ModalDetalleProyecto/>
                             <i className = "fas fa-pen p-1  text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                             <PrivateComponent roleList={['ADMINISTRADOR']}>
                             <i onClick={() => {

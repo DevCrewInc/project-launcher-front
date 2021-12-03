@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
 import {toast} from 'react-toastify';
-import ModalDetalleProyecto from 'components/ModalDetalleProyecto';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
