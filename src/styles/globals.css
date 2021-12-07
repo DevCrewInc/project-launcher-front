@@ -294,6 +294,10 @@ progress::-webkit-progress-value {
   font-weight: 300;
 }
 
+.input-perfil{
+  background-color: rgb(244, 244, 244);
+}
+
 .filled-button-perfil{
   font-size: 12px;
   background-color: #A5143A;

@@ -80,25 +80,36 @@ const ModalPerfil = ({icon}) => {
             </Box>
           </DialogTitle>
 
-          <div className="m-7 mt-4 texto-perfil">
+          <div className="m-7 mt-2 texto-perfil">
             <div className="grid grid-cols-3 gap-4">
               <div>
+                <label className=" font-medium">Contraseña actual</label>
+                <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
+              </div>
+              <div>
+                <label className=" font-medium">Contraseña nueva</label>
+                <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
+              </div>
+              <div>
+
+              </div>
+              <div>
                 <label className=" font-medium">Documento</label>
-                <input className="text-sm w-full font-light  rounded-lg h-7 pl-1" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
+                <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <input className="text-sm font-light w-full  rounded-lg h-7 pl-1" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
+                <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
               </div>
               <div>
                 <label className=" font-medium">Celular</label>
-                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-1" name="celular" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
+                <input className=" text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
               <div className="col-span-2">
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm w-80 font-light rounded-lg h-7 pl-1" name="facultad" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
+                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil" name="facultad" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
                   <option disabled type="String" value="">Facultad</option>
                   <option type="String">ARTES</option>
                   <option type="String">CIENCIAS_AGRARIAS</option>
@@ -119,7 +130,7 @@ const ModalPerfil = ({icon}) => {
        
               <div>
                   <label className=" font-medium">Semestre</label>
-                  <select required className="text-sm flex font-light rounded-lg h-7 pl-1" name="semestre" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
+                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" name="semestre" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
                     <option disabled type="String" value="">Semestre</option>
                     <option type="String">PRIMERO</option>
                     <option type="String">SEGUNDO</option>
@@ -140,7 +151,7 @@ const ModalPerfil = ({icon}) => {
             </div>
           <div className="grid mt-8 ">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea className="pl-2 pt-2 text-sm rounded-md bg-gray-100" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea className="pl-2 pt-2 text-sm rounded-sm bg-gray-100" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
           </div>
         </div>
         </Dialog>
