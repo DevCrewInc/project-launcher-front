@@ -42,7 +42,44 @@ const getProyectos =gql`
   }
 
 `
+const getDetalleProyecto=gql`
+query Proyecto($_id: String!) {
+  Proyecto(_id: $_id) {
+    nombre
+    _id
+    descripcionProyecto
+    presupuesto
+    fechaInicio
+    estadoProyecto
+    faseProyecto
+    objetivos {
+      descripcion
+      tipo
+    }
+    inscripciones {
+      _id
+      estado
+      estudiante {
+        nombre
+        identificacion
+
+      }
+    }
+    avances {
+      _id
+      descripcion
+      fecha
+      creadoPor {
+        nombre
+
+      }
+    }
+
+
+  }
+}
+`
 
 
 
-export {getSolicitudesEstudiantes,getEstudiantes,getProyectos};
+export {getSolicitudesEstudiantes,getEstudiantes,getProyectos, getDetalleProyecto};

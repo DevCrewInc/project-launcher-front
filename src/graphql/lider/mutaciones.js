@@ -12,6 +12,15 @@ mutation CrearProyecto($nombre: String!, $presupuesto: Float!, $lider: String!, 
 }
 `
 
+const MutationEditarEstadoInscripcion =gql`
+mutation  editarEstadoInscripcion($_id: ID!, $estado: Enum_EstadoInscripcion!) {
+  editarEstadoInscripcion(_id: $_id, estado: $estado) {
+    estado
+    
+  }
+}
+`
 
 
-export {CrearProyecto}
+
+export {CrearProyecto, MutationEditarEstadoInscripcion}
