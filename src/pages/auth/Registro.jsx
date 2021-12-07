@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import useFormData from 'hooks/useFormData';
 
 
+
 const Registro = () => {
     
     const navigate = useNavigate();
@@ -83,8 +84,8 @@ const Registro = () => {
                 </div>
             </div>
             <div className="h-screen absolute bg-white">
-                <div className="px-10 pt-2 flex justify-end text-gray-500">
-                    <button>Volver</button>
+                <div className="px-10 pt-4 flex justify-end text-gray-500 hover:text-gray-400">
+                    <button onClick={() => navigate(-1)}>Volver</button>
                     {/* <button className="absolute rounded-full cursor-pointer back-button h-10 px-4 text-white" type="submit" value="Enviar datos">
                         <i class="fas fa-chevron-left"></i>
                     </button> */}
@@ -164,15 +165,12 @@ const Registro = () => {
                 </div>
             </div>
 
-
-
-
-
         </>
             
             
     )
 }
+
 
 export default  Registro;
 

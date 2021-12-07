@@ -331,6 +331,7 @@ progress::-webkit-progress-value {
   color: #d0d0d0;
   font-weight: 400;
   padding: 6px;
+  border-bottom: 2px solid white;
 }
 
 .tabs-perfil:hover{
@@ -404,9 +405,9 @@ progress::-webkit-progress-value {
 /* SEARCH BUTTON */
 
 .wrapper-search .button-search{
-  height: 42px;
-  width: 42px;
-  padding-left: 13px;
+  height: 40px;
+  width: 40px;
+  padding-left: 12px;
   overflow: hidden;
   border-radius: 50px;
   cursor: pointer;
@@ -423,8 +424,8 @@ progress::-webkit-progress-value {
 
 .wrapper-search .button-search icon-search{
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   color: #252323;
   border-radius: 20px;
   box-sizing: border-box;

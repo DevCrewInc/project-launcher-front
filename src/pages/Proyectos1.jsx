@@ -1,8 +1,12 @@
 import React from 'react'
 import fotoman from 'fotoman.jpeg'
 import Tabs from 'components/Tabs'
+import { useNavigate } from 'react-router';
 
 const Proyectos1 = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div>
             <div>
@@ -47,8 +51,11 @@ const Proyectos1 = () => {
                 </div>
             </div>
             <div className="w-full pl-16">
-                <div className = "flex items-start">
+                <div className ="flex justify-between">
                     <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
+                      <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
                 </div>
                 <div className = "flex flex-col w-80">
                         <div className = "flex justify-between font-semibold mt-14 text-lg">
