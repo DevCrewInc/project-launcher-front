@@ -147,26 +147,27 @@ const DetalleProyecto = () => {
                         <span className=" text-lg">Avances</span>
                     </div>
                     <div className="mt-6">
-                        <table class="table-auto text-center ">
+                        <table class="table-auto w-full text-center ">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
-                                    <th class="w-1/5">ID Avance</th>
                                     <th class="w-1/5">Nombre Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
                                     <th class="w-1/5">Revisión</th>
-                                    <th class="w-1/5 pr-6">Acciones</th>
+                                    <th class="w-1/5">Acciones</th>
                                 </tr>
                             </thead>
-            {data.Proyecto.avances.map((avance)=>{
-                return(
-                   <TablaAvances avance={avance}/>
-                )
-            })}
-            </table>
-            </div>
+                            {data.Proyecto.avances.map((avance)=>{
+                                return(
+                                <TablaAvances avance={avance}/>
+                                )
+                            })}
+                        </table>
+                    </div>
             </div>
             
+                           
+                           
         </div>
     </div>
 
@@ -222,12 +223,11 @@ const TablaAvances=({avance})=>{
         <>
             <tbody>
                 <tr className="text-center leading-10 texto-tablas">
-                    <td>Intro to CSS</td>
                     <td>{avance.descripcion}</td>
                     <td>{avance.fecha}</td>
                     <td>{avance.creadoPor.nombre}</td>
                     <td><i class="far fa-check-circle"></i></td>
-                    <td class="pr-6 flex">
+                    <td class="flex justify-center">
                         <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
                         <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                         <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>

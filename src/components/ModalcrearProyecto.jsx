@@ -95,32 +95,32 @@ const ModalcrearProyecto=()=> {
                 <div className= "flex space-x-4">
                   <div className= "space-x-2">
                     {/* <i className= "far fa-calendar-alt date-budget"/> */}
-                    <input name="fechaEstimada" required className= "date-icon date-budget bg-gray-100" type="date" min={datePick}/>
+                    <input name="fechaEstimada" required className= "date-icon date-budget input-perfil h-7 pl-1" type="date" min={datePick}/>
                       {/* <input required className= "date-icon date-budget bg-gray-100" type="date" min="01/02/1900" max="2030/12/31"/> */}
                       {/* https://mui.com/components/date-range-picker/ */}
                       
                   </div>
                   <div className= "space-x-2">
                     <i className = "fas fa-calculator date-budget"/>
-                      <input required type="number" name="presupuesto" className= "date-icon date-budget bg-gray-100"/>
+                      <input required type="number" name="presupuesto" className= "date-icon date-budget input-perfil h-7 pl-1"/>
                   </div>
                 </div>
-                <textarea required name="descripcionProyecto" className="mt-4 pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Describe tu proyecto" id="w3review"  rows="7" cols="75"></textarea> 
+                <textarea required name="descripcionProyecto" className="mt-4 pl-2 pt-2 text-sm rounded-md input-perfil" placeholder="Describe tu proyecto" id="w3review"  rows="7" cols="75"></textarea> 
                 <input type="text" name="lider" className="hidden" value={JSON.parse(localStorage.getItem('userData'))._id} ></input>
               </DialogContent>
 
               <div>
                 <DialogContent>
                   <span className="objetivos-dialogo">Objetivos generales y específicos</span>
-                  <div className="pt-2 mt-3 flex justify-between space-x-4">
-                    <input required name="GENERAL" className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100 " placeholder="Objetivo general" type="text" id="fname"></input>
+                  <div className="pt-2 mt-3 flex justify-between">
+                    <input required name="GENERAL" className="w-full h-8 text-sm rounded-sm pl-2 text-m input-perfil" placeholder="Objetivo general" type="text" id="fname"></input>
                     <div className="self-center">
                     </div> 
                   </div>
-                  <div className="pt-2 mt-2 flex justify-between space-x-4">
-                    <input name="ESPECIFICO" required className="w-full h-8 text-sm rounded-sm pl-2 text-m bg-gray-100" placeholder="Objetivo específico" type="text" id="fname"></input>
+                  <div className="pt-2 mt-2 flex justify-between">
+                    <input name="ESPECIFICO" required className="w-full h-8 text-sm rounded-sm pl-2 text-m input-perfil" placeholder="Objetivo específico" type="text" id="fname"></input>
                     <div className="self-center">
-                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className=" cursor-pointer add-button w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
+                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className="relative cursor-pointer add-button w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
 
                     </div>
                   </div>
@@ -128,7 +128,7 @@ const ModalcrearProyecto=()=> {
                     console.log(formData)
                     console.log()
                     return (
-                      <input required className="w-full h-8 text-sm rounded-sm mt-3 pl-2 text-m bg-gray-100" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
+                      <input required className="w-full h-8 text-sm rounded-sm mt-3 text-m input-perfil" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
 
                     })} 
                   <div className="text-center">
