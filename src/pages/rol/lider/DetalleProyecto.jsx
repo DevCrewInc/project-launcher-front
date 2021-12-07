@@ -122,12 +122,7 @@ const DetalleProyecto = () => {
                    </>
                  )
                  }
-                
-
-             
-                   
-                        
-             
+                    
                     {/* SOLICITUDES */}
                     {/* <div className="mt-8">
                     <div className = "border-tripulantes items-center py-4">
@@ -147,8 +142,6 @@ const DetalleProyecto = () => {
                     </div>
                 </div>
             </div>
-
-
             <div className = "flex flex-col">
                     <div className="font-medium mt-12">
                         <span className=" text-lg">Avances</span>
@@ -165,26 +158,15 @@ const DetalleProyecto = () => {
                                     <th class="w-1/5 pr-6">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="text-center leading-10 texto-tablas">
-                                    <td>Intro to CSS</td>
-                                    <td>Adam</td>
-                                    <td>858</td>
-                                    <td>858</td>
-                                    <td><i class="far fa-check-circle"></i></td>
-                                    <td class="pr-6 flex">
-                                        <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
-                                        <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                                        <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                                    </td>
-                                </tr>
-                               
-                            </tbody>
-                            </table>
-
-                    </div>
-
-                </div>
+            {data.Proyecto.avances.map((avance)=>{
+                return(
+                   <TablaAvances avance={avance}/>
+                )
+            })}
+            </table>
+            </div>
+            </div>
+            
         </div>
     </div>
 
@@ -232,4 +214,27 @@ const Tripulantes =({inscripcion, botones})=>{
                 
         </>
         )
+}
+
+const TablaAvances=({avance})=>{
+    console.log("avance", avance)
+    return(
+        <>
+            <tbody>
+                <tr className="text-center leading-10 texto-tablas">
+                    <td>Intro to CSS</td>
+                    <td>{avance.descripcion}</td>
+                    <td>{avance.fecha}</td>
+                    <td>{avance.creadoPor.nombre}</td>
+                    <td><i class="far fa-check-circle"></i></td>
+                    <td class="pr-6 flex">
+                        <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                        <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                        <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                    </td>
+                </tr>
+                               
+            </tbody>
+        </>
+    )
 }
