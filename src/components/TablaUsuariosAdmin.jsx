@@ -23,7 +23,7 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
 
     return (
         <div >
-                <table className = "w-full table-auto mt-2">
+                <table className = "w-full table-auto mt-5">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
                                 <th>Nombre Usuario</th>
@@ -86,7 +86,7 @@ const FilasTablas = ({usuario})=>{
                         </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
                             {/* <ModalDetalleProyecto/> */}
-                            <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                            <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "py-5 fas fa-trash text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
                         </td>
                     </tr>

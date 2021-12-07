@@ -67,7 +67,7 @@ const ModalPerfil = ({icon}) => {
                     <h1 className="nombre-perfil font-semidold"> {JSON.parse(localStorage.getItem('userData')).nombre}</h1>
                     <h1 className="rol-perfil font-normal"> {JSON.parse(localStorage.getItem('userData')).rol}</h1>
                   </div>
-                </div>  
+                </div>
                 {/* <div className="space-x-4 flex">
                   <button className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
                   <button className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
@@ -81,63 +81,64 @@ const ModalPerfil = ({icon}) => {
           </DialogTitle>
 
           <div className="m-7 mt-4 texto-perfil">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className=" font-medium">Documento</label>
-                <input className="text-sm w-full font-light  rounded-lg h-7 pl-2" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
+                <input className="text-sm w-full font-light  rounded-lg h-7 pl-1" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <input className="text-sm font-light w-full  rounded-lg h-7 pl-2" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
+                <input className="text-sm font-light w-full  rounded-lg h-7 pl-1" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
               </div>
               <div>
                 <label className=" font-medium">Celular</label>
-                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-2" name="celular" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
+                <input className=" text-sm font-light w-full  rounded-lg h-7 pl-1" name="celular" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
-              <div>
+              <div className="col-span-2">
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="facultad" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
+                <select required className="text-sm w-80 font-light rounded-lg h-7 pl-1" name="facultad" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
                   <option disabled type="String" value="">Facultad</option>
                   <option type="String">ARTES</option>
                   <option type="String">CIENCIAS_AGRARIAS</option>
-                  <option type="String">CIENCIAS_ECONOMICAS </option>
-                  <option type="String">CIENCIAS_EXACTAS_NATURALES  </option>
-                  <option type="String">CIENCIAS_FARMACEUTICAS_ALIMENTARIAS  </option>
-                  <option type="String">CIENCIAS_SOCIALES_HUMANAS  </option>
-                  <option type="String">COMUNICACIONES </option>
-                  <option type="String">DERECHO_CIENCIAS_POLITICAS  </option>
-                  <option type="String">EDUCACION </option>
-                  <option type="String">ENFERMERIA  </option>
-                  <option type="String">INGENIERIA  </option>
-                  <option type="String">MEDICINA  </option>
-                  <option type="String">ODONTOLOGIA   </option>
-                  <option type="String">SALUD_PUBLICA  </option>
+                  <option type="String">CIENCIAS_ECONOMICAS</option>
+                  <option type="String">CIENCIAS_EXACTAS_NATURALES</option>
+                  <option type="String">CIENCIAS_FARMACEUTICAS_ALIMENTARIAS</option>
+                  <option type="String">CIENCIAS_SOCIALES_HUMANAS</option>
+                  <option type="String">COMUNICACIONES</option>
+                  <option type="String">DERECHO_CIENCIAS_POLITICAS</option>
+                  <option type="String">EDUCACION</option>
+                  <option type="String">ENFERMERIA</option>
+                  <option type="String">INGENIERIA</option>
+                  <option type="String">MEDICINA</option>
+                  <option type="String">ODONTOLOGIA</option>
+                  <option type="String">SALUD_PUBLICA</option>
                 </select>
               </div>
+       
               <div>
-                <label className=" font-medium">Semestre</label>
-                <select required className="text-sm w-full font-light bg-gray-100 rounded-lg h-7 pl-2" name="semestre" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
-                  <option disabled type="String" value="">Semestre</option>
-                  <option type="String">PRIMERO </option>
-                  <option type="String">SEGUNDO </option>
-                  <option type="String">TERCERO </option>
-                  <option type="String">CUARTO </option>
-                  <option type="String">QUINTO </option>
-                  <option type="String">SEXTO </option>
-                  <option type="String">SEPTIMO </option>
-                  <option type="String">OCTAVO </option>
-                  <option type="String">NOVENO </option>
-                  <option type="String">DECIMO </option>
-                </select>
-              </div>
+                  <label className=" font-medium">Semestre</label>
+                  <select required className="text-sm flex font-light rounded-lg h-7 pl-1" name="semestre" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
+                    <option disabled type="String" value="">Semestre</option>
+                    <option type="String">PRIMERO</option>
+                    <option type="String">SEGUNDO</option>
+                    <option type="String">TERCERO</option>
+                    <option type="String">CUARTO</option>
+                    <option type="String">QUINTO</option>
+                    <option type="String">SEXTO</option>
+                    <option type="String">SEPTIMO</option>
+                    <option type="String">OCTAVO</option>
+                    <option type="String">NOVENO</option>
+                    <option type="String">DECIMO</option>
+                  </select>
+                </div>
               
               
               </>):null}
        
             </div>
-          <div className="grid mt-8 mb-6">
+          <div className="grid mt-8 ">
               <label className=" font-medium">Acerca de mi</label>
               <textarea className="pl-2 pt-2 text-sm rounded-md bg-gray-100" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
           </div>

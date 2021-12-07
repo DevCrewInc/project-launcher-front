@@ -7,10 +7,12 @@ import {getDetalleProyecto} from 'graphql/lider/queries'
 import {MutationEditarEstadoInscripcion} from 'graphql/lider/mutaciones'
 import { useState } from 'react';
 import { truncate } from 'prelude-ls';
+import { useNavigate } from 'react-router';
 
 
 
 const DetalleProyecto = () => {
+    const navigate = useNavigate();
 
     const {id} = useParams();
     console.log("iddd", id)
@@ -67,9 +69,12 @@ const DetalleProyecto = () => {
             </div>
         </div>
         <div className="w-full pl-16">
-            <div className = "flex items-start">
-                <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
-            </div>
+                <div className ="flex justify-between">
+                    <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
+                      <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
             <div className = "flex flex-col w-80">
                     <div className = "flex justify-between font-semibold mt-14 text-lg">
                         <button onClick={()=>setTabs(true)} className="font-semibold">Tripulantes</button>
@@ -143,7 +148,7 @@ const DetalleProyecto = () => {
                 </div>
             </div>
 
-            {/* {data.Proyecto.avances} */}
+
             <div className = "flex flex-col">
                     <div className="font-medium mt-12">
                         <span className=" text-lg">Avances</span>
@@ -152,6 +157,7 @@ const DetalleProyecto = () => {
                         <table class="table-auto text-center ">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
+                                    <th class="w-1/5">ID Avance</th>
                                     <th class="w-1/5">Nombre Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
@@ -161,6 +167,7 @@ const DetalleProyecto = () => {
                             </thead>
                             <tbody>
                                 <tr className="text-center leading-10 texto-tablas">
+                                    <td>Intro to CSS</td>
                                     <td>Adam</td>
                                     <td>858</td>
                                     <td>858</td>

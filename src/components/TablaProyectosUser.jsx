@@ -19,7 +19,7 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 
         <div>  
             <div>
-            <table className = "w-full table-auto mt-2">
+            <table className = "w-full table-auto mt-7">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
                         <th className="w-2" >Nombre</th>
