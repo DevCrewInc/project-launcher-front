@@ -2,6 +2,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
+import { Link } from 'react-router-dom';
 
 
 
@@ -78,7 +79,10 @@ const FilasTablaProyectos = ({proyecto}) =>{
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                <Link to={`/page/lider/proyectos/detalle/${proyecto._id}`}>
+                     <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> 
+                </Link>
+            
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
                     <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                     <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>

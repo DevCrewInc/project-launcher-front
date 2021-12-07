@@ -7,7 +7,7 @@ import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
 // import ListaUsuarios from 'pages/ListaUsuarios';
 import 'styles/globals.css';
 import Dialogos from 'pages/Dialogos'
-import Proyectos1 from 'pages/Proyectos1';
+
 import ListaNuevosProyectos from 'pages/rol/admin/ListaNuevosProyectos'
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
@@ -15,6 +15,7 @@ import Administracion from 'pages/rol/admin/Administracion';
 import ListaEstudiantes from 'pages/rol/lider/ListaEstudiantes';
 import ListaUsuarios from 'pages/rol/admin/ListaUsuarios';
 import ListaProyectosLider from 'pages/rol/lider/ListaProyectosLider';
+import DetalleProyecto from 'pages/rol/lider/DetalleProyecto';
 import ListaTodosProyectos from 'pages/rol/admin/ListaTodosProyectos';
 import ListarProyectosEstudiantes from 'pages/rol/estudiantes/ListarProyectosEstudiantes';
 import ListarMisProyectosEstudiante from 'pages/rol/estudiantes/ListarMisProyectosEstudiante';
@@ -52,11 +53,12 @@ function App() {
                 <Route path='page/usuarios' element={<ListaUsuarios />} />
                 <Route path='page/proyectosAdmin' element={<ListaTodosProyectos />}/>
                 <Route path='page/lider/estudiantes' element={<ListaEstudiantes />} />
-                <Route path='page/lider/proyectos' element={<ListaProyectosLider   />} />   
+                <Route path='page/lider/proyectos' element={<ListaProyectosLider   />} />
+                <Route path='page/lider/proyectos/detalle/:id' element={<DetalleProyecto/>} />   
                 <Route path='page/estudiantes/proyectos' element={<ListarProyectosEstudiantes />} />
                 <Route path='page/estudiantes/proyectos/misProyectos' element={<ListarMisProyectosEstudiante />} />
                 <Route path='page/dialogos' element={<Dialogos/>}/>
-                <Route path='page/proyectos1' element={<Proyectos1/>} />
+               
               </Route>
             </Routes>
           </BrowserRouter>
