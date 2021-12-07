@@ -19,7 +19,7 @@ const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-auto mt-2">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2" >Nombre</th>
+                        <th className="w-2 pl-3" >Nombre</th>
                         <th >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
