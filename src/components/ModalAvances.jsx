@@ -100,7 +100,7 @@ const ModalAvances=({avance})=>{
             <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
             <div className="pt-2 flex justify-between space-x-4">
               <Avatar src=""></Avatar>
-              <textarea onChange={(e) => setObservaciones( {idAvance: avance._id, observaciones:e.target.value})} required name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67"></textarea>
+              <textarea onChange={(e) => setObservaciones( {idAvance: avance._id, observaciones:e.target.value})} required name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
             </div>
           </DialogContent>
         </div>

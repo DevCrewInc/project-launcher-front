@@ -115,7 +115,9 @@ const ModalDetalleProyecto = ({proyecto}) => {
                   <button className="w-1/5 h-7 outlined-button ">RECHAZAR</button>
                 </PrivateComponent>
                 <PrivateComponent roleList="ESTUDIANTE">
-                  <button className="w-1/3 h-7 filled-button" onClick={()=>{crearInscripcion({variables: {proyecto: proyecto._id, estudiante:JSON.parse(localStorage.getItem('userData'))._id}})}}>UNIRME</button>
+                  <button className="w-1/3 h-7 filled-button" onClick={()=>{
+                    crearInscripcion({variables: {proyecto: proyecto._id, estudiante:JSON.parse(localStorage.getItem('userData'))._id}})
+                    handleClose()}}>UNIRME</button>
                 </PrivateComponent>
               </div>
             

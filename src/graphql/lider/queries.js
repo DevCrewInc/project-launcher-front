@@ -70,6 +70,7 @@ query Proyecto($_id: String!) {
       tituloAvance
       descripcion
       fecha
+      observaciones
       creadoPor {
         nombre
 

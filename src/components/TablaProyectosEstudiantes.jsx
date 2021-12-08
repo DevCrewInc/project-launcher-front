@@ -53,7 +53,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
     return(
         <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
         <tr key={proyecto._id}>
-            <td className="text-center">
+            <td className="text-center py-2">
                 <span className =" whitespace-nowrap  w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="text-center">
