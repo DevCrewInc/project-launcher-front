@@ -151,7 +151,7 @@ const DetalleProyecto = () => {
                         <table class="table-auto w-full text-center ">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
-                                    <th class="w-1/5">Descripción Avance</th>
+                                    <th class="w-1/5">Título Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
                                     <th class="w-1/5">Revisión</th>
@@ -221,7 +221,7 @@ const TablaAvances=({avance})=>{
         <>
             <tbody>
                 <tr className="text-center leading-10 texto-tablas">
-                    <td>{avance.descripcion}</td>
+                    <td>{avance.tituloAvance}</td>
                     <td>{avance.fecha}</td>
                     <td>{avance.creadoPor.nombre}</td>
                     <td><i class="far fa-check-circle"></i></td>
