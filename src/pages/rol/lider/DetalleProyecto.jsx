@@ -46,7 +46,7 @@ const DetalleProyecto = () => {
                     </div>
                     <div className = "space-x-1 mt-8">
                         <i className = "date-budget fas fa-calendar-alt"/>
-                            <span className = "date-budget font-medium pr-8">{data.Proyecto.fechaInicio}</span>
+                            <span className = "date-budget text-lg font-medium pr-8">{data.Proyecto.fechaInicio}</span>
                         <i className = "date-budget fas fa-calculator"/>
                             <span className = "date-budget font-medium">$ {data.Proyecto.presupuesto}</span>
                     </div>
@@ -77,7 +77,7 @@ const DetalleProyecto = () => {
                     </button>
                 </div>
             <div className = "flex flex-col w-80">
-                    <div className = "flex justify-between mt-14 text-lg">
+                    <div className = "flex justify-between mt-10 text-lg">
                         <button onClick={()=>setTabs(true)}>Tripulantes</button>
                         <div className="flex">
                             <button onClick={()=>setTabs(false)} className="text-gray-400 hover:text-blue-700 hover:shado">Solicitudes</button>
@@ -145,13 +145,13 @@ const DetalleProyecto = () => {
             </div>
             <div className = "flex flex-col">
                     <div className="font-medium mt-12">
-                        <span className=" text-lg">Avances</span>
+                        <span className="font-medium text-lg">Avances</span>
                     </div>
                     <div className="mt-6">
-                        <table class="table-auto w-full text-center ">
+                        <table class="table-auto w-full text-center">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
-                                    <th class="w-1/3">Descripción Avance</th>
+                                    <th class="w-1/3 text-left pl-4">Descripción Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
                                     <th class="w-1/5">Revisión</th>
@@ -224,7 +224,7 @@ const TablaAvances=({avance})=>{
         <>
             <tbody>
                 <tr className="text-center leading-10 texto-tablas">
-                    <td>{avance.descripcion}</td>
+                    <td className="text-left pl-4">{avance.descripcion}</td>
                     <td>{avance.fecha}</td>
                     <td>{avance.creadoPor.nombre}</td>
                     <td><i class="far fa-check-circle"></i></td>
