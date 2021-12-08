@@ -8,6 +8,7 @@ import {MutationEditarEstadoInscripcion} from 'graphql/lider/mutaciones'
 import { useState } from 'react';
 import { truncate } from 'prelude-ls';
 import { useNavigate } from 'react-router';
+import ModalAvances from 'components/Dialogo_avances';
 
 
 
@@ -98,7 +99,7 @@ const DetalleProyecto = () => {
                          if(inscripcion.estado === "ACEPTADA"){
                             return(
 
-                                <Tripulantes inscripcion={inscripcion} botones={false}/>
+                                <SolicitudesInscripciones inscripcion={inscripcion} botones={false}/>
                              )
                          }
                         
@@ -114,7 +115,7 @@ const DetalleProyecto = () => {
                         if(inscripcion.estado === "PENDIENTE"){
                            return(
 
-                               <Tripulantes inscripcion={inscripcion} botones={true} />
+                               <SolicitudesInscripciones inscripcion={inscripcion} botones={true} />
                             )
                         }
                        
@@ -150,7 +151,7 @@ const DetalleProyecto = () => {
                         <table class="table-auto w-full text-center ">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
-                                    <th class="w-1/5">Nombre Avance</th>
+                                    <th class="w-1/5">Descripción Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
                                     <th class="w-1/5">Revisión</th>
@@ -164,9 +165,7 @@ const DetalleProyecto = () => {
                             })}
                         </table>
                     </div>
-            </div>
-            
-                           
+            </div>                  
                            
         </div>
     </div>
@@ -182,36 +181,35 @@ const DetalleProyecto = () => {
 export default DetalleProyecto;
  
 
-const Tripulantes =({inscripcion, botones})=>{
+const SolicitudesInscripciones =({inscripcion, botones})=>{
 
-    const[ editarEstadoInscripcion, {data:editarEstadoData,error:editarEstadoError,loading:editarEstadoLoading}]=useMutation( MutationEditarEstadoInscripcion);
+    const[editarEstadoInscripcion, {data:editarEstadoData,error:editarEstadoError,loading:editarEstadoLoading}]=useMutation( MutationEditarEstadoInscripcion);
     // console.log("inscrip", inscripcion)
     
      return(
          <>
-            <div>
+            <div className="flex">
               <div className="overflow-y-auto h-30 mt-10"></div>
                  <div className = " cursor-pointer border-tripulantes flex items-center pb-4">
                     <img src={fotoman} className = "rounded-full w-12 mr-4"/>
+                     
                     <div className = "flex flex-col ">
                         <span className = "font-semibold text-sm">{inscripcion.estudiante.nombre}</span>
                         <span className = "font-light text-xs">{inscripcion.estudiante.identificacion}</span>
-                    </div>
-
-                {botones?(
-                <>
+                   
+                       {botones?(
                 
-                    <div className="space-x-4 flex mt-4">
-                        <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
-                        <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
+                        <div className="space-x-4 flex mt-4">
+                            <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
+                            <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
+                        </div>
+                   
+                
+                        ):( null)
+                        }
                     </div>
-                </>
-            ):( null)
-            }
-              </div>
-            </div>
-           
-            
+               </div>
+            </div>  
                 
         </>
         )
@@ -228,7 +226,7 @@ const TablaAvances=({avance})=>{
                     <td>{avance.creadoPor.nombre}</td>
                     <td><i class="far fa-check-circle"></i></td>
                     <td class="flex justify-center">
-                        <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                        <ModalAvances avance={avance}/>
                         <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                         <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </td>

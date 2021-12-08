@@ -8,8 +8,8 @@ import { Box} from '@mui/system';
 
 
 
+const ModalAvances=({avance})=>{
 
-export default function ScrollDialog() {
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
 
@@ -37,7 +37,7 @@ export default function ScrollDialog() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen('paper')}>Dialogo avances</Button>
+       <i onClick={handleClickOpen('paper')} className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
       
       <Dialog
         className= "bg-black bg-opacity-50"
@@ -49,16 +49,16 @@ export default function ScrollDialog() {
       > 
         <DialogTitle id="scroll-dialog-title">
           <Box>
-            <h1 className="mt-3 text-sm text-gray-300 font-normal">Id Avance</h1>
+            <h1 className="mt-3 text-sm text-gray-300 font-normal">{avance._id}</h1>
             <div className="flex justify-between">
             <input className="w-full rounded-sm" placeholder="Titulo de tu avance" type="text" id="fname" name=""></input>
               <i className="far fa-check-circle self-center text-gray-400 pl-3"></i>
             </div>
             
             <div className="flex justify-between">
-                <h3 className="text-sm font-normal">por Juan Camilo Pérez</h3>
+                <h3 className="text-sm font-normal">{avance.creadoPor.nombre}</h3>
               <div className="flex space-x-4">
-                <h3 className="avance_Date text-sm font-normal">Octubre 27</h3>
+                <h3 className="avance_Date text-sm font-normal">{avance.fecha}</h3>
                 <h3 className="avance_Date text-sm font-normal">8:00 a.m.</h3>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function ScrollDialog() {
         </DialogTitle>
 
         <DialogContent dividers={scroll === 'paper'}>
-          <textarea className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Descripción de tu avance" id="w3review" name="w3review" rows="4" cols="75"></textarea>
+          <textarea className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder={avance.descripcion} id="w3review" name="w3review" rows="4" cols="75"></textarea>
           <div className="text-right">
             <button className="w-1/6 h-7 filled-button mt-2">GUARDAR</button>
           </div>
@@ -85,3 +85,5 @@ export default function ScrollDialog() {
     </div>
   );
 }
+
+export default ModalAvances;
