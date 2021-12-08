@@ -8,7 +8,7 @@ import {MutationEditarEstadoInscripcion} from 'graphql/lider/mutaciones'
 import { useState } from 'react';
 import { truncate } from 'prelude-ls';
 import { useNavigate } from 'react-router';
-import ModalAvances from 'components/Dialogo_avances';
+import ModalAvances from 'components/ModalAvances';
 
 
 

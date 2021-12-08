@@ -1,4 +1,4 @@
-import Dialogo_avances from 'components/Dialogo_avances';
+import ModalAvances from 'components/ModalAvances';
 import ModalcrearProyecto from 'components/ModalcrearProyecto';
 import ModalPerfil from 'components/ModalPerfil';
 import React from 'react';
@@ -10,7 +10,7 @@ const Dialogos = () => {
 
         <div className = "flex flex-col p-10">
                <div>
-                    <Dialogo_avances/>
+                    {/* <ModalAvances/> */}
                     <ModalcrearProyecto/>
                     <ModalPerfil/>
                 </div>
