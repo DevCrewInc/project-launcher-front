@@ -46,7 +46,7 @@ const DetalleProyecto = () => {
                     </div>
                     <div className = "space-x-1 mt-8">
                         <i className = "date-budget fas fa-calendar-alt"/>
-                            <span className = "date-budget font-medium pr-8">{data.Proyecto.fechaInicio}</span>
+                            <span className = "date-budget text-lg font-medium pr-8">{data.Proyecto.fechaInicio}</span>
                         <i className = "date-budget fas fa-calculator"/>
                             <span className = "date-budget font-medium">$ {data.Proyecto.presupuesto}</span>
                     </div>
@@ -77,13 +77,10 @@ const DetalleProyecto = () => {
                     </button>
                 </div>
             <div className = "flex flex-col w-80">
-                    <div className = "flex justify-between font-semibold mt-14 text-lg">
-                        <button onClick={()=>setTabs(true)} className="font-semibold">Tripulantes</button>
+                    <div className = "flex justify-between mt-10 text-lg">
+                        <button onClick={()=>setTabs(true)}>Tripulantes</button>
                         <div className="flex">
-                            <div>
-                                
-                            </div>
-                            <button onClick={()=>setTabs(false)} className="text-gray-400 font-semibold hover:text-blue-700 hover:shado">Solicitudes</button>
+                            <button onClick={()=>setTabs(false)} className="text-gray-400 hover:text-blue-700 hover:shado">Solicitudes</button>
                             <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">1</div>
                         </div>
                         
@@ -94,6 +91,8 @@ const DetalleProyecto = () => {
 
                  {tabs? (
                     <>
+                    <div className="mt-4 overflow-y-auto h-52">
+                        
                      {  data.Proyecto.inscripciones.map((inscripcion)=>{
                          console.log("inscripcion", inscripcion)
                          if(inscripcion.estado === "ACEPTADA"){
@@ -104,6 +103,7 @@ const DetalleProyecto = () => {
                          }
                         
                     })}
+                    </div>
                     </>
                    
 
@@ -145,17 +145,17 @@ const DetalleProyecto = () => {
             </div>
             <div className = "flex flex-col">
                     <div className="font-medium mt-12">
-                        <span className=" text-lg">Avances</span>
+                        <span className="font-medium text-lg">Avances</span>
                     </div>
                     <div className="mt-6">
-                        <table class="table-auto w-full text-center ">
+                        <table class="table-auto w-full text-center">
                             <thead className="text-gray-700">
                                 <tr className="thead-color text-sm leading-10">
-                                    <th class="w-1/5">Título Avance</th>
+                                    <th className="w-1/3 text-left pl-4">Título Avance</th>
                                     <th class="w-1/5">Fecha</th>
                                     <th class="w-1/5">Responsable</th>
                                     <th class="w-1/5">Revisión</th>
-                                    <th class="w-1/5">Acciones</th>
+                                    <th class="w-1/5 pr-4">Acciones</th>
                                 </tr>
                             </thead>
                             {data.Proyecto.avances.map((avance)=>{
@@ -165,8 +165,8 @@ const DetalleProyecto = () => {
                             })}
                         </table>
                     </div>
-            </div>                  
-                           
+            </div>
+
         </div>
     </div>
 
@@ -188,27 +188,30 @@ const SolicitudesInscripciones =({inscripcion, botones})=>{
     
      return(
          <>
-            <div className="flex">
-              <div className="overflow-y-auto h-30 mt-10"></div>
-                 <div className = " cursor-pointer border-tripulantes flex items-center pb-4">
-                    <img src={fotoman} className = "rounded-full w-12 mr-4"/>
-                     
-                    <div className = "flex flex-col ">
-                        <span className = "font-semibold text-sm">{inscripcion.estudiante.nombre}</span>
-                        <span className = "font-light text-xs">{inscripcion.estudiante.identificacion}</span>
-                   
-                       {botones?(
+            <div>
+                <div>
+                    <div className = "cursor-pointer border-tripulantes flex items-center py-3">
+                        <img src={fotoman} className = "rounded-full w-12 mr-4"/>
                 
-                        <div className="space-x-4 flex mt-4">
-                            <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
-                            <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
+                        <div className = "flex flex-col ">
+                            <span className = "font-semibold text-sm">{inscripcion.estudiante.nombre}</span>
+                            <span className = "font-light text-xs">{inscripcion.estudiante.identificacion}</span>
+            
+                        {botones?(
+            
+                            <div className="space-x-4 flex mt-4">
+                                <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
+                                <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
+                            </div>
+            
+            
+                            ):( null)
+                            }
                         </div>
-                   
-                
-                        ):( null)
-                        }
                     </div>
-               </div>
+
+                </div>
+              
             </div>  
                 
         </>
@@ -221,14 +224,14 @@ const TablaAvances=({avance})=>{
         <>
             <tbody>
                 <tr className="text-center leading-10 texto-tablas">
-                    <td>{avance.tituloAvance}</td>
+                    <td className="text-left pl-4">{avance.tituloAvance}</td>
                     <td>{avance.fecha}</td>
                     <td>{avance.creadoPor.nombre}</td>
                     <td><i class="far fa-check-circle"></i></td>
-                    <td class="flex justify-center">
+                    <td class="flex pr-4">
                         <ModalAvances avance={avance}/>
-                        <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                        <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                        <i className = "fas fa-pen my-1 p-1 py-2 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                        <i className = "fas fa-trash my-1 pl-1 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </td>
                 </tr>
                                
