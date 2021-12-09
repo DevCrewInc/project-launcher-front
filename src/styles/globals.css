@@ -241,6 +241,8 @@ progress::-webkit-progress-value {
 .tabs-modal{
   font-size: 15px;
   font-weight: 500;
+  border-bottom: 2px solid white;
+  padding-bottom: 6px;
 }
 
 .tabs-modal:hover{
