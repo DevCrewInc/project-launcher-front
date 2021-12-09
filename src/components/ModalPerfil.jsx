@@ -30,16 +30,11 @@ const ModalPerfil = ({icon}) => {
       }
     }
   }, [open]);
-
-  const [toggleState, setToggleState] = useState(1);
     
-  const toggleTab = (index) => {
-      setToggleState(index);
+  const[tabs, setTabs]=useState(false)
 
-  }
 
   return (
-
   
     
     <div >
@@ -80,26 +75,24 @@ const ModalPerfil = ({icon}) => {
                 </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
-                  <button onClick = {() => toggleTab(1)} className="tabs-perfil">Datos personales</button>
-                  <button onClick = {() => toggleTab(2)} className="tabs-perfil">Privacidad</button>
+                  <button onClick={()=>{setTabs(false)}} className="tabs-perfil">Datos personales</button>
+                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil">Privacidad</button>
               </div>
             </Box>
           </DialogTitle>
-        
-          <div className="m-7 mt-2 texto-perfil">
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label className=" font-medium">Contraseña actual</label>
-                <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
-              </div>
-              <div>
-                <label className=" font-medium">Contraseña nueva</label>
-                <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
-              </div>
-              <div>
-
-              </div>
-              <div>
+        <div className="m-7 mt-2 texto-perfil">
+          <div className="grid grid-cols-3 gap-4">
+        {tabs?(<>
+          <div>
+            <label className=" font-medium">Contraseña actual</label>
+            <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
+          </div>
+          <div>
+            <label className=" font-medium">Contraseña nueva</label>
+            <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
+          </div>
+        </>):(<>
+          <div>
                 <label className=" font-medium">Documento</label>
                 <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
               </div>
@@ -154,14 +147,18 @@ const ModalPerfil = ({icon}) => {
               
               </>):null}
        
-            </div>
-          <div className="grid mt-8 ">
+       
+          <div className="grid mt-8 col-span-3">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea className="pl-2 pt-2 text-sm rounded-sm bg-gray-100" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea className="pl-2 pt-2 text-sm rounded-sm bg-gray-100 input-perfil" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+          </div>
+        </>)}
+              <div>
+            </div>
           </div>
         </div>
         </Dialog>
-        
+     
       </form>
       
     </div>

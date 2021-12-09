@@ -43,7 +43,7 @@ const ModalDetalleProyecto = ({proyecto}) => {
   return (
     <>
       <div>
-        <i onClick={handleClickOpen('paper')} className = "fas fa-plus p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+        <i onClick={handleClickOpen('paper')} className = "fas fa-plus p-1 text-gray-400 hover:text-blue-600 cursor-pointer py-3"/>
         
         <Dialog
           className= "bg-black bg-opacity-50"
