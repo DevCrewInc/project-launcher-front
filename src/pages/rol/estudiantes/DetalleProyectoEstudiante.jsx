@@ -42,7 +42,6 @@ const DetalleProyectoEstudiante = () => {
                                 <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
                             </div>
                         </div>
-                        
                     </div>
                     <div className = "space-x-1 mt-8">
                         <i className = "date-budget fas fa-calendar-alt"/>
