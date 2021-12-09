@@ -44,7 +44,8 @@ query Usuario($_id: String!) {
                 nombre
              }
             faseProyecto
-            estadoProyecto 
+            estadoProyecto
+  
           }
       }
     }

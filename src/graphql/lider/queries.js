@@ -76,8 +76,7 @@ query Proyecto($_id: String!) {
 
       }
     }
-
-
+  
   }
 }
 `
