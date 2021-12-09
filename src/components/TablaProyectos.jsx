@@ -19,15 +19,15 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
         <div>  
             <div>
-            <table className = "w-full table-auto mt-7">
+            <table className = "w-full table-fixed mt-6">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2" >Nombre</th>
-                        <th >Fecha Inicio</th>
-                        <th >Identificación</th>
+                        <th className="w-80 text-left pl-6" >Nombre</th>
+                        <th className="w-40" >Fecha Inicio</th>
+                        <th className="w-30">Identificación</th>
                         <th >Nombre Líder</th>
-                        <th >Fase</th>
-                        <th >Estado</th>
+                        <th className="w-30">Fase</th>
+                        <th className="w-16">estado</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -55,13 +55,13 @@ const FilasTablaProyectos = ({proyecto}) =>{
     const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
-        <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
+        <tbody key={proyecto._id} className = "texto-tablas tbody-border texto-tablas">  
         <tr key={proyecto._id}>
-            <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
+            <td className="text-left pl-4">
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis pl-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
+                <span className ="">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
             <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>

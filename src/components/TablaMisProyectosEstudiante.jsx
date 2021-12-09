@@ -21,7 +21,7 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
             <table className = "w-full table-auto mt-2">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2" >Nombre</th>
+                        <th className="w-72 text-left pl-7" >Nombre</th>
                         <th >Nombre Líder</th>
                         <th >Fase Proyecto</th>
                         <th >Estado Proyecto</th>
@@ -55,7 +55,7 @@ const FilasTablaProyectos = ({inscripcion}) =>{
     return(
         <tbody  key={inscripcion.proyecto._id} className = "tbody-border text-sm text-gray-400">  
         <tr key={inscripcion.proyecto._id}>
-            <td className="text-center">
+            <td className="w-72 text-left pl-5">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.nombre}</span>
             </td> 
             {/* <td className="p-2 flex justify-center">

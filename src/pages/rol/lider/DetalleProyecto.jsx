@@ -35,7 +35,7 @@ const DetalleProyecto = () => {
                 <div className="w-2/3">
                     <div className="flex justify-between">
                         <div className="flex flex-col">
-                            <span className = "font-bold text-2xl">{data.Proyecto.nombre}</span>
+                            <span className = "font-bold text-2xl w-80">{data.Proyecto.nombre}</span>
                             <span className = "text-gray-300 text-lg ">{data.Proyecto._id}</span>
                         </div>
                         <div>
@@ -223,7 +223,7 @@ const SolicitudesInscripciones =({inscripcion, botones})=>{
             
                         {botones?(
             
-                            <div className="space-x-4 flex mt-4">
+                            <div className="flex space-x-5 mt-4">
                                 <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
                                 <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
                             </div>

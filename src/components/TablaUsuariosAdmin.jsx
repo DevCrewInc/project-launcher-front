@@ -23,10 +23,10 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
 
     return (
         <div >
-                <table className = "w-full table-auto mt-5">
+                <table className = "w-full table-fixed mt-6">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th>Nombre Usuario</th>
+                                <th className="text-left pl-6">Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
                                 <th>Rol</th>
@@ -60,19 +60,19 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = "texto-tablas tbody-border text-gray-400">  
                     <tr >
-                        <td className="text-center w-18">
+                        <td className="w-72 text-left pl-7">
                             <span className=" bg-white" type="button" >{usuario.nombre}</span>
                         </td>
-                        <td className="text-center p-2 w-14">
-                            <img className="rounded-full w-" src={fotoman}/>
+                        <td className="p-2">
+                            <img className="text-center mx-auto rounded-full w-12 " src={fotoman}/>
                         </td>
-                        <td className="text-center">
+                        <td className="text-center w-1/5">
                             <span className="bg-white" type="button" >{usuario.identificacion}</span>
                         </td>
                         <td className="text-center">
                             <span className=" bg-white" type="button" >{usuario.rol}</span>
                         </td>
-                        <td className="text-center">
+                        <td className="text-center w-1/5">
                             <select required onChange={(e) => {editarEstadoUsuario({variables: {_id: usuario._id ,estado:e.target.value}})}} className="text-sm font-light bg-gray-100 rounded-lg h-7 pl-2" name="estado" defaultValue="">
                                 <option disabled type="String" value="">{usuario.estado}</option>
                                 {usuario.estado==="AUTORIZADO"?null:(
