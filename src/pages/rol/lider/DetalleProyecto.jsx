@@ -223,7 +223,7 @@ const SolicitudesInscripciones =({inscripcion, botones})=>{
             
                         {botones?(
             
-                            <div className="space-x-4 flex mt-4">
+                            <div className="flex space-x-5 mt-4">
                                 <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "RECHAZADA"}})}} className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
                                 <button onClick={()=>{editarEstadoInscripcion({variables: {_id: inscripcion._id, estado: "ACEPTADA"}})}}className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
                             </div>

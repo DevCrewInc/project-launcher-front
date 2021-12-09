@@ -266,7 +266,8 @@ progress::-webkit-progress-value {
   border: 1px solid;
   border-color: #A5143A;
   color: #A5143A;
-  border-radius: 6px;
+  border-radius: 100px;
+  
 }
 
 .outlined-button:hover{

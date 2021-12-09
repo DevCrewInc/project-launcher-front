@@ -139,8 +139,8 @@ const ModalDetalleProyecto = ({proyecto}) => {
               </DialogContent>
               <div className="text-center space-x-4 mt-2 mb-10">
                 <PrivateComponent roleList="ADMINISTRADOR">
-                  <button className="w-1/5 h-7 filled-button" onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} >ACEPTAR</button>
-                  <button className="w-1/5 h-7 outlined-button ">RECHAZAR</button>
+                  <button className="w-1/5 h-8 filled-button" onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} >ACEPTAR</button>
+                  <button className="w-1/5 h-8 outlined-button ">RECHAZAR</button>
                 </PrivateComponent>
                 <PrivateComponent roleList="ESTUDIANTE">
                   <button className="w-1/3 h-7 filled-button" onClick={()=>{
