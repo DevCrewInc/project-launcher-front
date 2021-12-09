@@ -91,7 +91,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
                         <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                         <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </>    
-                        ) :(<></>)} */}   
+                        ) :(<></>)}   */}
                 </PrivateComponent>
             </td>
         </tr>
