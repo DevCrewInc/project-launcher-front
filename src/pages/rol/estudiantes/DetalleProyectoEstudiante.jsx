@@ -29,7 +29,7 @@ const DetalleProyectoEstudiante = () => {
                 
         <div>
         <div>
-            <div className = "flex">
+            <div className = "flex justify-between w-full">
                 <div>
                     <div className="flex justify-between">
                         <div className="flex flex-col">
@@ -52,16 +52,38 @@ const DetalleProyectoEstudiante = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="font-medium mt-12">
-                        <span className=" text-lg">TABS Objetivos Generales</span>
-                    </div>
+                    <div className="space-x-8 cursor-pointer">
+                        <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
+                        <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
+                     </div>
                     <div>
-                        <p className = "mt-6 text-sm"> 
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit harum, commodi ullam repellendus, 
-                            soluta labore eos placeat, fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
-                            explicabo id,fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
-                            explicabo id.
-                        </p>
+                        {tabs?(<>
+                            {data.Proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="GENERAL"){
+
+                                    return(
+                                    <h1>{objetivo.descripcion}</h1>
+                                    )
+                                }
+                                return null
+
+                            })}
+          
+                        </>):(
+                        <>
+
+                            {data.Proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="ESPECIFICO"){
+
+                                    return(
+                                    <h1>{objetivo.descripcion}</h1>
+                                    )
+                                }
+                                return null
+
+                            })}
+                        
+                        </>)}
                     </div>
                 </div> 
             </div>
