@@ -32,6 +32,7 @@ const ModalPerfil = ({icon}) => {
   }, [open]);
 
 
+
   return (
 
   

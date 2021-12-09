@@ -1,6 +1,5 @@
 import React from 'react'
 import fotoman from 'fotoman.jpeg'
-import Tabs from 'components/Tabs'
 import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom'
 import {getDetalleProyecto} from 'graphql/lider/queries'
@@ -29,7 +28,7 @@ const DetalleProyecto = () => {
     return(
         <>
         {data?(
-                
+
         <div>
         <div>
             <div className = "flex">
@@ -69,7 +68,7 @@ const DetalleProyecto = () => {
                 </div> 
             </div>
         </div>
-        <div className="w-full pl-16">
+        <div className="w-1/2 pl-16">
                 <div className ="flex justify-between">
                     <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
                       <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
@@ -93,7 +92,7 @@ const DetalleProyecto = () => {
                     <>
                     <div className="mt-4 overflow-y-auto h-52">
                         
-                     {  data.Proyecto.inscripciones.map((inscripcion)=>{
+                     {data.Proyecto.inscripciones.map((inscripcion)=>{
                          console.log("inscripcion", inscripcion)
                          if(inscripcion.estado === "ACEPTADA"){
                             return(
@@ -231,10 +230,10 @@ const TablaAvances=({avance})=>{
                     <td class="flex pr-4">
                         <ModalAvances avance={avance}/>
                         <i className = "fas fa-pen my-1 p-1 py-2 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                        <i className = "fas fa-trash my-1 pl-1 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                        <i className = "fas fa-trash my-1 pl-3 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </td>
                 </tr>
-                               
+
             </tbody>
         </>
     )
