@@ -19,15 +19,15 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
         <div>  
             <div>
-            <table className = "w-full table-auto mt-7">
+            <table className = "w-full table-fixed mt-7">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2" >Nombre</th>
-                        <th >Fecha Inicio</th>
-                        <th >Identificación</th>
+                        <th className="w-60 text-left pl-6" >Nombre</th>
+                        <th className="w-40" >Fecha Inicio</th>
+                        <th className="w-30">Identificación</th>
                         <th >Nombre Líder</th>
-                        <th >Fase</th>
-                        <th >Aceptar</th>
+                        <th className="w-30">Fase</th>
+                        <th className="w-8">Aceptar</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -55,9 +55,9 @@ const FilasTablaProyectos = ({proyecto}) =>{
     const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
-        <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
+        <tbody key={proyecto._id} className = "texto-tablas tbody-border ">  
         <tr key={proyecto._id}>
-            <td className="text-center">
+            <td className="text-left pl-4">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
@@ -72,7 +72,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
-            <td className = "text-center">
+            <td className = "px-4">
                 {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
                    <ModalDetalleProyecto proyecto={proyecto}/> 
                 )}
