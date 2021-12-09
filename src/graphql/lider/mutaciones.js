@@ -12,6 +12,15 @@ mutation CrearProyecto($nombre: String!, $presupuesto: Float!, $lider: String!, 
 }
 `
 
+const MutationEditarProyecto =gql`
+mutation EditarProyectoLider($_id: String!, $nombre: String!, $presupuesto: Float!, $objetivos: [crearObjetivo]!) {
+  editarProyectoLider(_id: $_id, nombre: $nombre, presupuesto: $presupuesto, objetivos: $objetivos) {
+  estadoProyecto  
+  }
+}
+`
+
+
 const MutationEditarEstadoInscripcion =gql`
 mutation  editarEstadoInscripcion($_id: ID!, $estado: Enum_EstadoInscripcion!) {
   editarEstadoInscripcion(_id: $_id, estado: $estado) {
@@ -29,4 +38,4 @@ mutation CrearObservacion($idAvance: String!, $observaciones: String!) {
 }
 `
 
-export {CrearProyecto, MutationEditarEstadoInscripcion, MutationCrearObservacion}
+export {CrearProyecto,  MutationEditarProyecto, MutationEditarEstadoInscripcion, MutationCrearObservacion}
