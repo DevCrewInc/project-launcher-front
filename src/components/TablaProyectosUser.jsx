@@ -23,7 +23,7 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
                         <th className="w-60 text-left pl-7">Nombre</th>
-                        <th className="w-60" >Fecha Inicio</th>
+                        <th  >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
                         <th >Fase</th>
