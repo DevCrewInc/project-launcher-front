@@ -39,6 +39,7 @@ query Usuario($_id: String!) {
             _id
             nombre
             fechaInicio
+            
             lider{
                 identificacion
                 nombre

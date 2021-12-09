@@ -46,6 +46,7 @@ const ModalcrearProyecto=()=> {
   const submitForm = async (e) => {
     e.preventDefault();
     await crearProyecto({variables: formData});
+    handleClose()
   }
 
 

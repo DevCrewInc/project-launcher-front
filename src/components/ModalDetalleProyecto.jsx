@@ -37,6 +37,7 @@ const ModalDetalleProyecto = ({proyecto}) => {
     }
   }, [open]);
 
+  const[tabs, setTabs]=useState(true)
   
 
   return (
@@ -90,12 +91,39 @@ const ModalDetalleProyecto = ({proyecto}) => {
           <div className="">
             <DialogContent>
                 <div className="space-x-8 cursor-pointer">
-                    <button className="tabs-modal">Objetivos generales</button>
-                    <button className="tabs-modal">Objetivos específicos</button>
+                    <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
+                    <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
                 </div>
             
                 <div className="pt-2 mt-4 flex-col h-20 text-left overflow-auto">
-                  {proyecto.objetivos.map((objetivo)=>{
+                {tabs?(<>
+                            {proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="GENERAL"){
+
+                                    return(
+                                    <h1 className = " text-sm">{objetivo.descripcion}</h1>
+                                    )
+                                }
+                                return null
+
+                            })}
+          
+                        </>):(
+                        <>
+
+                            {proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="ESPECIFICO"){
+
+                                    return(
+                                    <h1 className = "text-sm">{objetivo.descripcion}</h1>
+                                    )
+                                }
+                                return null
+
+                            })}
+                        
+                        </>)}
+                  {/* {proyecto.objetivos.map((objetivo)=>{
                     if(objetivo.tipo === "GENERAL"){
                       return(
                         <>
@@ -104,7 +132,7 @@ const ModalDetalleProyecto = ({proyecto}) => {
                         </>
                       )
                     } 
-                  })}
+                  })} */}
                  
                 </div>
 

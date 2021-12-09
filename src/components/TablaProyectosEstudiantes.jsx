@@ -10,6 +10,7 @@ const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
         pollInterval:200
     });
 
+    console.log("dataaaaaa", data)
     
 
     return (
