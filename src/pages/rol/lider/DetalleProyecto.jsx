@@ -56,9 +56,9 @@ const DetalleProyecto = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="font-medium mt-12 space-x-8 cursor-pointer">
-                        <button onClick={()=>{setTabs1(true)}} className="tabs-modal">Objetivos generales</button>
-                        <button onClick={()=>{setTabs1(false)}} className="tabs-modal">Objetivos específicos</button>
+                    <div className="font-medium mt-10 mb-7 space-x-8 cursor-pointer">
+                        <button onClick={()=>{setTabs1(true)}} className="tabs-modal text-lg">Objetivos generales</button>
+                        <button onClick={()=>{setTabs1(false)}} className="tabs-modal text-lg">Objetivos específicos</button>
                     </div>
                     <div>
                     {tabs1?(<>
