@@ -29,15 +29,15 @@ const DetalleProyectoEstudiante = () => {
                 
         <div>
         <div>
-        <div className = "flex justify-between">
-                <div>
+        <div className = "flex">
+                <div className="w-2/3">
                     <div className="flex justify-between">
                         <div className="flex flex-col">
                             <span className = "font-bold text-2xl">{data.Proyecto.nombre}</span>
                             <span className = "text-gray-300 text-lg ">{data.Proyecto._id}</span>
                         </div>
                         <div>
-                            <div className = "flex">
+                            <div className = "flex space-x-4">
                                 <button className = "status-button my-1 px-4">{data.Proyecto.estadoProyecto}</button>
                                 <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
                             </div>
@@ -55,7 +55,7 @@ const DetalleProyectoEstudiante = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="space-x-8 cursor-pointer font-medium mt-12 ">
+                    <div className="space-x-8 cursor-pointer w-100">
                         <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
                         <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
                      </div>
@@ -65,7 +65,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="GENERAL"){
 
                                     return(
-                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
+                                    <h1>{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
@@ -79,7 +79,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="ESPECIFICO"){
 
                                     return(
-                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
+                                    <h1>{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
@@ -92,8 +92,8 @@ const DetalleProyectoEstudiante = () => {
             </div>
         </div>
         <div className="pl-16">
-                <div className ="flex w-80 justify-between">
-                    <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
+                <div className ="flex w-80 justify-end">
+                    {/* <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress> */}
                       <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
                         <i class="fas fa-chevron-left"></i>
                     </button>

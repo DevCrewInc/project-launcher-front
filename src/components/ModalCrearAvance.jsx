@@ -49,7 +49,7 @@ const ModalCrearAvance=({proyectoId})=> {
 
   return (
     <div>
-      <button onClick={handleClickOpen('paper')} className=" button-avance rounded-full px-7 py-1 text-white   font-medium text-lg"><i className="self-center fas fa-plus mr-2"></i>Agregar Avances</button>
+      <button onClick={handleClickOpen('paper')} className=" button-avance rounded-full px-7 py-1 text-sm text-white  font-medium "><i className="self-center fas fa-plus mr-2"></i>Agregar Avance</button>
       
       <Dialog
         className= "bg-black bg-opacity-50"
