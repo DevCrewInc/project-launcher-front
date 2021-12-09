@@ -49,7 +49,7 @@ const DetalleProyecto = () => {
                         <i className = "date-budget fas fa-calculator"/>
                             <span className = "date-budget font-medium">$ {data.Proyecto.presupuesto}</span>
                     </div>
-            <div className = "flex ">
+            <div>
                 <div>
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
