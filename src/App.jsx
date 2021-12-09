@@ -19,6 +19,7 @@ import DetalleProyecto from 'pages/rol/lider/DetalleProyecto';
 import ListaTodosProyectos from 'pages/rol/admin/ListaTodosProyectos';
 import ListarProyectosEstudiantes from 'pages/rol/estudiantes/ListarProyectosEstudiantes';
 import ListarMisProyectosEstudiante from 'pages/rol/estudiantes/ListarMisProyectosEstudiante';
+import DetalleProyectoEstudiante from 'pages/rol/estudiantes/DetalleProyectoEstudiante';
 
 
 
@@ -57,6 +58,7 @@ function App() {
                 <Route path='page/lider/proyectos/detalle/:id' element={<DetalleProyecto/>} />   
                 <Route path='page/estudiantes/proyectos' element={<ListarProyectosEstudiantes />} />
                 <Route path='page/estudiantes/proyectos/misProyectos' element={<ListarMisProyectosEstudiante />} />
+                <Route path='page/estudiantes/proyectos/misProyectos/detalle/:id' element={<DetalleProyectoEstudiante/>} />
                 <Route path='page/dialogos' element={<Dialogos/>}/>
                
               </Route>

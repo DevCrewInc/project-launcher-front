@@ -21,6 +21,12 @@ mutation  editarEstadoInscripcion($_id: ID!, $estado: Enum_EstadoInscripcion!) {
 }
 `
 
+const MutationCrearObservacion =gql`
+mutation CrearObservacion($idAvance: String!, $observaciones: String!) {
+  crearObservacion(IdAvance: $idAvance, observaciones: $observaciones) {
+    observaciones
+  }
+}
+`
 
-
-export {CrearProyecto, MutationEditarEstadoInscripcion}
+export {CrearProyecto, MutationEditarEstadoInscripcion, MutationCrearObservacion}

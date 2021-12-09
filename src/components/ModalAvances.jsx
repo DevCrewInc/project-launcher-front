@@ -1,10 +1,15 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Avatar from '@mui/material/Avatar';
 import { Box} from '@mui/system';
+import { MutationCrearObservacion } from 'graphql/lider/mutaciones';
+import { useMutation } from '@apollo/client';
+import  {useState, useEffect } from 'react';
+import PrivateComponent from './private/PrivateComponents';
+
+
 
 
 
@@ -12,6 +17,20 @@ const ModalAvances=({avance})=>{
 
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
+
+
+  const [observaciones, setObservaciones] = useState({
+    idAvance: avance._id,
+    observaciones: avance.observaciones})
+
+  useEffect(() => {
+    if(observaciones.observaciones){
+      crearObservacion({variables: observaciones})
+    
+    }
+   
+  }, [observaciones]);
+ 
 
 
   const handleClickOpen = (scrollType) => () => {
@@ -33,6 +52,7 @@ const ModalAvances=({avance})=>{
     }
   }, [open]);
 
+  const[crearObservacion, {data: crearObservacionData,error: crearObservacionError,loading: crearObservacionLoading}]=useMutation( MutationCrearObservacion);
   
 
   return (
@@ -47,11 +67,12 @@ const ModalAvances=({avance})=>{
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       > 
+        <form >
         <DialogTitle id="scroll-dialog-title">
           <Box>
             <h1 className="mt-3 text-sm text-gray-300 font-normal">{avance._id}</h1>
             <div className="flex justify-between">
-            <input className="w-full rounded-sm" placeholder="Titulo de tu avance" type="text" id="fname" name=""></input>
+            <span className="w-full rounded-sm"  type="text" id="fname" name="">{avance.tituloAvance}</span>
               <i className="far fa-check-circle self-center text-gray-400 pl-3"></i>
             </div>
             
@@ -66,23 +87,38 @@ const ModalAvances=({avance})=>{
         </DialogTitle>
 
         <DialogContent dividers={scroll === 'paper'}>
-          <textarea className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder={avance.descripcion} id="w3review" name="w3review" rows="4" cols="75"></textarea>
+          <span className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" id="w3review" name="w3review" rows="4" cols="75">{avance.descripcion}</span>
           <div className="text-right">
-            <button className="w-1/6 h-7 filled-button mt-2">GUARDAR</button>
+            {/* <button className="w-1/6 h-7 filled-button mt-2">GUARDAR</button> */}
           </div>
         </DialogContent>
-
+     
         <div>
-          <DialogContent>
-            <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
-            <div className="pt-2 flex justify-between space-x-4">
-              <Avatar src=""></Avatar>
-              <textarea className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario" id="w3review" name="w3review" rows="2" cols="67"></textarea>
-            </div>
-          </DialogContent>
+          <PrivateComponent roleList={"LIDER"}>
+            <DialogContent>
+              <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
+              <div className="pt-2 flex justify-between space-x-4">
+                <Avatar src=""></Avatar>
+                <textarea onChange={(e) => setObservaciones( {idAvance: avance._id, observaciones:e.target.value})} required name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
+              </div>
+            </DialogContent>
+          </PrivateComponent>
+          <PrivateComponent roleList={"ESTUDIANTE"}>
+            <DialogContent>
+              <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
+              <div className="pt-2 flex justify-between space-x-4">
+                <Avatar src=""></Avatar>
+                <textarea name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
+              </div>
+            </DialogContent>
+          </PrivateComponent>
         </div>
+        </form>
       </Dialog>
+  
     </div>
+  
+
   );
 }
 
