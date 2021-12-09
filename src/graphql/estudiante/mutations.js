@@ -15,6 +15,13 @@ mutation CrearAvance($tituloAvance: String!, $descripcion: String!, $proyecto: S
   }
 }
 `
+const mutacionEditarAvance = gql`
+mutation editarAvance($_id: ID!, $tituloAvance: String!, $descripcion: String!) {
+  editarAvance(_id: $_id, tituloAvance: $tituloAvance, descripcion: $descripcion) {
+  descripcion  
+  }
+}
+`
  
 
- export {mutacionCrearInscripcion,mutacionCrearAvance}
+ export {mutacionCrearInscripcion,mutacionCrearAvance, mutacionEditarAvance}

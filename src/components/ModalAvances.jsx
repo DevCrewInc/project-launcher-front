@@ -70,7 +70,7 @@ const ModalAvances=({avance})=>{
         <form >
         <DialogTitle id="scroll-dialog-title">
           <Box>
-            <h1 className="mt-3 text-sm text-gray-300 font-normal">{avance._id}</h1>
+
             <div className="flex justify-between">
             <span className="w-full rounded-sm"  type="text" id="fname" name="">{avance.tituloAvance}</span>
               <i className="far fa-check-circle self-center text-gray-400 pl-3"></i>

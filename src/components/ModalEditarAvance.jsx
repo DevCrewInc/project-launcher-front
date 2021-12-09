@@ -5,17 +5,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box} from '@mui/system';
 import useFormData from 'hooks/useFormData';
 import { useMutation } from '@apollo/client';
-import { mutacionCrearAvance } from 'graphql/estudiante/mutations';
+import { mutacionEditarAvance } from 'graphql/estudiante/mutations';
 
 
 
 
-const ModalEditarAvance=({proyectoId, avance})=> {
+const ModalEditarAvance=({avance})=> {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
-  const[crearAvance, {data: dataAvance, error: errorAvance, loading: loadingAvance}]= useMutation(mutacionCrearAvance);
+  const[editarAvance, {data: editarAvanceData, error: editarAvanceError, loading: editarAvanceLoading}]= useMutation(mutacionEditarAvance);
 
   const{form, formData, updateFormData} = useFormData();
+  console.log("data edición",  formData)
 
 
   const handleClickOpen = (scrollType) => () => {
@@ -39,7 +40,7 @@ const ModalEditarAvance=({proyectoId, avance})=> {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    await crearAvance({variables: formData});
+    await editarAvance({variables: formData});
     handleClose()
 
   }
@@ -63,20 +64,19 @@ const ModalEditarAvance=({proyectoId, avance})=> {
           <Box>
           
             <div className="flex justify-between">
-            <input required name="tituloAvance"  className="w-full rounded-sm " placeholder="Titulo de tu avance" type="text" />
+            <input required name="tituloAvance"  className="w-full rounded-sm " placeholder={avance.tituloAvance} type="text" />
               <i className="far fa-check-circle self-center text-gray-400 pl-3"></i>
             </div>
             
             <div className="flex justify-between">
                 <h3 className="text-sm font-normal">{JSON.parse(localStorage.getItem('userData')).nombre}</h3>
-                <input name="creadoPor" className="hidden" value={JSON.parse(localStorage.getItem('userData'))._id}/>
-                <input name="proyecto" className="hidden" value={proyectoId}/>
+                <input name="_id" className="hidden" value={avance._id}/>
             </div>
           </Box>
         </DialogTitle>
 
         <DialogContent dividers={scroll === 'paper'}>
-          <textarea className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder="Descripción de tu avance" id="w3review" name="descripcion" rows="4" cols="75"></textarea>
+          <textarea className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" placeholder={avance.descripcion} id="w3review" name="descripcion" rows="4" cols="75"></textarea>
           <div className="text-right">
             <button type="submit" className="w-1/6 h-7 filled-button mt-2">GUARDAR</button>
           </div>
