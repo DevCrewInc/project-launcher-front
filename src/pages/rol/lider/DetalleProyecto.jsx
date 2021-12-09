@@ -22,6 +22,7 @@ const DetalleProyecto = () => {
     });
 
     const[tabs, setTabs]=useState(true)
+    const[tabs1, setTabs1]=useState(true)
     console.log("data", data)
 
     return(
@@ -48,21 +49,44 @@ const DetalleProyecto = () => {
                         <i className = "date-budget fas fa-calculator"/>
                             <span className = "date-budget font-medium">$ {data.Proyecto.presupuesto}</span>
                     </div>
-            <div className = "flex">
+            <div className = "flex ">
                 <div>
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="font-medium mt-12">
-                        <span className=" text-lg">TABS Objetivos Generales</span>
+                    <div className="font-medium mt-12 space-x-8 cursor-pointer">
+                        <button onClick={()=>{setTabs1(true)}} className="tabs-modal">Objetivos generales</button>
+                        <button onClick={()=>{setTabs1(false)}} className="tabs-modal">Objetivos específicos</button>
                     </div>
                     <div>
-                        <p className = "mt-6 text-sm"> 
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit harum, commodi ullam repellendus, 
-                            soluta labore eos placeat, fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
-                            explicabo id,fugiat nesciunt et rerum quis. Quam enim sint cupiditate iusto repellendus
-                            explicabo id.
-                        </p>
+                    {tabs1?(<>
+                            {data.Proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="GENERAL"){
+
+                                    return(
+                                    <p className = "mt-3 text-sm">{objetivo.descripcion}</p>
+                                    )
+                                }
+                                return null
+
+                            })}
+          
+                        </>):(
+                        <>
+
+                            {data.Proyecto.objetivos.map((objetivo)=>{
+                                if(objetivo.tipo==="ESPECIFICO"){
+
+                                    return(
+                                   
+                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
+                                    )
+                                }
+                                return null
+
+                            })}
+                        
+                        </>)}
                     </div>
                 </div> 
             </div>
