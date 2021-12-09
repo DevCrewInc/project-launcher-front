@@ -27,7 +27,7 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                         <th className="w-30">Identificación</th>
                         <th >Nombre Líder</th>
                         <th className="w-30">Fase</th>
-                        <th className="w-8">Aceptar</th>
+                        <th className="w-16">Aceptar</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
+                <span className ="">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
             <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
@@ -72,7 +72,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
             </td>
-            <td className = "px-4">
+            <td className="text-center">
                 {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
                    <ModalDetalleProyecto proyecto={proyecto}/> 
                 )}
