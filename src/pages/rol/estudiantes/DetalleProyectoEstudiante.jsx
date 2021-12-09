@@ -43,7 +43,6 @@ const DetalleProyectoEstudiante = () => {
                                 <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
                             </div>
                         </div>
-                        
                     </div>
                     <div className = "space-x-1 mt-8">
                         <i className = "date-budget fas fa-calendar-alt"/>
@@ -56,9 +55,9 @@ const DetalleProyectoEstudiante = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="space-x-8 cursor-pointer w-100 font-medium mt-12 ">
-                        <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
-                        <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
+                    <div className="font-medium mt-10 mb-7 space-x-8 cursor-pointer">
+                        <button onClick={()=>{setTabs(true)}} className="tabs-modal text-lg">Objetivos generales</button>
+                        <button onClick={()=>{setTabs(false)}} className="tabs-modal text-lg">Objetivos específicos</button>
                      </div>
                     <div>
                         {tabs?(<>
