@@ -85,7 +85,7 @@ const ModalPerfil = ({icon}) => {
         {tabs?(<>
           <div>
             <label className=" font-medium">Contraseña actual</label>
-            <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
+            <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
           </div>
           <div>
             <label className=" font-medium">Contraseña nueva</label>
@@ -150,7 +150,7 @@ const ModalPerfil = ({icon}) => {
        
           <div className="grid mt-8 col-span-3">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea className="pl-2 pt-2 text-sm rounded-sm bg-gray-100 input-perfil" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
           </div>
         </>)}
               <div>

@@ -256,7 +256,6 @@ progress::-webkit-progress-value {
 .tabs-modal:active{
   color: #A5143A;
   font-weight: 500;
-  padding-bottom: 6px;
   border-bottom: 2px solid;
   padding-bottom: 6px;
 }
@@ -335,12 +334,12 @@ progress::-webkit-progress-value {
 .tabs-perfil{
   font-size: 15px;
   color: #d0d0d0;
-  font-weight: 400;
+  font-weight: 500;
   padding: 6px;
   border-bottom: 2px solid white;
 }
 
-.tabs-perfil:hover{
+.tabs-perfil:hover {
   color: #A5143A;
   font-weight: 500;
   border-bottom: 2px solid;
