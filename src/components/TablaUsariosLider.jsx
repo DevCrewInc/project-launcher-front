@@ -24,9 +24,9 @@ const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
     return (
         <div >
                 <table className = "w-full table-auto mt-7">
-                        <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
+                        <thead className = "thead-color leading-10 text-sm texto-tablas border-1 text-center">
                             <tr>
-                                <th>Nombre Usuario</th>
+                                <th className="w-72 text-left pl-7">Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
                                 <th>Rol</th>
@@ -60,7 +60,7 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = " tbody-border text-sm text-gray-400">  
                     <tr >
-                        <td className="text-center w-18">
+                        <td className="w-72 text-left pl-7">
                             <span className="text-gray-600  bg-white" type="button" >{usuario.nombre}</span>
                         </td>
                         <td className="text-center p-2 w-14">

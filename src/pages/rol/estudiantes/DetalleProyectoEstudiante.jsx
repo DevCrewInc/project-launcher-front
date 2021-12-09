@@ -34,7 +34,7 @@ const DetalleProyectoEstudiante = () => {
                 <div className="w-2/3">
                     <div className="flex justify-between">
                         <div className="flex flex-col">
-                            <span className = "font-bold text-2xl">{data.Proyecto.nombre}</span>
+                            <span className = "font-bold text-2xl w-80">{data.Proyecto.nombre}</span>
                             <span className = "text-gray-300 text-lg ">{data.Proyecto._id}</span>
                         </div>
                         <div>

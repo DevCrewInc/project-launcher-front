@@ -2,20 +2,19 @@ import { useQuery, useMutation } from '@apollo/client';
 import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
-import { Link } from 'react-router-dom';
-import ModalEditarProyecto from './ModalEditarProyecto';
+import ModalDetalleProyecto from './ModalDetalleProyecto';
 
 
 
-const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
+
+const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
-        variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
+  
 
     
-
     return (
 
         <div>  
@@ -23,8 +22,8 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-auto mt-7">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-60 text-left pl-7">Nombre</th>
-                        <th  >Fecha Inicio</th>
+                        <th className="w-2" >Nombre</th>
+                        <th >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
                         <th >Fase</th>
@@ -56,12 +55,12 @@ const FilasTablaProyectos = ({proyecto}) =>{
     const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
-        <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400 texto-tablas">  
+        <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
         <tr key={proyecto._id}>
-            <td className="w-72 text-left pl-5">
+            <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
-            <td className="p-2 text-center">
+            <td className="p-2 flex justify-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
@@ -71,29 +70,31 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.nombre}</span>
             </td>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
+                {proyecto.faseProyecto==="DESARROLLO"?(
+                <>
+                        <select required onChange={(e) => {editarEstadoProyecto({variables: {_id: proyecto._id ,faseProyecto:e.target.value,estadoProyecto:proyecto.estadoProyecto}})}}  className="text-sm font-light bg-gray-100 rounded-lg h-7 pl-2" name="estado" defaultValue="">
+                                <option disabled type="String" value="">{proyecto.faseProyecto}</option>
+                                <option type="String">TERMINADO</option>
+                        </select>
+                </>):(
+                <>
+        
+                    <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
+                
+                </>)}
+               
             </td>
             <td className = "text-center">
-                {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
-                    <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
-                )}
+                <span className = "mx-1 my-1 px-2">{proyecto.estadoProyecto}</span>
+                   
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                <Link to={`/page/lider/proyectos/detalle/${proyecto._id}`}>
-                     <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> 
-                </Link>
-            
+                {/* <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> */}
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                    {proyecto.estadoProyecto==="INACTIVO"?(
-                    <>
-                        <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                    </>):(
-                    <>
-                    <ModalEditarProyecto proyecto={proyecto}/>
+                    <ModalDetalleProyecto proyecto={proyecto}/> 
+                    {/* <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/> */}
                     <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                    </>)}
-                    
                     
                 </PrivateComponent>
             </td>
@@ -102,4 +103,4 @@ const FilasTablaProyectos = ({proyecto}) =>{
     )
 }
 
-export default TablaProyectosUser;
+export default TablaNuevosProyectos;
