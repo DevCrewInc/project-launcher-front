@@ -30,14 +30,14 @@ const DetalleProyecto = () => {
 
         <div>
         <div>
-            <div className = "flex">
+            <div className = "flex justify-between">
                 <div>
                     <div className="flex justify-between">
                         <div className="flex flex-col">
                             <span className = "font-bold text-2xl">{data.Proyecto.nombre}</span>
                             <span className = "text-gray-300 text-lg ">{data.Proyecto._id}</span>
                         </div>
-                        <div className = "flex items-start space-x-10">
+                        <div className = "flex items-start space-x-10 justify-between">
                             <button className = "status-button my-1 px-4">{data.Proyecto.estadoProyecto}</button>
                             <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
                         </div>
@@ -188,7 +188,7 @@ const SolicitudesInscripciones =({inscripcion, botones})=>{
          <>
             <div>
                 <div>
-                    <div className = "cursor-pointer border-tripulantes flex items-center py-3">
+                    <div className = "cursor-pointer border-tripulantes flex items-center py-3 ">
                         <img src={fotoman} className = "rounded-full w-12 mr-4"/>
                 
                         <div className = "flex flex-col ">

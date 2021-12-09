@@ -31,7 +31,12 @@ const ModalPerfil = ({icon}) => {
     }
   }, [open]);
 
+  const [toggleState, setToggleState] = useState(1);
+    
+  const toggleTab = (index) => {
+      setToggleState(index);
 
+  }
 
   return (
 
@@ -75,12 +80,12 @@ const ModalPerfil = ({icon}) => {
                 </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
-                  <button className="tabs-perfil">Datos personales</button>
-                  <button className="tabs-perfil">Privacidad</button>
+                  <button onClick = {() => toggleTab(1)} className="tabs-perfil">Datos personales</button>
+                  <button onClick = {() => toggleTab(2)} className="tabs-perfil">Privacidad</button>
               </div>
             </Box>
           </DialogTitle>
-
+        
           <div className="m-7 mt-2 texto-perfil">
             <div className="grid grid-cols-3 gap-4">
               <div>
