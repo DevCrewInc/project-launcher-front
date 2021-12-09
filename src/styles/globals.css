@@ -115,16 +115,16 @@
 .tabs{
   font-size: 18px;
   border-bottom: 2px solid white;
+  font-weight: 500;
   color: #d0d0d0;
-  font-weight: 400;
   padding: 6px;
 }
 
 .tabs:hover{
   font-size: 18px;
+  font-weight: 500;
   border-bottom: 2px solid;
   color: #A5143A;
-  font-weight: 400;
   padding: 6px;
 }
 

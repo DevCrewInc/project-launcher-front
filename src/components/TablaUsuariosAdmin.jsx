@@ -23,10 +23,10 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
 
     return (
         <div >
-                <table className = "w-full table-fixed mt-5">
+                <table className = "w-full table-fixed mt-6">
                         <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                             <tr>
-                                <th className="text-left pl-4">Nombre Usuario</th>
+                                <th className="text-left pl-6">Nombre Usuario</th>
                                 <th>Perfil</th>
                                 <th>Documento</th>
                                 <th>Rol</th>
@@ -60,7 +60,7 @@ const FilasTablas = ({usuario})=>{
 
         <tbody className = "texto-tablas tbody-border text-gray-400">  
                     <tr >
-                        <td className="w-72 text-left pl-4">
+                        <td className="w-72 text-left pl-7">
                             <span className=" bg-white" type="button" >{usuario.nombre}</span>
                         </td>
                         <td className="p-2">
