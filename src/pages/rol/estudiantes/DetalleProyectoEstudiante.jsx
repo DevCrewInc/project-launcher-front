@@ -55,7 +55,7 @@ const DetalleProyectoEstudiante = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="space-x-8 cursor-pointer">
+                    <div className="space-x-8 cursor-pointer font-medium mt-12 ">
                         <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
                         <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
                      </div>
@@ -65,7 +65,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="GENERAL"){
 
                                     return(
-                                    <h1>{objetivo.descripcion}</h1>
+                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
@@ -79,7 +79,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="ESPECIFICO"){
 
                                     return(
-                                    <h1>{objetivo.descripcion}</h1>
+                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
