@@ -67,14 +67,14 @@ const DetalleProyecto = () => {
                 </div> 
             </div>
         </div>
-        <div className="w-1/2 pl-16">
-                <div className ="flex justify-between">
+        <div className=" pl-16">
+                <div className ="flex w-80 justify-between">
                     <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress>
-                      <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
+                    <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                 </div>
-            <div className = "flex flex-col w-80">
+            <div className = "flex flex-col">
                     <div className = "flex justify-between mt-10 text-lg">
                         <button onClick={()=>setTabs(true)}>Tripulantes</button>
                         <div className="flex">
