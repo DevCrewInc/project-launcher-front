@@ -55,7 +55,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
     const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
-        <tbody key={proyecto._id} className = "texto-tablas tbody-border ">  
+        <tbody key={proyecto._id} className = "texto-tablas tbody-border texto-tablas ">  
         <tr key={proyecto._id}>
             <td className="text-left pl-4">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis px-2">{proyecto.nombre}</span>
