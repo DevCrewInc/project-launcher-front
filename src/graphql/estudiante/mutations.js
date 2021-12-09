@@ -8,5 +8,13 @@ mutation Mutation($proyecto: String!, $estudiante: String!) {
     }
   }
  ` 
+const mutacionCrearAvance = gql`
+mutation CrearAvance($tituloAvance: String!, $descripcion: String!, $proyecto: String!, $creadoPor: String!) {
+  crearAvance(tituloAvance: $tituloAvance, descripcion: $descripcion, proyecto: $proyecto, creadoPor: $creadoPor) {
+    fecha
+  }
+}
+`
+ 
 
- export {mutacionCrearInscripcion}
+ export {mutacionCrearInscripcion,mutacionCrearAvance}

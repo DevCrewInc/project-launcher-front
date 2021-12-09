@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import {useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,11 +22,10 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
                         <th className="w-2" >Nombre</th>
-                        <th >Fecha Inicio</th>
-                        <th >Identificación</th>
                         <th >Nombre Líder</th>
-                        <th >Fase</th>
-                        <th >Estado</th>
+                        <th >Fase Proyecto</th>
+                        <th >Estado Proyecto</th>
+                        <th>Estado inscripcion</th>
                         <th >Acción</th>
                     </tr>
                 </thead>
@@ -33,7 +33,7 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
                 data.Usuario.inscripciones.map((inscripcion) => {
                     return(
                         <>
-                            <FilasTablaProyectos key={inscripcion._id}  proyecto={inscripcion.proyecto}/>
+                            <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>
                         </>
                     )
                 })}
@@ -44,7 +44,7 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
     )
 }
 
-const FilasTablaProyectos = ({proyecto}) =>{
+const FilasTablaProyectos = ({inscripcion}) =>{
 
 
    
@@ -53,31 +53,40 @@ const FilasTablaProyectos = ({proyecto}) =>{
     
 
     return(
-        <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400">  
-        <tr key={proyecto._id}>
+        <tbody  key={inscripcion.proyecto._id} className = "tbody-border text-sm text-gray-400">  
+        <tr key={inscripcion.proyecto._id}>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.nombre}</span>
             </td> 
-            <td className="p-2 flex justify-center">
+            {/* <td className="p-2 flex justify-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
-            </td>
-            <td className="text-center">
+            </td> */}
+            {/* <td className="text-center">
             <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
-            </td>
+            </td> */}
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.nombre}</span>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.lider.nombre}</span>
             </td>
+            
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center">
-                {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
-                    <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
+                {inscripcion.proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{inscripcion.proyecto.estadoProyecto}</span > : (
+                    <span className = "inactivo-button px-2 my-1">{inscripcion.proyecto.estadoProyecto}</span> 
                 )}
+            </td>
+            <td className="text-center">
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.estado}</span>
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/>
+                {inscripcion.estado==="PENDIENTE"|| inscripcion.estado==="RECHAZADA"?(<><i class="far fa-clock"></i>    </>):(<>
+                    <Link to={`/page/estudiantes/proyectos/misProyectos/detalle/${inscripcion.proyecto._id}`}>
+                         <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> 
+                    </Link>
+                </>)}
+
             </td>
         </tr>
     </tbody>

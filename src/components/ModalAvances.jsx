@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -8,6 +7,7 @@ import { Box} from '@mui/system';
 import { MutationCrearObservacion } from 'graphql/lider/mutaciones';
 import { useMutation } from '@apollo/client';
 import  {useState, useEffect } from 'react';
+import PrivateComponent from './private/PrivateComponents';
 
 
 
@@ -22,7 +22,6 @@ const ModalAvances=({avance})=>{
   const [observaciones, setObservaciones] = useState({
     idAvance: avance._id,
     observaciones: avance.observaciones})
-  console.log("ollllll",observaciones)
 
   useEffect(() => {
     if(observaciones.observaciones){
@@ -95,14 +94,24 @@ const ModalAvances=({avance})=>{
         </DialogContent>
      
         <div>
-    
-          <DialogContent>
-            <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
-            <div className="pt-2 flex justify-between space-x-4">
-              <Avatar src=""></Avatar>
-              <textarea onChange={(e) => setObservaciones( {idAvance: avance._id, observaciones:e.target.value})} required name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
-            </div>
-          </DialogContent>
+          <PrivateComponent roleList={"LIDER"}>
+            <DialogContent>
+              <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
+              <div className="pt-2 flex justify-between space-x-4">
+                <Avatar src=""></Avatar>
+                <textarea onChange={(e) => setObservaciones( {idAvance: avance._id, observaciones:e.target.value})} required name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
+              </div>
+            </DialogContent>
+          </PrivateComponent>
+          <PrivateComponent roleList={"ESTUDIANTE"}>
+            <DialogContent>
+              <span className="observaciones font-medium text-base text-gray-300">Observaciones</span>
+              <div className="pt-2 flex justify-between space-x-4">
+                <Avatar src=""></Avatar>
+                <textarea name="observaciones" value={observaciones.observaciones} type="text" className="pl-2 pt-2 mb-5 text-sm rounded-md bg-gray-100" placeholder="Escribe un comentario"  rows="2" cols="67">{avance.observaciones}</textarea>
+              </div>
+            </DialogContent>
+          </PrivateComponent>
         </div>
         </form>
       </Dialog>
