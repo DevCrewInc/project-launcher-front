@@ -3,6 +3,7 @@ import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 import { Link } from 'react-router-dom';
+import ModalEditarProyecto from './ModalEditarProyecto';
 
 
 
@@ -84,14 +85,16 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 </Link>
             
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                    <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                    <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                    {/* {proyecto.estadoProyecto === "ACTIVO" ? (
+                    {proyecto.estadoProyecto==="INACTIVO"?(
                     <>
-                        <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
                         <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
-                    </>    
-                        ) :(<></>)} */}   
+                    </>):(
+                    <>
+                    <ModalEditarProyecto proyecto={proyecto}/>
+                    <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                    </>)}
+                    
+                    
                 </PrivateComponent>
             </td>
         </tr>

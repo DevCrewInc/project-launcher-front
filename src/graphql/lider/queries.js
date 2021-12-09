@@ -31,12 +31,19 @@ const getProyectos =gql`
         _id
         nombre
         fechaInicio
+        presupuesto
+        descripcionProyecto
+       
         lider{
             identificacion
             nombre
         }
         faseProyecto
         estadoProyecto 
+        objetivos {
+          descripcion
+          tipo
+        }
     
     }
   }

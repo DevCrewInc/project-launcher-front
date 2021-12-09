@@ -7,7 +7,7 @@ import ModalDetalleProyecto from './ModalDetalleProyecto';
 
 
 
-const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
+const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
         pollInterval:200
@@ -84,17 +84,18 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 </>)}
                
             </td>
-                <td className = "text-center">
-                    {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
-                        <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
-                    )}
-                </td>
-            
+            <td className = "text-center">
+                <span className = "mx-1 my-1 px-2">{proyecto.estadoProyecto}</span>
+                   
+            </td>
 
             <td className = "flex justify-center items-center space-x-2">
                 {/* <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> */}
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+                    <ModalDetalleProyecto proyecto={proyecto}/> 
+                    {/* <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/> */}
                     <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
+                    
                 </PrivateComponent>
             </td>
         </tr>
@@ -102,6 +103,4 @@ const FilasTablaProyectos = ({proyecto}) =>{
     )
 }
 
-export default TablaProyectos;
-
-
+export default TablaNuevosProyectos;
