@@ -22,7 +22,7 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-fixed mt-6">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-60 text-left pl-6" >Nombre</th>
+                        <th className="w-40 text-left pl-6" >Nombre</th>
                         <th className="w-40" >Fecha Inicio</th>
                         <th className="w-30">Identificación</th>
                         <th >Nombre Líder</th>
@@ -58,7 +58,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
         <tbody key={proyecto._id} className = "texto-tablas tbody-border ">  
         <tr key={proyecto._id}>
             <td className="text-left pl-4">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
                 <span className ="">{proyecto.fechaInicio}</span>
