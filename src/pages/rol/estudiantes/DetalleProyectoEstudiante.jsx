@@ -36,10 +36,13 @@ const DetalleProyectoEstudiante = () => {
                             <span className = "font-bold text-2xl">{data.Proyecto.nombre}</span>
                             <span className = "text-gray-300 text-lg ">{data.Proyecto._id}</span>
                         </div>
-                        <div className = "flex items-start space-x-10">
-                            <button className = "status-button my-1 px-4">{data.Proyecto.estadoProyecto}</button>
-                            <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
+                        <div>
+                            <div className = "flex">
+                                <button className = "status-button my-1 px-4">{data.Proyecto.estadoProyecto}</button>
+                                <button className = "btn-estado-proyecto px-4 my-1">{data.Proyecto.faseProyecto}</button>
+                            </div>
                         </div>
+                        
                     </div>
                     <div className = "space-x-1 mt-8">
                         <i className = "date-budget fas fa-calendar-alt"/>
