@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import ModalAvances from 'components/ModalAvances';
 import ModalCrearAvance from 'components/ModalCrearAvance';
+import ModalEditarAvance from 'components/ModalEditarAvance';
 
 
 
@@ -54,7 +55,7 @@ const DetalleProyectoEstudiante = () => {
                     <p className = "text-sm text-justify mt-8">
                     {data.Proyecto.descripcionProyecto}
                     </p>
-                    <div className="space-x-8 cursor-pointer w-100">
+                    <div className="space-x-8 cursor-pointer w-100 font-medium mt-12 ">
                         <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
                         <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
                      </div>
@@ -64,7 +65,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="GENERAL"){
 
                                     return(
-                                    <h1>{objetivo.descripcion}</h1>
+                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
@@ -78,7 +79,7 @@ const DetalleProyectoEstudiante = () => {
                                 if(objetivo.tipo==="ESPECIFICO"){
 
                                     return(
-                                    <h1>{objetivo.descripcion}</h1>
+                                    <h1 className = "mt-3 text-sm">{objetivo.descripcion}</h1>
                                     )
                                 }
                                 return null
@@ -194,7 +195,7 @@ const TablaAvances=({avance})=>{
                     <td>{avance.creadoPor.nombre}</td>
                     <td className="flex pr-4 justify-center">
                         <ModalAvances avance={avance}/>
-                        <i className = "fas fa-pen my-1 p-1 py-2 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
+                        <ModalEditarAvance avance={avance}/>
                         <i className = "fas fa-trash my-1 pl-1 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </td>
                 </tr>
