@@ -12,7 +12,14 @@ mutation eliminarUsuario(
     nombre
     }
 }
+`
 
-`;
+const EditarUsuario = gql`
+mutation EditarUsuario($_id: String!, $aboutMe: String, $celular: String) {
+  editarUsuario(_id: $_id, aboutMe: $aboutMe, celular: $celular) {
+    _id
+  }
+}
+`
 
-export {borrarUsuario}
+export {borrarUsuario,EditarUsuario}
