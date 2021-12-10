@@ -7,7 +7,7 @@ import ModalDetalleProyecto from './ModalDetalleProyecto';
 const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
 
     const{data,error,loading} = useQuery(propsTablasProyectos,{
-        // pollInterval:200
+         pollInterval:200
     });
 
     console.log("dataaaaaa", data)
