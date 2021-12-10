@@ -4,21 +4,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useState, useEffect, useRef } from 'react';
-import { useMutation,useQuery } from '@apollo/client';
-import { EditarUsuario } from 'graphql/mutations';
-import { UsuarioInformacion } from 'graphql/queries';
 
 
 
 const ModalPerfil = ({icon}) => {
-  
-  const{data,error,loading} = useQuery(UsuarioInformacion ,{
-    variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
-    pollInterval:200
-})
-
-
-  const[editarUsuario, {data: dataEditarUsuario, error: errorEditarUsuario, loading: loadingEditarUsuario}]= useMutation(EditarUsuario);
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -46,10 +35,9 @@ const ModalPerfil = ({icon}) => {
 
 
   return (
-<>
-    {data?(
-      <>
-         <div >
+  
+    
+    <div >
       
       <div onClick={handleClickOpen('paper')} className="cursor-pointer text-white mr-4 flex items-center pl-4 py-1 ml-4 mb-3 text-sm rounded-3xl sidebar-route-disable">
           <svg width="17" height="20" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,9 +64,9 @@ const ModalPerfil = ({icon}) => {
                 <div className="flex items-center ">
                   <img className="rounded-full h-20" src={fotoman}/>
                   <div className="ml-6">
-                    <h1 className="id-perfil text-gray-300 font-normal">{data.UsuarioInfo._id}</h1>
-                    <h1 className="nombre-perfil font-semidold"> {data.UsuarioInfo.nombre}</h1>
-                    <h1 className="rol-perfil font-normal"> {data.UsuarioInfo.rol}</h1>
+                    <h1 className="id-perfil text-gray-300 font-normal">{JSON.parse(localStorage.getItem('userData'))._id}</h1>
+                    <h1 className="nombre-perfil font-semidold"> {JSON.parse(localStorage.getItem('userData')).nombre}</h1>
+                    <h1 className="rol-perfil font-normal"> {JSON.parse(localStorage.getItem('userData')).rol}</h1>
                   </div>
                 </div>
                 {/* <div className="space-x-4 flex">
@@ -87,8 +75,12 @@ const ModalPerfil = ({icon}) => {
                 </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
-                  <button onClick={()=>{setTabs(false)}} className="tabs-perfil">Datos personales</button>
-                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil">Privacidad</button>
+                  <button onClick={()=>{setTabs(false)}} className={({ isActive }) =>
+                  isActive
+                    ?"tabs-perfil-active"
+                    :"tabs-perfil-disable"}
+                    >Datos personales</button>
+                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil-disable">Privacidad</button>
               </div>
             </Box>
           </DialogTitle>
@@ -106,21 +98,21 @@ const ModalPerfil = ({icon}) => {
         </>):(<>
           <div>
                 <label className=" font-medium">Documento</label>
-                <h1 className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil">{data.UsuarioInfo.identificacion}</h1>
+                <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <h1 className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil">{data.UsuarioInfo.correo} </h1>
+                <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
               </div>
               <div>
                 <label className=" font-medium">Celular</label>
-                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className=" text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={data.UsuarioInfo.celular}/>
+                <input className=" text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={JSON.parse(localStorage.getItem('userData')).celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
               <div className="col-span-2">
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil" name="facultad" defaultValue={data.UsuarioInfo.facultad}>
+                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil" name="facultad" defaultValue={JSON.parse(localStorage.getItem('userData')).facultad}>
                   <option disabled type="String" value="">Facultad</option>
                   <option type="String">ARTES</option>
                   <option type="String">CIENCIAS_AGRARIAS</option>
@@ -141,7 +133,7 @@ const ModalPerfil = ({icon}) => {
        
               <div>
                   <label className=" font-medium">Semestre</label>
-                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" name="semestre" defaultValue={data.UsuarioInfo.semestre}>
+                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" name="semestre" defaultValue={JSON.parse(localStorage.getItem('userData')).semestre}>
                     <option disabled type="String" value="">Semestre</option>
                     <option type="String">PRIMERO</option>
                     <option type="String">SEGUNDO</option>
@@ -162,7 +154,7 @@ const ModalPerfil = ({icon}) => {
        
           <div className="grid mt-8 col-span-3">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" placeholder="Escribe acerca de ti" id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
           </div>
         </>)}
               <div>
@@ -174,13 +166,6 @@ const ModalPerfil = ({icon}) => {
       </form>
       
     </div>
-      
-      </>):(<></>)}
-
-</>
-  
-    
- 
   );
 }
 

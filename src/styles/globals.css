@@ -332,7 +332,15 @@ progress::-webkit-progress-value {
   border-radius: 6px;
 }
 
-.tabs-perfil{
+.tabs-perfil-active{
+  font-size: 15px;
+  color: #A5143A;
+  font-weight: 500;
+  padding: 6px;
+  border-bottom: 2px solid ;
+}
+
+.tabs-perfil-disable{
   font-size: 15px;
   color: #d0d0d0;
   font-weight: 500;
@@ -340,18 +348,21 @@ progress::-webkit-progress-value {
   border-bottom: 2px solid white;
 }
 
-.tabs-perfil:hover {
+.tabs-perfil-active:hover {
   color: #A5143A;
   font-weight: 500;
-  border-bottom: 2px solid;
+  border-bottom: 2px solid ;
   padding: 6px;
 }
 
-.tabs-perfil:active{
+.tabs-perfil-disable:hover{
+  font-size: 15px;
   color: #A5143A;
   font-weight: 500;
   padding: 6px;
+  border-bottom: 2px solid ;
 }
+
 
 .texto-perfil{
   font-size:13px;
