@@ -56,4 +56,6 @@ query Usuario($_id: String!) {
 
 
 
+
+
 export{getListaProyectosEstudiantes,MisProyectosInscritos}
