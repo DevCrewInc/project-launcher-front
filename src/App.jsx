@@ -7,7 +7,6 @@ import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
 // import ListaUsuarios from 'pages/ListaUsuarios';
 import 'styles/globals.css';
 import Dialogos from 'pages/Dialogos'
-
 import ListaNuevosProyectos from 'pages/rol/admin/ListaNuevosProyectos'
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
@@ -20,6 +19,7 @@ import ListaTodosProyectos from 'pages/rol/admin/ListaTodosProyectos';
 import ListarProyectosEstudiantes from 'pages/rol/estudiantes/ListarProyectosEstudiantes';
 import ListarMisProyectosEstudiante from 'pages/rol/estudiantes/ListarMisProyectosEstudiante';
 import DetalleProyectoEstudiante from 'pages/rol/estudiantes/DetalleProyectoEstudiante';
+import PrivateRoute from 'components/private/PrivateRoute';
 
 
 
@@ -47,18 +47,25 @@ function App() {
             <Routes>
                 <Route path='/' element={<Login/>} />
                 <Route path='/registro' element={<Registro/>} />
+                
               <Route path='/' element={<PrivateLayout/>}>
-                <Route path='page/dialogos' element={<Dialogos/>}/>
-                <Route path='page/administracion/nuevosProyectos' element={<ListaNuevosProyectos />}/>
-                <Route path='page/administracion' element={<Administracion />} />
-                <Route path='page/usuarios' element={<ListaUsuarios />} />
-                <Route path='page/proyectosAdmin' element={<ListaTodosProyectos />}/>
-                <Route path='page/lider/estudiantes' element={<ListaEstudiantes />} />
-                <Route path='page/lider/proyectos' element={<ListaProyectosLider   />} />
-                <Route path='page/lider/proyectos/detalle/:id' element={<DetalleProyecto/>} />   
-                <Route path='page/estudiantes/proyectos' element={<ListarProyectosEstudiantes />} />
-                <Route path='page/estudiantes/proyectos/misProyectos' element={<ListarMisProyectosEstudiante />} />
-                <Route path='page/estudiantes/proyectos/misProyectos/detalle/:id' element={<DetalleProyectoEstudiante/>} />
+               {/* ADMINISTRADOR */}
+                <Route path='page/administracion' element={<PrivateRoute roleList={['ADMINISTRADOR']}><Administracion />  </PrivateRoute>} />
+                <Route path='page/usuarios' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaUsuarios /></PrivateRoute>} />
+                <Route path='page/proyectosAdmin' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaTodosProyectos /></PrivateRoute>}/>
+                <Route path='page/administracion/nuevosProyectos' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaNuevosProyectos /></PrivateRoute>}/>
+
+                {/* LÍDER */}
+                <Route path='page/lider/estudiantes' element={<PrivateRoute roleList={['LIDER']}><ListaEstudiantes /></PrivateRoute>} />
+                <Route path='page/lider/proyectos' element={<PrivateRoute roleList={['LIDER']}><ListaProyectosLider/></PrivateRoute>} />
+                <Route path='page/lider/proyectos/detalle/:id' element={<PrivateRoute roleList={['LIDER']}><DetalleProyecto/></PrivateRoute>} />
+
+                 {/* ESTUDIANTE */}
+                <Route path='page/estudiantes/proyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarProyectosEstudiantes /></PrivateRoute>} />
+                <Route path='page/estudiantes/proyectos/misProyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarMisProyectosEstudiante /></PrivateRoute>} />
+                <Route path='page/estudiantes/proyectos/misProyectos/detalle/:id' element={<PrivateRoute roleList={['ESTUDIANTE']}><DetalleProyectoEstudiante/></PrivateRoute>} />
+                
+                
                 <Route path='page/dialogos' element={<Dialogos/>}/>
                
               </Route>
