@@ -91,9 +91,20 @@ const ModalDetalleProyecto = ({proyecto}) => {
           <div className="">
             <DialogContent>
                 <div className="space-x-8 cursor-pointer">
-                    <button onClick={()=>{setTabs(true)}} className="tabs-modal">Objetivos generales</button>
-                    <button onClick={()=>{setTabs(false)}} className="tabs-modal">Objetivos específicos</button>
+                  {tabs?(
+                  <>
+                    <button onClick={()=>{setTabs(true)}} className="tabs-perfil-active">Objetivos generales</button>
+                    <button onClick={()=>{setTabs(false)}} className="tabs-perfil-disable">Objetivos específicos</button>
+                  
+
+                  </>):(<>
+                    <button onClick={()=>{setTabs(true)}} className="tabs-perfil-disable">Objetivos generales</button>
+                    <button onClick={()=>{setTabs(false)}} className="tabs-perfil-active">Objetivos específicos</button>
+                  </>)}
                 </div>
+
+                
+                
             
                 <div className="pt-2 mt-4 flex-col h-20 text-left overflow-auto">
                 {tabs?(<>

@@ -44,6 +44,10 @@ const getProyectos =gql`
           descripcion
           tipo
         }
+        inscripciones {
+        _id
+        estado
+      }
     
     }
   }

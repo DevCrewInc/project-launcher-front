@@ -3,8 +3,8 @@ import eliminarUsuario from project-launcher-front/src/components/componentesPar
 
 describe ('Probando botón eliminar usuario', () => {
     it('Usuario eliminado', ()=>{
-        const usuarioEliminado = eliminarUsuario({variables: {_id: usuario._id} })
-        expect (usuarioEliminado).toEqual({variables: {_id: usuario._id} })
+        const usuarioEliminado = eliminarUsuario({variables: {_id: usuario._id}})
+        expect (usuarioEliminado).toEqual({variables: {_id: usuario._id}})
 
     })
 })

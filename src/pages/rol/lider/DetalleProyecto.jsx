@@ -62,10 +62,20 @@ const DetalleProyecto = () => {
                     {data.Proyecto.descripcionProyecto}
                     </p>
                     <div className="font-medium mt-10 mb-7 space-x-8 cursor-pointer">
-                        <button onClick={()=>{setTabs1(true)}} className="tabs-modal text-lg">Objetivos generales</button>
-                        <button onClick={()=>{setTabs1(false)}} className="tabs-modal text-lg">Objetivos específicos</button>
+                        {tabs1?(
+                        <>
+                            <button onClick={()=>{setTabs1(true)}} className="tabs-perfil-active">Objetivos generales</button>
+                            <button onClick={()=>{setTabs1(false)}} className="tabs-perfil-disable">Objetivos específicos</button>
+
+                        </>):(<>
+                            <button onClick={()=>{setTabs1(true)}} className="tabs-perfil-disable">Objetivos generales</button>
+                            <button onClick={()=>{setTabs1(false)}} className=" tabs-perfil-active">Objetivos específicos</button>
+
+                        </>)}
                     </div>
                     <div>
+                    
+
                     {tabs1?(<>
                             {data.Proyecto.objetivos.map((objetivo)=>{
                                 if(objetivo.tipo==="GENERAL"){
@@ -107,15 +117,29 @@ const DetalleProyecto = () => {
                 </div>
             <div className = "flex flex-col">
                     <div className = "flex justify-between mt-10 text-lg">
-                        <button onClick={()=>setTabs(true)}>Tripulantes</button>
-                        <div className="flex">
-                            <button onClick={()=>setTabs(false)} className="text-gray-400 hover:text-blue-700 hover:shado">Solicitudes</button>
-                            <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">1</div>
-                        </div>
-                        
+                        {tabs?(
+                        <>
+                            <button onClick={()=>{setTabs(true)}}>Tripulantes</button>
+                            <div className="flex">
+                                <button onClick={()=>{setTabs(false)}} className="text-gray-400 hover:text-blue-700 ">Solicitudes</button>
+                                {data.Proyecto.inscripciones.filter(p => p.estado === "PENDIENTE").length === 0 ? null:
+                                <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">{data.Proyecto.inscripciones.filter(p => p.estado === "PENDIENTE").length}</div>
+                                }
+                                
+                            </div>
+
+                        </>):(<>
+                            <button onClick={()=>{setTabs(true)}} className="text-gray-400">Tripulantes</button>
+                            <div className="flex">
+                                <button onClick={()=>{setTabs(false)}} className="text-blue-700">Solicitudes</button>
+                                {data.Proyecto.inscripciones.filter(p => p.estado === "PENDIENTE").length === 0 ? null:
+                                <div className="h-6 w-6 rounded-full bg-blue-700 text-white text-center text-xs p-1 mb-6 ml-1">{data.Proyecto.inscripciones.filter(p => p.estado === "PENDIENTE").length}</div>
+                                }
+                            </div>
+                        </>)}
 
                     </div>
-               
+
                     {/* TRIPULANTES */}
 
                  {tabs? (

@@ -13,8 +13,8 @@ import ModalEditarAvance from 'components/ModalEditarAvance';
 
 const DetalleProyectoEstudiante = () => {
     const navigate = useNavigate();
-
     const {id} = useParams();
+    const[tabs, setTabs]=useState(true)
 
    
     const{data,error,loading} = useQuery(getDetalleProyecto,{
@@ -22,7 +22,7 @@ const DetalleProyectoEstudiante = () => {
         pollInterval:200
     });
 
-    const[tabs, setTabs]=useState(true)
+   
 
     return(
         <>
@@ -56,10 +56,21 @@ const DetalleProyectoEstudiante = () => {
                     {data.Proyecto.descripcionProyecto}
                     </p>
                     <div className="font-medium mt-10 mb-7 space-x-8 cursor-pointer">
-                        <button onClick={()=>{setTabs(true)}} className="tabs-modal text-lg">Objetivos generales</button>
-                        <button onClick={()=>{setTabs(false)}} className="tabs-modal text-lg">Objetivos específicos</button>
-                     </div>
+                        {tabs?(
+                        <>
+                            <button onClick={()=>{setTabs(true)}} className="tabs-perfil-active">Objetivos generales</button>
+                            <button onClick={()=>{setTabs(false)}} className="tabs-perfil-disable">Objetivos específicos</button>
+
+                        </>):(<>
+                            <button onClick={()=>{setTabs(true)}} className="tabs-perfil-disable">Objetivos generales</button>
+                            <button onClick={()=>{setTabs(false)}} className=" tabs-perfil-active">Objetivos específicos</button>
+
+                        </>)}
+                        
+                    </div>
                     <div>
+                        
+                
                         {tabs?(<>
                             {data.Proyecto.objetivos.map((objetivo)=>{
                                 if(objetivo.tipo==="GENERAL"){
@@ -199,7 +210,6 @@ const TablaAvances=({avance})=>{
                         <i className = "fas fa-trash my-1 pl-1 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     </td>
                 </tr>
-                               
             </tbody>
         </>
     )

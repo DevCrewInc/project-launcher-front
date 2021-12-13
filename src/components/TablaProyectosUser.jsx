@@ -24,9 +24,9 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
                         <th className="w-60 text-left pl-7">Nombre</th>
-                        <th  >Fecha Inicio</th>
-                        <th >Identificación</th>
-                        <th >Nombre Líder</th>
+                        <th >Fecha Inicio</th>
+                        <th >Tripulantes</th>
+                        <th >Solicitudes</th>
                         <th >Fase</th>
                         <th >Estado</th>
                         <th >Acción</th>
@@ -65,10 +65,10 @@ const FilasTablaProyectos = ({proyecto}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
             </td>
             <td className="text-center">
-            <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
+            <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.inscripciones.filter(p => p.estado === "ACEPTADA").length}</span>
             </td>
             <td className="text-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.nombre}</span>
+                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.inscripciones.filter(p => p.estado === "PENDIENTE").length}</span>
             </td>
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.faseProyecto}</span>
