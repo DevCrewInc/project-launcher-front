@@ -22,6 +22,7 @@ const ModalPerfil = ({icon}) => {
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
+  const [tabs, setTabs]=useState(false);
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -41,8 +42,6 @@ const ModalPerfil = ({icon}) => {
       }
     }
   }, [open]);
-    
-  const[tabs, setTabs]=useState(false)
 
 
   return (
@@ -87,12 +86,17 @@ const ModalPerfil = ({icon}) => {
                 </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
-                  <button onClick={()=>{setTabs(false)}} className={({ isActive }) =>
-                  isActive
-                    ?"tabs-perfil-active"
-                    :"tabs-perfil-disable"}
-                    >Datos personales</button>
+                {tabs?(
+                <>
+                  <button onClick={()=>{setTabs(false)}} className="tabs-perfil-disable">Datos personales</button>
+                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil-active">Privacidad</button>
+
+                </>):(<>
+                  <button onClick={()=>{setTabs(false)}} className=" tabs-perfil-active">Datos personales</button>
                   <button onClick={()=>{setTabs(true)}} className="tabs-perfil-disable">Privacidad</button>
+
+                </>)}
+                
               </div>
             </Box>
           </DialogTitle>
