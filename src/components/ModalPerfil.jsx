@@ -22,6 +22,7 @@ const ModalPerfil = ({icon}) => {
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
+  const [tabs, setTabs]=useState(false);
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -41,8 +42,6 @@ const ModalPerfil = ({icon}) => {
       }
     }
   }, [open]);
-    
-  const[tabs, setTabs]=useState(false)
 
 
   return (
@@ -87,8 +86,17 @@ const ModalPerfil = ({icon}) => {
                 </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
-                  <button onClick={()=>{setTabs(false)}} className="tabs-perfil">Datos personales</button>
-                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil">Privacidad</button>
+                {tabs?(
+                <>
+                  <button onClick={()=>{setTabs(false)}} className="tabs-perfil-disable">Datos personales</button>
+                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil-active">Privacidad</button>
+
+                </>):(<>
+                  <button onClick={()=>{setTabs(false)}} className=" tabs-perfil-active">Datos personales</button>
+                  <button onClick={()=>{setTabs(true)}} className="tabs-perfil-disable">Privacidad</button>
+
+                </>)}
+                
               </div>
             </Box>
           </DialogTitle>
@@ -106,15 +114,15 @@ const ModalPerfil = ({icon}) => {
         </>):(<>
           <div>
                 <label className=" font-medium">Documento</label>
-                <h1 className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil">{data.UsuarioInfo.identificacion}</h1>
+                <h1 className="text-sm py-1 pl-2 w-full font-light rounded-sm h-7 input-perfil">{data.UsuarioInfo.identificacion}</h1>
               </div>
               <div>
                 <label className=" font-medium">Email</label>
-                <h1 className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil">{data.UsuarioInfo.correo} </h1>
+                <h1 className="text-sm py-1 pl-2 w-full font-light rounded-sm h-7 input-perfil overflow-hidden whitespace-nowrap overflow-ellipsis">{data.UsuarioInfo.correo} </h1>
               </div>
               <div>
-                <label className=" font-medium">Celular</label>
-                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className=" text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={data.UsuarioInfo.celular}/>
+                <label className="font-medium">Celular</label>
+                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className="text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={data.UsuarioInfo.celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>

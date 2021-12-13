@@ -5,7 +5,7 @@ const Tabs = ({tabs}) => {
     return (
         <>
 
-            <div  className="my-4 space-x-2 mt-6 flex " > 
+            <div className="my-4 space-x-2 mt-6 flex " > 
                 {tabs.map((tab)=>{
 
                     return(
