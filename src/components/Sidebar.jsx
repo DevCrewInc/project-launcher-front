@@ -124,7 +124,7 @@ const SidebarRoute = ({ to, title, icon }) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route  sidebar-route-active text-white '
+            ? 'sidebar-route sidebar-route-active text-white '
             : 'sidebar-route sidebar-route-disable  text-white hover:text-white '
         }
       >

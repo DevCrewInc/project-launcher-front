@@ -1,6 +1,9 @@
 import React from 'react'
+import { useConsulta } from 'context/ConsultaContext'
 
 const UpperBar = ({icon , title}) => {
+const {setBusqueda}= useConsulta();
+
     return (
         <>
             <div className="space-x-3 flex w-full self-center">
@@ -14,7 +17,7 @@ const UpperBar = ({icon , title}) => {
                     <div className= "button-search bg-white border border-gray-500 rounded-full">
                         <div className= "flex">
                             <i className="icon-search fas fa-search text-gray-900 self-center"></i>
-                            <input className= "outline-none w-30 h-10 rounded-full pl-3" type="text" placeholder="hola"/>
+                            <input className= "outline-none w-64 h-10 rounded-full pl-3 hover:bg-gray-100" type="text" onChange={(e)=>{setBusqueda(e.target.value.toLowerCase())}}/>
                         </div>
                         
                     </div>

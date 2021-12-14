@@ -22,7 +22,7 @@ const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
             <table className = "w-full table-auto mt-2">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2 pl-3" >Nombre</th>
+                        <th className="w-72 text-left pl-7" >Nombre</th>
                         <th >Fecha Inicio</th>
                         <th >Identificación</th>
                         <th >Nombre Líder</th>
@@ -47,7 +47,6 @@ const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
 }
 
 const FilasTablaProyectos = ({proyecto}) =>{
-    const [tamaño,setTamaño]=useState([])
 
     
     return(
@@ -55,8 +54,8 @@ const FilasTablaProyectos = ({proyecto}) =>{
         {proyecto.inscripciones.length===0?(
         <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
         <tr key={proyecto._id}>
-            <td className="text-center py-2">
-                <span className =" whitespace-nowrap  w-14 px-2">{proyecto.nombre}</span>
+            <td className="text-left py-2">
+                <span className ="whitespace-nowrap w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="text-center">
                 <span className =" whitespace-nowrap  w-14 px-2">{proyecto.fechaInicio}</span>
@@ -87,7 +86,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
             <>
                     <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
                     <tr key={proyecto._id}>
-                    <td className="text-center py-2">
+                    <td className="text-left py-2 pl-5">
                         <span className =" whitespace-nowrap  w-14 px-2">{proyecto.nombre}</span>
                     </td> 
                     <td className="text-center">

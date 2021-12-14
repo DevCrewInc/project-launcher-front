@@ -35,14 +35,14 @@ const client = new ApolloClient({
 })
 
 function App() {
-  const [consulta, setConsulta] = useState(true);
+  const [busqueda, setBusqueda] = useState("");
   
-  
+ 
 
 
   return (
     <ApolloProvider client = {client}>
-        <ConsultaContext.Provider value={{consulta, setConsulta}}>
+        <ConsultaContext.Provider value={{busqueda, setBusqueda}}>
           <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login/>} />

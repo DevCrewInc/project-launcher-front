@@ -24,11 +24,11 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                     <tr>
                         <th className="w-80 text-left pl-6" >Nombre</th>
                         <th className="w-40" >Fecha Inicio</th>
-                        <th className="w-30">Identificación</th>
-                        <th >Nombre Líder</th>
+                        <th className="w-30">Id Líder</th>
+                        <th>Nombre Líder</th>
                         <th className="w-30">Fase</th>
-                        <th className="w-16">estado</th>
-                        <th >Acción</th>
+                        <th className="w-16">Estado</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 {data &&
