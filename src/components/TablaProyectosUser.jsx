@@ -20,7 +20,7 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 
         <div>  
             <div>
-            <table className = "w-full table-auto mt-7">
+            <table className = "w-full table-auto mt-6">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
                         <th className="w-60 text-left pl-7">Nombre</th>
@@ -50,13 +50,11 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 const FilasTablaProyectos = ({proyecto}) =>{
 
 
-   
-
 
     const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
-        <tbody  key={proyecto._id} className = "tbody-border text-sm text-gray-400 texto-tablas">  
+        <tbody  key={proyecto._id} className ="tbody-border text-sm text-gray-400 texto-tablas">  
         <tr key={proyecto._id}>
             <td className="w-72 text-left pl-5">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>

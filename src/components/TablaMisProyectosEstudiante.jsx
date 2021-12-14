@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-
+import { useConsulta } from 'context/ConsultaContext';
 
 
 const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
@@ -11,7 +11,7 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
         pollInterval:200
     });
 
-
+    const{busqueda} = useConsulta();
     
 
     return (
@@ -31,11 +31,19 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
                 </thead>
                 {data &&
                 data.Usuario.inscripciones.map((inscripcion) => {
+                    // if(inscripcion.proyecto.nombre.toLowerCase().includes(busqueda)){
+                    //     return(
+                    //         <>
+                    //             <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>
+                    //         </>
+                    //     )
+                    // }
                     return(
                         <>
                             <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>
                         </>
                     )
+                    
                 })}
                 
             </table>
@@ -53,9 +61,9 @@ const FilasTablaProyectos = ({inscripcion}) =>{
     
 
     return(
-        <tbody  key={inscripcion.proyecto._id} className = "tbody-border text-sm text-gray-400">  
+        <tbody  key={inscripcion.proyecto._id} className = "tbody-border text-sm texto-tablas">  
         <tr key={inscripcion.proyecto._id}>
-            <td className="w-72 text-left pl-5">
+            <td className="w-72 text-left pl-5 pt-3">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.nombre}</span>
             </td> 
             {/* <td className="p-2 flex justify-center">
@@ -71,7 +79,7 @@ const FilasTablaProyectos = ({inscripcion}) =>{
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.faseProyecto}</span>
             </td>
-            <td className = "text-center">
+            <td className = "text-center ">
                 {inscripcion.proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{inscripcion.proyecto.estadoProyecto}</span > : (
                     <span className = "inactivo-button px-2 my-1">{inscripcion.proyecto.estadoProyecto}</span> 
                 )}
@@ -81,7 +89,7 @@ const FilasTablaProyectos = ({inscripcion}) =>{
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                {inscripcion.estado==="PENDIENTE"|| inscripcion.estado==="RECHAZADA"?(<><i class="far fa-clock"></i>    </>):(<>
+                {inscripcion.estado==="PENDIENTE"|| inscripcion.estado==="RECHAZADA"?(<><i class="far py-2 fa-clock"></i></>):(<>
                     <Link to={`/page/estudiantes/proyectos/misProyectos/detalle/${inscripcion.proyecto._id}`}>
                          <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> 
                     </Link>

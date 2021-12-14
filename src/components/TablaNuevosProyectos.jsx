@@ -24,7 +24,7 @@ const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
                     <tr>
                         <th className="w-2" >Nombre</th>
                         <th >Fecha Inicio</th>
-                        <th >Identificación</th>
+                        <th >Id Líder</th>
                         <th >Nombre Líder</th>
                         <th >Fase</th>
                         <th >Estado</th>
