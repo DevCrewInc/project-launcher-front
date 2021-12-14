@@ -1,19 +1,18 @@
 import { useQuery } from '@apollo/client';
-import React, { useState,useEffect } from 'react';
 import ModalDetalleProyecto from './ModalDetalleProyecto';
+import { useConsulta } from 'context/ConsultaContext';
 
 
 
 const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
 
-    
+    const{busqueda}=useConsulta();
 
-    const{data,error,loading} = useQuery(propsTablasProyectos,{
+    
+    const{data} = useQuery(propsTablasProyectos,{
          pollInterval:200
     });
 
-    console.log("dataaaaaa", data)
-    
 
     return (
 
@@ -32,7 +31,7 @@ const TablaProyectosEstudiantes = ({propsTablasProyectos, nombreQuery}) => {
                     </tr>
                 </thead>
                 {data &&
-                data[nombreQuery].map((proyecto) => {
+                data[nombreQuery].filter(p=>p.nombre.toLowerCase().includes(busqueda)).map((proyecto) => {
                         return(
                         <>
                             <FilasTablaProyectos key={proyecto._id}  proyecto={proyecto}/>
@@ -54,7 +53,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
         {proyecto.inscripciones.length===0?(
         <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
         <tr key={proyecto._id}>
-            <td className="text-left py-2">
+            <td className="text-left py-2 pl-5">
                 <span className ="whitespace-nowrap w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="text-center">
@@ -82,38 +81,37 @@ const FilasTablaProyectos = ({proyecto}) =>{
     </tbody>
             ):(
             <>
-            {proyecto.inscripciones.filter(inscripcion=>inscripcion.estudiante._id ===JSON.parse(localStorage.getItem('userData'))._id).length===0?(
-            <>
-                    <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
-                    <tr key={proyecto._id}>
-                    <td className="text-left py-2 pl-5">
-                        <span className =" whitespace-nowrap  w-14 px-2">{proyecto.nombre}</span>
-                    </td> 
-                    <td className="text-center">
-                        <span className =" whitespace-nowrap  w-14 px-2">{proyecto.fechaInicio}</span>
-                    </td>
-                    <td className="text-center">
-                    <span className =" whitespace-nowrap  w-14 px-2">{proyecto.lider.identificacion}</span>
-                    </td>
-                    <td className="text-center">
-                        <span className =" whitespace-nowrap  w-14 px-2">{proyecto.lider.nombre}</span>
-                    </td>
-                        <td className="text-center">
-                        <span className =" whitespace-nowrap  w-14 px-2">{proyecto.faseProyecto}</span>
-                    </td>
-                    <td className = "text-center">
-                        {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
-                            <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
-                        )}
-                    </td>
+            {proyecto.inscripciones.some(inscripcion=>inscripcion.estudiante._id.includes(JSON.parse(localStorage.getItem('userData'))._id))?
+            null:(
+               <tbody key={proyecto._id} className = "texto-tablas tbody-border">  
+               <tr key={proyecto._id}>
+               <td className="text-left py-2 pl-5">
+                   <span className =" whitespace-nowrap  w-14 px-2">{proyecto.nombre}</span>
+               </td> 
+               <td className="text-center">
+                   <span className =" whitespace-nowrap  w-14 px-2">{proyecto.fechaInicio}</span>
+               </td>
+               <td className="text-center">
+               <span className =" whitespace-nowrap  w-14 px-2">{proyecto.lider.identificacion}</span>
+               </td>
+               <td className="text-center">
+                   <span className =" whitespace-nowrap  w-14 px-2">{proyecto.lider.nombre}</span>
+               </td>
+                   <td className="text-center">
+                   <span className =" whitespace-nowrap  w-14 px-2">{proyecto.faseProyecto}</span>
+               </td>
+               <td className = "text-center">
+                   {proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</span > : (
+                       <span className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</span> 
+                   )}
+               </td>
 
-                    <td className = "flex justify-center items-center space-x-2">
-                        <ModalDetalleProyecto proyecto={proyecto}/> 
-                    </td>
-                    </tr>
-                    </tbody>
-
-            </>):null}
+               <td className = "flex justify-center items-center space-x-2">
+                   <ModalDetalleProyecto proyecto={proyecto}/> 
+               </td>
+               </tr>
+               </tbody>
+               )}
             </>)}
         </>
     )
@@ -121,3 +119,5 @@ const FilasTablaProyectos = ({proyecto}) =>{
 
 
 export default TablaProyectosEstudiantes;
+
+
