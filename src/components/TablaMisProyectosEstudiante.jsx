@@ -31,13 +31,6 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
                 </thead>
                 {data &&
                 data.Usuario.inscripciones.map((inscripcion) => {
-                    // if(inscripcion.proyecto.nombre.toLowerCase().includes(busqueda)){
-                    //     return(
-                    //         <>
-                    //             <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>
-                    //         </>
-                    //     )
-                    // }
                     return(
                         <>
                             <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>
@@ -56,22 +49,12 @@ const FilasTablaProyectos = ({inscripcion}) =>{
 
 
    
-
-
-    
-
     return(
         <tbody  key={inscripcion.proyecto._id} className = "tbody-border text-sm texto-tablas">  
         <tr key={inscripcion.proyecto._id}>
             <td className="w-72 text-left pl-5 pt-3">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.nombre}</span>
             </td> 
-            {/* <td className="p-2 flex justify-center">
-                <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.fechaInicio}</span>
-            </td> */}
-            {/* <td className="text-center">
-            <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.lider.identificacion}</span>
-            </td> */}
             <td className="text-center">
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.lider.nombre}</span>
             </td>
@@ -89,7 +72,7 @@ const FilasTablaProyectos = ({inscripcion}) =>{
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                {inscripcion.estado==="PENDIENTE"|| inscripcion.estado==="RECHAZADA"?(<><i class="far py-2 fa-clock"></i></>):(<>
+                {inscripcion.estado==="PENDIENTE"|| inscripcion.estado==="RECHAZADA"||inscripcion.proyecto.faseProyecto==="TERMINADO"||inscripcion.proyecto.estadoProyecto==="INACTIVO"?(<><i class="far py-2 fa-clock"></i></>):(<>
                     <Link to={`/page/estudiantes/proyectos/misProyectos/detalle/${inscripcion.proyecto._id}`}>
                          <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> 
                     </Link>
