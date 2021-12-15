@@ -89,7 +89,6 @@ const ModalAvances=({avance})=>{
         <DialogContent dividers={scroll === 'paper'}>
           <span className="pl-2 pt-2 text-sm bg-gray-100 rounded-md" id="w3review" name="w3review" rows="4" cols="75">{avance.descripcion}</span>
           <div className="text-right">
-            {/* <button className="w-1/6 h-7 filled-button mt-2">GUARDAR</button> */}
           </div>
         </DialogContent>
      

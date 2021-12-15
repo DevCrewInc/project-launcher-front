@@ -97,10 +97,7 @@ const ModalcrearProyecto=()=> {
               <DialogContent dividers={scroll === 'paper'}>
                 <div className= "flex space-x-4">
                   <div className= "space-x-2">
-                    {/* <i className= "far fa-calendar-alt date-budget"/> */}
                     <input name="fechaEstimada" required className= "date-icon date-budget input-perfil h-7 pl-1" type="date" min={datePick}/>
-                      {/* <input required className= "date-icon date-budget bg-gray-100" type="date" min="01/02/1900" max="2030/12/31"/> */}
-                      {/* https://mui.com/components/date-range-picker/ */}
                       
                   </div>
                   <div className= "space-x-2">

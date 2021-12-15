@@ -125,12 +125,6 @@ const ModalEditarProyecto=({proyecto})=> {
                     }
                       return  <input onChange={(e)=>{EditarObjetivo({variables:{idProyecto:proyecto._id, indexObjetivo:index , campos:{tipo:"ESPECIFICO",descripcion:e.target.value}}})}} className="w-full h-8 text-sm rounded-sm mt-3 text-m input-perfil" defaultValue={objetivo.descripcion} type="text" id="fname"></input>
                   })}
-                  {/* {objetivosEspecificos.map((objetivo,Index)=>{
-                         return(
-                          <input key={Index} onChange={(e)=>{CrearObjetivo({variables:{idProyecto:proyecto._id, campos:{tipo:"ESPECIFICO",descripcion:e.target.value}}})}} className="w-full h-8 text-sm rounded-sm mt-3 text-m input-perfil" placeholder="Objetivo especifico" type="text" id="fname"></input>
-                      ) 
-                    
-                  })} */}
                 
                   <div className="text-center">
                       <input className="w-1/3 h-7 cursor-pointer filled-button mt-8 mb-5" type="submit" value="ACTUALIZAR PROYECTO" />
