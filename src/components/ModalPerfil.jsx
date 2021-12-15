@@ -7,11 +7,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation,useQuery } from '@apollo/client';
 import { EditarUsuario } from 'graphql/mutations';
 import { UsuarioInformacion } from 'graphql/queries';
+import useFormData from 'hooks/useFormData';
+import { EditarContra } from 'graphql/mutations';
 
 
 
 const ModalPerfil = ({icon}) => {
-  
+
+  const{form, formData, updateFormData}=useFormData();
   const{data} = useQuery(UsuarioInformacion ,{
     variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
     pollInterval:200
@@ -19,6 +22,8 @@ const ModalPerfil = ({icon}) => {
 
 
   const[editarUsuario]= useMutation(EditarUsuario);
+  const[EditarContrasena]= useMutation(EditarContra);
+
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -43,6 +48,14 @@ const ModalPerfil = ({icon}) => {
     }
   }, [open]);
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    await EditarContrasena({variables: formData});
+    handleClose()
+  }
+
+
 
   return (
 <>
@@ -60,7 +73,7 @@ const ModalPerfil = ({icon}) => {
       </div>
       
 
-      <form>
+  
         <Dialog
           className= "bg-black bg-opacity-50"
           open={open}
@@ -96,17 +109,23 @@ const ModalPerfil = ({icon}) => {
               </div>
             </Box>
           </DialogTitle>
+          <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
         <div className="m-7 mt-2 texto-perfil">
           <div className="grid grid-cols-3 gap-4">
         {tabs?(<>
-          <div>
-            <label className=" font-medium">Contraseña actual</label>
-            <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
-          </div>
-          <div>
-            <label className=" font-medium">Contraseña nueva</label>
-            <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
-          </div>
+    
+            <div>
+              <label className=" font-medium">Contraseña actual</label>
+              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="constrasena" />
+            </div>
+            <div>
+              <label className=" font-medium">Contraseña nueva</label>
+              <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="contrasenaNueva"  />
+              <input className="hidden" type="password" name="_id" value={data.UsuarioInfo._id}/>
+            </div>
+
+            <input type="submit" className="cursor-pointer filled-button" ></input>
+          
         </>):(<>
           <div>
                 <label className=" font-medium">Documento</label>
@@ -118,13 +137,13 @@ const ModalPerfil = ({icon}) => {
               </div>
               <div>
                 <label className="font-medium">Celular</label>
-                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className="text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={data.UsuarioInfo.celular}/>
+                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className="text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil"  defaultValue={data.UsuarioInfo.celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
               <div className="col-span-2">
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil" name="facultad" defaultValue={data.UsuarioInfo.facultad}>
+                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil"  defaultValue={data.UsuarioInfo.facultad}>
                   <option disabled type="String" value="">Facultad</option>
                   <option type="String">ARTES</option>
                   <option type="String">CIENCIAS_AGRARIAS</option>
@@ -172,11 +191,11 @@ const ModalPerfil = ({icon}) => {
               <div>
             </div>
           </div>
+          
         </div>
+        </form> 
         </Dialog>
-     
-      </form>
-      
+        
     </div>
       
       </>):(<></>)}

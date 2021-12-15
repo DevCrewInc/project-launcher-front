@@ -11,10 +11,10 @@ import { CrearProyecto } from 'graphql/lider/mutaciones';
 
 
 
-
 const ModalcrearProyecto=()=> {
   const datePick = new Date().toISOString().split("T")[0];
   const[crearProyecto]= useMutation(CrearProyecto);
+ 
 
   const{form, formData, updateFormData} = useFormObjetivos();
 

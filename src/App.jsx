@@ -19,13 +19,6 @@ import DetalleProyectoEstudiante from 'pages/rol/estudiantes/DetalleProyectoEstu
 import PrivateRoute from 'components/private/PrivateRoute';
 
 
-
-// import PrivateRoute from 'components/PrivateRoute';
-// const httpLink = createHttpLink({
-//   uri: 'https://devcrewserver.herokuapp.com/graphql',
-// http://localhost:5000/graphql
-// });
-
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
   cache: new InMemoryCache()
