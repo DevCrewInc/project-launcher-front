@@ -52,7 +52,7 @@ const ModalAvances=({avance})=>{
     }
   }, [open]);
 
-  const[crearObservacion, {data: crearObservacionData,error: crearObservacionError,loading: crearObservacionLoading}]=useMutation( MutationCrearObservacion);
+  const[crearObservacion]=useMutation( MutationCrearObservacion);
   
 
   return (

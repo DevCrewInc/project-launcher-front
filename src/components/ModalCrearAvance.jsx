@@ -14,7 +14,7 @@ import { mutacionCrearAvance } from 'graphql/estudiante/mutations';
 const ModalCrearAvance=({proyectoId})=> {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
-  const[crearAvance, {data: dataAvance, error: errorAvance, loading: loadingAvance}]= useMutation(mutacionCrearAvance);
+  const[crearAvance]= useMutation(mutacionCrearAvance);
 
   const{form, formData, updateFormData} = useFormData();
 

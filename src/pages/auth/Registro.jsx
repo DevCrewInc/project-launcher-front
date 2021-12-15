@@ -10,7 +10,7 @@ const Registro = () => {
     
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
-    const[registro, {data: dataRegistro, error: errorRegistro, loading: loadingRegistro}]= useMutation(REGISTRO);
+    const[registro, {data: dataRegistro}]= useMutation(REGISTRO);
     const [hidden,setHidden]=useState(false)
 
 
@@ -86,9 +86,6 @@ const Registro = () => {
             <div className="h-screen absolute bg-white">
                 <div className="px-10 pt-4 flex justify-end text-gray-500 hover:text-gray-400">
                     <button onClick={() => navigate(-1)}>Volver</button>
-                    {/* <button className="absolute rounded-full cursor-pointer back-button h-10 px-4 text-white" type="submit" value="Enviar datos">
-                        <i class="fas fa-chevron-left"></i>
-                    </button> */}
                 </div>
                 <div className="h-screen px-10">
                         <div className="flex flex-col justify-center">

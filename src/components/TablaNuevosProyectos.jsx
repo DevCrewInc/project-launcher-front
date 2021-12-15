@@ -3,13 +3,14 @@ import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
 import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 import ModalDetalleProyecto from './ModalDetalleProyecto';
-
+import { useConsulta } from 'context/ConsultaContext';
 
 
 
 const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
+    const{busqueda}=useConsulta();
 
-    const{data,error,loading} = useQuery(propsTablasProyectos,{
+    const{data} = useQuery(propsTablasProyectos,{
         pollInterval:200
     });
   
@@ -32,7 +33,7 @@ const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
                     </tr>
                 </thead>
                 {data &&
-                data[nombreQuery].map((proyecto) => {
+                data[nombreQuery].filter(p=>p.nombre.toLowerCase().includes(busqueda)).map((proyecto) => {
                     return(
                         <>
                             <FilasTablaProyectos key={proyecto._id}  proyecto={proyecto}/>
@@ -52,7 +53,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
    
 
 
-    const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
+    const[editarEstadoProyecto]=useMutation(EditarEstadoProyecto);
 
     return(
         <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
@@ -90,10 +91,8 @@ const FilasTablaProyectos = ({proyecto}) =>{
             </td>
 
             <td className = "flex justify-center items-center space-x-2">
-                {/* <i className = "fas fa-eye m-1 p-1 text-gray-400 hover:text-blue-600 cursor-pointer"/> */}
                 <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
                     <ModalDetalleProyecto proyecto={proyecto}/> 
-                    {/* <i className = "fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/> */}
                     <i className = "fas fa-trash my-1 p-1 text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
                 </PrivateComponent>

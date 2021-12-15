@@ -1,12 +1,11 @@
 import { useQuery } from '@apollo/client';
-import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useConsulta } from 'context/ConsultaContext';
 
 
 const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
 
-    const{data,error,loading} = useQuery(propsTablasProyectos,{
+    const{data} = useQuery(propsTablasProyectos,{
         variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
@@ -30,7 +29,7 @@ const TablaMisProyectosEstudiante = ({propsTablasProyectos}) => {
                     </tr>
                 </thead>
                 {data &&
-                data.Usuario.inscripciones.map((inscripcion) => {
+                data.Usuario.inscripciones.filter(i=>i.proyecto.nombre.toLowerCase().includes(busqueda)).map((inscripcion) => {
                     return(
                         <>
                             <FilasTablaProyectos key={inscripcion._id}  inscripcion={inscripcion}/>

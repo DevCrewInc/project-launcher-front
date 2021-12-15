@@ -14,16 +14,16 @@ const DetalleProyecto = () => {
     const navigate = useNavigate();
 
     const {id} = useParams();
-    console.log("iddd", id)
+ 
    
-    const{data,error,loading} = useQuery(getDetalleProyecto,{
+    const{data} = useQuery(getDetalleProyecto,{
         variables:{_id:id},
         pollInterval:200
     });
 
     const[tabs, setTabs]=useState(true)
     const[tabs1, setTabs1]=useState(true)
-    console.log("data", data)
+ 
 
    
 
@@ -42,7 +42,6 @@ const DetalleProyecto = () => {
                         </div>
                         <div>
                             <div className = "flex space-x-4">
-                                {/* <button className = "inactivo-button my-1 px-4">{data.Proyecto.estadoProyecto}</button> */}
                                 {data.Proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{data.Proyecto.estadoProyecto}</span > : (
                                   <span className = "inactivo-button px-2 my-1">{data.Proyecto.estadoProyecto}</span> 
                                 )}
@@ -110,7 +109,6 @@ const DetalleProyecto = () => {
         </div>
         <div className=" pl-16">
                 <div className ="flex w-80 justify-end">
-                    {/* <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress> */}
                     <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
                         <i class="fas fa-chevron-left"></i>
                     </button>
@@ -147,13 +145,12 @@ const DetalleProyecto = () => {
                     <div className="mt-4 overflow-y-auto h-52">
                         
                      {data.Proyecto.inscripciones.map((inscripcion)=>{
-                         console.log("inscripcion", inscripcion)
                          if(inscripcion.estado === "ACEPTADA"){
                             return(
 
                                 <SolicitudesInscripciones inscripcion={inscripcion} botones={false}/>
                              )
-                         }
+                         }return null
                         
                     })}
                     </div>
@@ -164,35 +161,18 @@ const DetalleProyecto = () => {
                     
                     <>
                     {  data.Proyecto.inscripciones.map((inscripcion)=>{
-                        console.log("inscripcion", inscripcion)
                         if(inscripcion.estado === "PENDIENTE"){
                            return(
 
                                <SolicitudesInscripciones inscripcion={inscripcion} botones={true} />
                             )
-                        }
+                        }return null
                        
                    })}
                    </>
                  )
                  }
                     
-                    {/* SOLICITUDES */}
-                    {/* <div className="mt-8">
-                    <div className = "border-tripulantes items-center py-4">
-                        <div className="flex cursor-pointer">
-                            <img src={fotoman} className = "rounded-full w-12 h-12 mr-4"/>
-                            <div className = "flex flex-col">
-                                <span className = "font-semibold text-sm">Juan Camilo Pérez</span>
-                                <span className = "font-light text-sm">Ingenieria </span>
-                                    <div className="space-x-4 flex mt-4">
-                                        <button className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
-                                        <button className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div> */}
                     </div>
                 </div>
             </div>
@@ -236,15 +216,15 @@ export default DetalleProyecto;
 
 const SolicitudesInscripciones =({inscripcion, botones})=>{
 
-    const[editarEstadoInscripcion, {data:editarEstadoData,error:editarEstadoError,loading:editarEstadoLoading}]=useMutation( MutationEditarEstadoInscripcion);
-    // console.log("inscrip", inscripcion)
+    const[editarEstadoInscripcion]=useMutation( MutationEditarEstadoInscripcion);
+   
     
      return(
          <>
             <div>
                 <div>
                     <div className = "cursor-pointer border-tripulantes flex items-center py-3 ">
-                        <img src={fotoman} className = "rounded-full w-12 mr-4"/>
+                        <img src={fotoman} alt="Profile" className = "rounded-full w-12 mr-4"/>
                 
                         <div className = "flex flex-col ">
                             <span className = "font-semibold text-sm">{inscripcion.estudiante.nombre}</span>
@@ -274,7 +254,7 @@ const SolicitudesInscripciones =({inscripcion, botones})=>{
 const TablaAvances=({avance})=>{
 
     const {id} = useParams();
-    const{data,error,loading} = useQuery(getDetalleProyecto,{
+    const{data} = useQuery(getDetalleProyecto,{
         variables:{_id:id},
         pollInterval:200
     });
@@ -291,8 +271,6 @@ const TablaAvances=({avance})=>{
                     {data.Proyecto.faseProyecto === "TERMINADO"? (<></>):(
                     <>
                         <ModalAvances avance={avance}/>
-                        {/* <i className = "fas fa-pen my-1 p-1 py-2 text-gray-400 hover:text-yellow-400 cursor-pointer"/>
-                        <i className = "fas fa-trash my-1 pl-3 py-2 text-gray-400 hover:text-red-400 cursor-pointer"/> */}
                     </>)}
                         
                     </td>

@@ -13,10 +13,9 @@ import { mutacionEditarAvance } from 'graphql/estudiante/mutations';
 const ModalEditarAvance=({avance})=> {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
-  const[editarAvance, {data: editarAvanceData, error: editarAvanceError, loading: editarAvanceLoading}]= useMutation(mutacionEditarAvance);
+  const[editarAvance]= useMutation(mutacionEditarAvance);
 
   const{form, formData, updateFormData} = useFormData();
-  console.log("data edición",  formData)
 
 
   const handleClickOpen = (scrollType) => () => {

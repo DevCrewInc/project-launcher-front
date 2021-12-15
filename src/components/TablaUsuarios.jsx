@@ -2,7 +2,6 @@ import 'styles/globals.css';
 import fotoman from 'fotoman.jpeg'
 import UpperBar from 'components/UpperBar';
 import { useQuery, useMutation } from '@apollo/client';
-import {toast} from 'react-toastify';
 import {borrarUsuario} from '../graphql/mutations';
 import PrivateComponent from './private/PrivateComponents';
 
@@ -13,8 +12,8 @@ import PrivateComponent from './private/PrivateComponents';
 
 const TablaUsuario = ({propsTablasUsuarios,nombreQuery}) => {
 
-    const{data,error,loading} = useQuery(propsTablasUsuarios);
-    const[eliminarUsuario, {data: confirmacion, error: errorEliminacion, loading: loadingEliminacion}]= useMutation(borrarUsuario);
+    const{data} = useQuery(propsTablasUsuarios);
+    const[eliminarUsuario]= useMutation(borrarUsuario);
 
 
 

@@ -4,9 +4,6 @@ import PrivateLayout from 'layouts/PrivateLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ConsultaContext } from 'context/ConsultaContext';
 import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
-// import ListaUsuarios from 'pages/ListaUsuarios';
-import 'styles/globals.css';
-import Dialogos from 'pages/Dialogos'
 import ListaNuevosProyectos from 'pages/rol/admin/ListaNuevosProyectos'
 import Login from 'pages/auth/Login';
 import Registro from 'pages/auth/Registro';
@@ -64,9 +61,6 @@ function App() {
                 <Route path='page/estudiantes/proyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarProyectosEstudiantes /></PrivateRoute>} />
                 <Route path='page/estudiantes/proyectos/misProyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarMisProyectosEstudiante /></PrivateRoute>} />
                 <Route path='page/estudiantes/proyectos/misProyectos/detalle/:id' element={<PrivateRoute roleList={['ESTUDIANTE']}><DetalleProyectoEstudiante/></PrivateRoute>} />
-                
-                
-                <Route path='page/dialogos' element={<Dialogos/>}/>
                
               </Route>
             </Routes>

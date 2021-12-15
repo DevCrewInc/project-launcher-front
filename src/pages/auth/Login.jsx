@@ -12,7 +12,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const{form, formData, updateFormData} = useFormData();
-    const[login, {data:dataLogin, error: errorLogin, loading: loadingLogin}]= useMutation(LOGIN);
+    const[login, {data:dataLogin}]= useMutation(LOGIN);
 
     const decode= async ()=>{  
         const decoded = await jwt_decode(JSON.parse(localStorage.getItem('token')));
@@ -51,7 +51,7 @@ const Login = () => {
             }
 
         }
-    }, [dataLogin]);
+    }, [dataLogin, navigate]);
 
     return (
         <>

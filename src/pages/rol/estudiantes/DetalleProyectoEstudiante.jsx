@@ -17,7 +17,7 @@ const DetalleProyectoEstudiante = () => {
     const[tabs, setTabs]=useState(true)
 
    
-    const{data,error,loading} = useQuery(getDetalleProyecto,{
+    const{data} = useQuery(getDetalleProyecto,{
         variables:{_id:id},
         pollInterval:200
     });
@@ -104,7 +104,6 @@ const DetalleProyectoEstudiante = () => {
         </div>
         <div className="pl-16">
                 <div className ="flex w-80 justify-end">
-                    {/* <progress className = "btn-estado-proyecto rounded-full my-1" id="file" value="32" max="100"> 100% </progress> */}
                       <button onClick={() => navigate(-1)} className="rounded-full cursor-pointer bg-gray-500 hover:bg-gray-400 h-10 px-4 text-white" type="submit" value="Enviar datos">
                         <i class="fas fa-chevron-left"></i>
                     </button>
@@ -179,7 +178,7 @@ const SolicitudesInscripciones =({inscripcion})=>{
             <div>
                 <div>
                     <div className = "cursor-pointer border-tripulantes flex items-center py-3">
-                        <img src={fotoman} className = "rounded-full w-12 mr-4"/>
+                        <img src={fotoman} alt="Profile" className = "rounded-full w-12 mr-4"/>
                 
                         <div className = "flex flex-col ">
                             <span className = "font-semibold text-sm">{inscripcion.estudiante.nombre}</span>

@@ -6,16 +6,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Box} from '@mui/system';
 import fotoman from 'fotoman.jpeg';
 import { useMutation } from '@apollo/client';
-import { MutationEditarProyecto,MutationEditarObjetivo,MutationCrearObjetivo} from 'graphql/lider/mutaciones';
+import { MutationEditarProyecto,MutationEditarObjetivo} from 'graphql/lider/mutaciones';
 import useFormData from 'hooks/useFormData';
 
 
 
 
 const ModalEditarProyecto=({proyecto})=> {
-  const[EditarProyectoLider, {data: dataEditarProyectoLider, error: errorEditarProyectoLider, loading: loadingEditarProyectoLidero}]= useMutation(MutationEditarProyecto);
-  const[EditarObjetivo, {data: dataEditarObjetivo, error: errorEditarObjetivo, loading: loadingEditarObjetivo}]= useMutation(MutationEditarObjetivo);
-  const[CrearObjetivo, {data: dataCrearObjetivo, error: errorCrearObjetivo, loading: loadingCrearObjetivo}]= useMutation(MutationCrearObjetivo);
+  const[EditarProyectoLider]= useMutation(MutationEditarProyecto);
+  const[EditarObjetivo]= useMutation(MutationEditarObjetivo);
+ 
 
   const{form, formData, updateFormData} = useFormData();
 
@@ -80,7 +80,7 @@ const ModalEditarProyecto=({proyecto})=> {
                 
                     <div className="flex self-center">
                       <div className="flex space-x-4">
-                      <img className="rounded-full w-9 h-9" src={fotoman}/>
+                      <img className="rounded-full w-9 h-9" src={fotoman} alt="Profile"/>
                           <div className = "flex flex-col">
                               <span className = "font-semibold text-sm">{JSON.parse(localStorage.getItem('userData')).nombre}</span>
                               <span className = "text-xs font-medium text-blue-500">{JSON.parse(localStorage.getItem('userData')).identificacion} <i className="far fa-flag"></i></span>

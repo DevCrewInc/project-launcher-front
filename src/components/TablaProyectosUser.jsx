@@ -1,15 +1,17 @@
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import React from 'react';
 import PrivateComponent from './private/PrivateComponents';
-import { EditarEstadoProyecto } from 'graphql/admin/mutations';
 import { Link } from 'react-router-dom';
 import ModalEditarProyecto from './ModalEditarProyecto';
+import { useConsulta } from 'context/ConsultaContext';
 
 
 
 const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 
-    const{data,error,loading} = useQuery(propsTablasProyectos,{
+    const{busqueda}=useConsulta();
+
+    const{data} = useQuery(propsTablasProyectos,{
         variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
         pollInterval:200
     });
@@ -33,7 +35,7 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
                     </tr>
                 </thead>
                 {data &&
-                data[nombreQuery].map((proyecto) => {
+                data[nombreQuery].filter(p=>p.nombre.toLowerCase().includes(busqueda)).map((proyecto) => {
                     return(
                         <>
                             <FilasTablaProyectos key={proyecto._id}  proyecto={proyecto}/>
@@ -48,10 +50,6 @@ const TablaProyectosUser = ({propsTablasProyectos, nombreQuery}) => {
 }
 
 const FilasTablaProyectos = ({proyecto}) =>{
-
-
-
-    const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
 
     return(
         <tbody  key={proyecto._id} className ="tbody-border text-sm text-gray-400 texto-tablas">  

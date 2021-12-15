@@ -14,7 +14,7 @@ import { CrearProyecto } from 'graphql/lider/mutaciones';
 
 const ModalcrearProyecto=()=> {
   const datePick = new Date().toISOString().split("T")[0];
-  const[crearProyecto, {data: dataCrearProyecto, error: errorCrearProyecto, loading: loadingCrearProyecto}]= useMutation(CrearProyecto);
+  const[crearProyecto]= useMutation(CrearProyecto);
 
   const{form, formData, updateFormData} = useFormObjetivos();
 
@@ -82,7 +82,7 @@ const ModalcrearProyecto=()=> {
                 
                     <div className="flex self-center">
                       <div className="flex space-x-4">
-                      <img className="rounded-full w-9 h-9" src={fotoman}/>
+                      <img className="rounded-full w-9 h-9" src={fotoman} alt="Profile"/>
                           <div className = "flex flex-col">
                               <span className = "font-semibold text-sm">{JSON.parse(localStorage.getItem('userData')).nombre}</span>
                               <span className = "text-xs font-medium text-blue-500">{JSON.parse(localStorage.getItem('userData')).identificacion} <i className="far fa-flag"></i></span>

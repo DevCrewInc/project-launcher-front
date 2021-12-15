@@ -1,10 +1,9 @@
 import 'styles/globals.css';
-import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
-import {toast} from 'react-toastify';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
+import { useConsulta } from 'context/ConsultaContext';
 
 
 
@@ -14,8 +13,10 @@ import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
 
 const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
+    const{busqueda}=useConsulta();
 
-    const{data,error,loading} = useQuery(propsTablasUsuarios,{
+
+    const{data} = useQuery(propsTablasUsuarios,{
         pollInterval:200
     });
 
@@ -34,7 +35,7 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
                                 <th>Acción</th>
                             </tr>
                         </thead> 
-                        {data && data[nombreQuery].map((usuario)=>{
+                        {data && data[nombreQuery].filter(u=>u.nombre.toLowerCase().includes(busqueda)).map((usuario)=>{
 
                             return (
                                 <FilasTablas usuario={usuario}/>    
@@ -51,8 +52,8 @@ const TablaUsuarioAdmin = ({propsTablasUsuarios,nombreQuery}) => {
 
 const FilasTablas = ({usuario})=>{
 
-    const[eliminarUsuario, {data: confirmacion, error: errorEliminacion, loading: loadingEliminacion}]= useMutation(borrarUsuario);
-    const[editarEstadoUsuario, {data:userEdit,error:userError,loading:userLoading}]=useMutation(EditarEstadoUsuario);
+    const[eliminarUsuario]= useMutation(borrarUsuario);
+    const[editarEstadoUsuario]=useMutation(EditarEstadoUsuario);
 
  
 
@@ -64,7 +65,7 @@ const FilasTablas = ({usuario})=>{
                             <span className=" bg-white" type="button" >{usuario.nombre}</span>
                         </td>
                         <td className="p-2">
-                            <img className="text-center mx-auto rounded-full w-12 " src={fotoman}/>
+                            <img className="text-center mx-auto rounded-full w-12 " src={fotoman} alt="Profile"/>
                         </td>
                         <td className="text-center w-1/5">
                             <span className="bg-white" type="button" >{usuario.identificacion}</span>
@@ -85,7 +86,6 @@ const FilasTablas = ({usuario})=>{
                             </select>
                         </td>
                         <td className = "flex justify-center align-middle items-center space-x-2">
-                            {/* <ModalDetalleProyecto/> */}
                             <i onClick={() => {eliminarUsuario({variables: {_id: usuario._id} })}} className = "py-5 fas fa-trash text-gray-400 hover:text-red-400 cursor-pointer"/>
                     
                         </td>
@@ -96,5 +96,3 @@ const FilasTablas = ({usuario})=>{
 
 export default TablaUsuarioAdmin
 
-
-// <i className = "self fas fa-pen my-1 p-1 text-gray-400 hover:text-yellow-400 cursor-pointer"/>

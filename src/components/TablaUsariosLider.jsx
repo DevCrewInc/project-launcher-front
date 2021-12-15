@@ -1,10 +1,9 @@
 import 'styles/globals.css';
-import { useEffect } from 'react';
 import fotoman from 'fotoman.jpeg'
 import { useQuery, useMutation } from '@apollo/client';
-import {toast} from 'react-toastify';
 import {borrarUsuario} from '../graphql/mutations';
 import { EditarEstadoUsuario } from 'graphql/admin/mutations';
+import { useConsulta } from 'context/ConsultaContext';
 
 
 
@@ -15,7 +14,10 @@ import { EditarEstadoUsuario } from 'graphql/admin/mutations';
 
 const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
 
-    const{data,error,loading} = useQuery(propsTablasUsuarios,{
+    
+    const{busqueda}=useConsulta();
+
+    const{data} = useQuery(propsTablasUsuarios,{
         pollInterval:200
     });
 
@@ -34,7 +36,7 @@ const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
                                 <th>Acción</th>
                             </tr>
                         </thead> 
-                        {data && data[nombreQuery].map((usuario)=>{
+                        {data && data[nombreQuery].filter(u=>u.nombre.toLowerCase().includes(busqueda)).map((usuario)=>{
 
                             return (
                                 <FilasTablas usuario={usuario}/>    
@@ -51,8 +53,8 @@ const TablaUsuariosLider = ({propsTablasUsuarios,nombreQuery}) => {
 
 const FilasTablas = ({usuario})=>{
 
-    const[eliminarUsuario, {data: confirmacion, error: errorEliminacion, loading: loadingEliminacion}]= useMutation(borrarUsuario);
-    const[editarEstadoUsuario, {data:userEdit,error:userError,loading:userLoading}]=useMutation(EditarEstadoUsuario);
+    const[eliminarUsuario]= useMutation(borrarUsuario);
+    const[editarEstadoUsuario]=useMutation(EditarEstadoUsuario);
 
  
 
@@ -64,7 +66,7 @@ const FilasTablas = ({usuario})=>{
                             <span className="text-gray-600  bg-white" type="button" >{usuario.nombre}</span>
                         </td>
                         <td className="text-center p-2 w-14">
-                            <img className="rounded-full w-" src={fotoman}/>
+                            <img className="rounded-full w-" src={fotoman} alt="Profile"/>
                         </td>
                         <td className="text-center">
                             <span className="text-gray-600  bg-white" type="button" >{usuario.identificacion}</span>

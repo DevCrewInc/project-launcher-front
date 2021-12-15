@@ -5,26 +5,6 @@ import PrivateComponent from './private/PrivateComponents';
 import ModalcrearProyecto from './ModalcrearProyecto';
 
 
-// const SidebarLinks = () => {
-
-  
-//   return (
-   
-    
-//   );
-// };
-
-// const ButtonNewProject = () =>{
-//   return(
-//     // <div className="">
-//     //   <button className="rounded-full button-new-project"><i class="fas fa-plus"></i> </button>
-//     //     {/* <button className="button-new-project-extended rounded-full w-40 text-white "> Nuevo Proyecto</button> */}
-//     // </div>
-  
-    
-//   );
-// }
-
 const Logo = () => {
   return (
     <div className='w-full flex flex-col items-center justify-center mt-10 mb-16 ml-3'>
@@ -50,7 +30,6 @@ const Sidebar = () => {
   const [open, setOpen] = useState(true);
   return (
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full'>
-      {/* Sidebar starts */}
 
       <div className='sidebar hidden md:flex w-56 ml-6 my-3 '>
       
@@ -87,7 +66,7 @@ const Sidebar = () => {
                         </div>
                       </NavLink>
                   </li>
-                    {/* <button className=" text-xs text-left hover:bg-gray-500 py-2 text-gray-300 pl-5" onClick={() => logout({ returnTo: window.location.origin })}  > */}
+                   
               </div>
             </ul>
         </div>
@@ -97,7 +76,7 @@ const Sidebar = () => {
         <i className='fas fa-home' />
       </div>
       {open && <ResponsiveSidebar />}
-      {/* Sidebar ends */}
+
     </div>
   );
 };

@@ -12,13 +12,13 @@ import { UsuarioInformacion } from 'graphql/queries';
 
 const ModalPerfil = ({icon}) => {
   
-  const{data,error,loading} = useQuery(UsuarioInformacion ,{
+  const{data} = useQuery(UsuarioInformacion ,{
     variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
     pollInterval:200
 })
 
 
-  const[editarUsuario, {data: dataEditarUsuario, error: errorEditarUsuario, loading: loadingEditarUsuario}]= useMutation(EditarUsuario);
+  const[editarUsuario]= useMutation(EditarUsuario);
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -73,17 +73,13 @@ const ModalPerfil = ({icon}) => {
             <Box>
               <div className="flex justify-between items-center mt-3">
                 <div className="flex items-center ">
-                  <img className="rounded-full h-20" src={fotoman}/>
+                  <img className="rounded-full h-20" src={fotoman} alt="Profile"/>
                   <div className="ml-6">
                     <h1 className="id-perfil text-gray-300 font-normal">{data.UsuarioInfo._id}</h1>
                     <h1 className="nombre-perfil font-semidold"> {data.UsuarioInfo.nombre}</h1>
                     <h1 className="rol-perfil font-normal"> {data.UsuarioInfo.rol}</h1>
                   </div>
                 </div>
-                {/* <div className="space-x-4 flex">
-                  <button className="px-4 h-7 outlined-button-perfil">RECHAZAR</button>
-                  <button className="px-4 h-7 filled-button-perfil">ACEPTAR</button>
-                </div> */}
               </div>
               <div className="mt-6 space-x-8 cursor-pointer">
                 {tabs?(

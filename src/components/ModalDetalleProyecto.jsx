@@ -12,8 +12,8 @@ import { mutacionCrearInscripcion } from 'graphql/estudiante/mutations';
 
 
 const ModalDetalleProyecto = ({proyecto}) => {
-  const[editarEstadoProyecto, {data:editarProyectoData, error:editarProyectoError, loading:editarProyectoLoading}]=useMutation(EditarEstadoProyecto);
-  const[crearInscripcion, {data:inscripcionData, error:inscripcionError, loading:inscripcionLoading}]=useMutation(mutacionCrearInscripcion);
+  const[editarEstadoProyecto]=useMutation(EditarEstadoProyecto);
+  const[crearInscripcion]=useMutation(mutacionCrearInscripcion);
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
 
@@ -63,7 +63,7 @@ const ModalDetalleProyecto = ({proyecto}) => {
                 
                 <div className="flex mt-5 self-baseline">
                   <div className="flex space-x-4">
-                  <img className="rounded-full w-9 h-9" src={fotoman}/>
+                  <img className="rounded-full w-9 h-9" src={fotoman} alt="Profile"/>
                       <div className = "flex flex-col ">
                         <span className = "font-semibold text-sm">{proyecto.lider.nombre}</span>
                         <span className = "text-xs font-medium text-blue-500">{proyecto.lider.identificacion} <i className="far fa-flag"></i></span>
@@ -133,18 +133,7 @@ const ModalDetalleProyecto = ({proyecto}) => {
 
                             })}
                         
-                        </>)}
-                  {/* {proyecto.objetivos.map((objetivo)=>{
-                    if(objetivo.tipo === "GENERAL"){
-                      return(
-                        <>
-                          <span className="w-full text-sm">  <br/>{objetivo.tipo}</span>
-                          <span className="w-full text-sm">  <br/>{objetivo.descripcion}</span>
-                        </>
-                      )
-                    } 
-                  })} */}
-                 
+                        </>)} 
                 </div>
 
               </DialogContent>
