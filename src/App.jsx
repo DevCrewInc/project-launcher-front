@@ -27,7 +27,7 @@ import PrivateRoute from 'components/private/PrivateRoute';
 // });
 
 const client = new ApolloClient({
-  uri: 'https://devcrewserver.herokuapp.com/graphql',
+  uri: 'https://infinite-cliffs-85461.herokuapp.com/graphql',
   cache: new InMemoryCache()
 })
 
