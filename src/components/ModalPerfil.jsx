@@ -50,7 +50,6 @@ const ModalPerfil = ({icon}) => {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log(formData);
     await EditarContrasena({variables: formData});
     handleClose()
   }
@@ -116,7 +115,7 @@ const ModalPerfil = ({icon}) => {
     
             <div>
               <label className=" font-medium">Contraseña actual</label>
-              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="constrasena" />
+              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="contrasena" />
             </div>
             <div>
               <label className=" font-medium">Contraseña nueva</label>
@@ -164,7 +163,7 @@ const ModalPerfil = ({icon}) => {
        
               <div>
                   <label className=" font-medium">Semestre</label>
-                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" name="semestre" defaultValue={data.UsuarioInfo.semestre}>
+                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" defaultValue={data.UsuarioInfo.semestre}>
                     <option disabled type="String" value="">Semestre</option>
                     <option type="String">PRIMERO</option>
                     <option type="String">SEGUNDO</option>
@@ -185,7 +184,7 @@ const ModalPerfil = ({icon}) => {
        
           <div className="grid mt-8 col-span-3">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" rows="4" cols="67"></textarea>
           </div>
         </>)}
               <div>
