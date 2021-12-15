@@ -27,7 +27,7 @@ import PrivateRoute from 'components/private/PrivateRoute';
 // });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://devcrewserver.herokuapp.com/graphql',
   cache: new InMemoryCache()
 })
 
