@@ -110,20 +110,25 @@ const ModalPerfil = ({icon}) => {
           </DialogTitle>
           <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
         <div className="m-7 mt-2 texto-perfil">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4 grid-rows-2">
         {tabs?(<>
     
             <div>
               <label className=" font-medium">Contraseña actual</label>
-              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="contrasena" />
+              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-6" type="password" name="contrasena" />
             </div>
             <div>
-              <label className=" font-medium">Contraseña nueva</label>
+              <label className="font-medium">Contraseña nueva</label>
               <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="contrasenaNueva"  />
               <input className="hidden" type="password" name="_id" value={data.UsuarioInfo._id}/>
             </div>
+            
+              <div className="col-span-2 mt-5 w-1/4 self-center mx-auto">
+                <input type="submit" className="self-center cursor-pointer filled-button w-full h-8"></input>
+              </div>
+           
 
-            <input type="submit" className="cursor-pointer filled-button" ></input>
+           
           
         </>):(<>
           <div>
@@ -182,7 +187,7 @@ const ModalPerfil = ({icon}) => {
               </>):null}
        
        
-          <div className="grid mt-8 col-span-3">
+          <div className="grid col-span-3">
               <label className=" font-medium">Acerca de mi</label>
               <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" rows="4" cols="67"></textarea>
           </div>

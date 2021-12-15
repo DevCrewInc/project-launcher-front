@@ -20,10 +20,10 @@ const TablaNuevosProyectos = ({propsTablasProyectos, nombreQuery}) => {
 
         <div>  
             <div>
-            <table className = "w-full table-auto mt-7">
+            <table className = "w-full table-auto mt-6">
                 <thead className = "thead-color leading-10 text-sm text-gray-700 border-1 text-center">
                     <tr>
-                        <th className="w-2" >Nombre</th>
+                        <th className="w-2 pl-6" >Nombre</th>
                         <th >Fecha Inicio</th>
                         <th >Id Líder</th>
                         <th >Nombre Líder</th>
