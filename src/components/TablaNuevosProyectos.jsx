@@ -58,7 +58,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
     return(
         <tbody  key={proyecto._id} className = "texto-tablas tbody-border ">  
         <tr key={proyecto._id}>
-            <td className="text-center ">
+            <td className="text-left">
                 <span className ="pl-6 overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{proyecto.nombre}</span>
             </td> 
             <td className="p-2 flex justify-center">
