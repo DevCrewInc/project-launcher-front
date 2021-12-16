@@ -28,9 +28,9 @@ const TablaProyectos = ({propsTablasProyectos, nombreQuery}) => {
                         <th className="w-40" >Fecha Inicio</th>
                         <th className="w-30">Id Líder</th>
                         <th>Nombre Líder</th>
-                        <th className="w-30">Fase</th>
-                        <th className="w-16">Estado</th>
-                        <th>Acción</th>
+                        <th className="w-32 ">Fase</th>
+                        <th className="w-24">Estado</th>
+                        <th className="w-24">Acción</th>
                     </tr>
                 </thead>
                 {data &&
@@ -87,7 +87,7 @@ const FilasTablaProyectos = ({proyecto}) =>{
                
             </td>
                 <td className = "text-center">
-                    {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button mx-1 my-1 px-2">{proyecto.estadoProyecto}</button > : (
+                    {proyecto.estadoProyecto === "ACTIVO" ? <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"INACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "status-button my-1 px-4 ">{proyecto.estadoProyecto}</button > : (
                         <button onClick={()=>{editarEstadoProyecto({variables: {_id: proyecto._id, estadoProyecto:"ACTIVO", faseProyecto: proyecto.faseProyecto}})}} className = "inactivo-button px-2 my-1">{proyecto.estadoProyecto}</button> 
                     )}
                 </td>

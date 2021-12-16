@@ -82,7 +82,7 @@ const ModalcrearProyecto=()=> {
                 
                     <div className="flex self-center">
                       <div className="flex space-x-4">
-                      <img className="rounded-full w-9 h-9" src={fotoman} alt="Profile"/>
+                      <img className="rounded-full w-10 h-10" src={fotoman} alt="Profile"/>
                           <div className = "flex flex-col">
                               <span className = "font-semibold text-sm">{JSON.parse(localStorage.getItem('userData')).nombre}</span>
                               <span className = "text-xs font-medium text-blue-500">{JSON.parse(localStorage.getItem('userData')).identificacion} <i className="far fa-flag"></i></span>
@@ -111,23 +111,23 @@ const ModalcrearProyecto=()=> {
 
               <div>
                 <DialogContent>
-                  <span className="objetivos-dialogo">Objetivos generales y específicos</span>
+                    <div className="flex self-center justify-between">
+                      <span className="objetivos-dialogo">Objetivos generales y específicos</span>
+                        <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className="relative cursor-pointer add-button w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
+                      </div>
                   <div className="pt-2 mt-3 flex justify-between">
                     <input required name="GENERAL" className="w-full h-8 text-sm rounded-sm pl-2 text-m input-perfil" placeholder="Objetivo general" type="text" id="fname"></input>
                     <div className="self-center">
                     </div> 
                   </div>
-                  <div className="pt-2 mt-2 flex justify-between">
+                  {/* <div className="pt-2 mt-2 flex justify-between">
                     <input name="ESPECIFICO" required className="w-full h-8 text-sm rounded-sm pl-2 text-m input-perfil" placeholder="Objetivo específico" type="text" id="fname"></input>
-                    <div className="self-center">
-                      <div onClick={()=>{setObejetivosEspecificos([...objetivosEspecificos,objetivosEspecificos.length+1])}} className="relative cursor-pointer add-button w-6 h-6 rounded-full"><i className="p-2 fas fa-plus fa-xs"></i></div>
-
-                    </div>
-                  </div>
+                   
+                  </div> */}
                   {objetivosEspecificos.map((objetivo,index)=>{
 
                     return (
-                      <input required className="w-full h-8 text-sm rounded-sm mt-3 text-m input-perfil" placeholder={`Especifico${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
+                      <input required className="w-full h-8 text-sm rounded-sm mt-3 text-m input-perfil pl-2" placeholder={`Objetivo específico  ${index}`} type="text" id="fname" name={`ESPECIFICO${index}`}></input>)
 
                     })} 
                   <div className="text-center">
