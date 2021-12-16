@@ -7,11 +7,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation,useQuery } from '@apollo/client';
 import { EditarUsuario } from 'graphql/mutations';
 import { UsuarioInformacion } from 'graphql/queries';
+import useFormData from 'hooks/useFormData';
+import { EditarContra } from 'graphql/mutations';
 
 
 
 const ModalPerfil = ({icon}) => {
-  
+
+  const{form, formData, updateFormData}=useFormData();
   const{data} = useQuery(UsuarioInformacion ,{
     variables:{_id:JSON.parse(localStorage.getItem('userData'))._id},
     pollInterval:200
@@ -19,6 +22,8 @@ const ModalPerfil = ({icon}) => {
 
 
   const[editarUsuario]= useMutation(EditarUsuario);
+  const[EditarContrasena]= useMutation(EditarContra);
+
 
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
@@ -43,6 +48,13 @@ const ModalPerfil = ({icon}) => {
     }
   }, [open]);
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+    await EditarContrasena({variables: formData});
+    handleClose()
+  }
+
+
 
   return (
 <>
@@ -60,7 +72,7 @@ const ModalPerfil = ({icon}) => {
       </div>
       
 
-      <form>
+  
         <Dialog
           className= "bg-black bg-opacity-50"
           open={open}
@@ -96,17 +108,28 @@ const ModalPerfil = ({icon}) => {
               </div>
             </Box>
           </DialogTitle>
+          <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
         <div className="m-7 mt-2 texto-perfil">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4 grid-rows-2">
         {tabs?(<>
-          <div>
-            <label className=" font-medium">Contraseña actual</label>
-            <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-60" type="password" name="identificacion" defaultValue={JSON.parse(localStorage.getItem('userData')).identificacion}/>
-          </div>
-          <div>
-            <label className=" font-medium">Contraseña nueva</label>
-            <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="correo" defaultValue={JSON.parse(localStorage.getItem('userData')).correo} />
-          </div>
+    
+            <div>
+              <label className=" font-medium">Contraseña actual</label>
+              <input className="text-sm w-full font-light pl-2 rounded-sm h-7 input-perfil mb-6" type="password" name="contrasena" />
+            </div>
+            <div>
+              <label className="font-medium">Contraseña nueva</label>
+              <input className="text-sm font-light pl-2 w-full rounded-sm h-7 input-perfil" type="password" name="contrasenaNueva"  />
+              <input className="hidden" type="password" name="_id" value={data.UsuarioInfo._id}/>
+            </div>
+            
+              <div className="col-span-2 mt-5 w-1/4 self-center mx-auto">
+                <input type="submit" className="self-center cursor-pointer filled-button w-full h-8"></input>
+              </div>
+           
+
+           
+          
         </>):(<>
           <div>
                 <label className=" font-medium">Documento</label>
@@ -118,13 +141,13 @@ const ModalPerfil = ({icon}) => {
               </div>
               <div>
                 <label className="font-medium">Celular</label>
-                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className="text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil" name="celular" defaultValue={data.UsuarioInfo.celular}/>
+                <input onChange={(e)=>{editarUsuario({variables:{celular:e.target.value, _id:data.UsuarioInfo._id}})}} className="text-sm font-light w-full pl-2 rounded-sm h-7 input-perfil"  defaultValue={data.UsuarioInfo.celular}/>
               </div>
               {JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"?(
               <>
               <div className="col-span-2">
                 <label className=" font-medium">Facultad</label>
-                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil" name="facultad" defaultValue={data.UsuarioInfo.facultad}>
+                <select required className="text-sm pl-2 w-full font-light rounded-sm h-7 input-perfil"  defaultValue={data.UsuarioInfo.facultad}>
                   <option disabled type="String" value="">Facultad</option>
                   <option type="String">ARTES</option>
                   <option type="String">CIENCIAS_AGRARIAS</option>
@@ -145,7 +168,7 @@ const ModalPerfil = ({icon}) => {
        
               <div>
                   <label className=" font-medium">Semestre</label>
-                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" name="semestre" defaultValue={data.UsuarioInfo.semestre}>
+                  <select required className="text-sm pl-2 flex font-light rounded-sm h-7 w-full input-perfil" defaultValue={data.UsuarioInfo.semestre}>
                     <option disabled type="String" value="">Semestre</option>
                     <option type="String">PRIMERO</option>
                     <option type="String">SEGUNDO</option>
@@ -164,19 +187,19 @@ const ModalPerfil = ({icon}) => {
               </>):null}
        
        
-          <div className="grid mt-8 col-span-3">
+          <div className="grid col-span-3">
               <label className=" font-medium">Acerca de mi</label>
-              <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" name="aboutMe" rows="4" cols="67"></textarea>
+              <textarea onChange={(e)=>{editarUsuario({variables:{aboutMe:e.target.value, _id:data.UsuarioInfo._id}})}} className="pl-2 pt-3 text-sm rounded-sm bg-gray-100 input-perfil" defaultValue={data.UsuarioInfo.aboutMe} id="w3review" rows="4" cols="67"></textarea>
           </div>
         </>)}
               <div>
             </div>
           </div>
+          
         </div>
+        </form> 
         </Dialog>
-     
-      </form>
-      
+        
     </div>
       
       </>):(<></>)}

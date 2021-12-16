@@ -19,13 +19,6 @@ import DetalleProyectoEstudiante from 'pages/rol/estudiantes/DetalleProyectoEstu
 import PrivateRoute from 'components/private/PrivateRoute';
 
 
-
-// import PrivateRoute from 'components/PrivateRoute';
-// const httpLink = createHttpLink({
-//   uri: 'https://devcrewserver.herokuapp.com/graphql',
-// http://localhost:5000/graphql
-// });
-
 const client = new ApolloClient({
   uri: 'https://infinite-cliffs-85461.herokuapp.com/graphql',
   cache: new InMemoryCache()
@@ -47,10 +40,10 @@ function App() {
                 
               <Route path='/' element={<PrivateLayout/>}>
                {/* ADMINISTRADOR */}
-                <Route path='page/administracion' element={<PrivateRoute roleList={['ADMINISTRADOR']}><Administracion />  </PrivateRoute>} />
+                <Route path='page/' element={<PrivateRoute roleList={['ADMINISTRADOR']}><Administracion />  </PrivateRoute>} />
                 <Route path='page/usuarios' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaUsuarios /></PrivateRoute>} />
                 <Route path='page/proyectosAdmin' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaTodosProyectos /></PrivateRoute>}/>
-                <Route path='page/administracion/nuevosProyectos' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaNuevosProyectos /></PrivateRoute>}/>
+                <Route path='page/nuevosProyectos' element={<PrivateRoute roleList={['ADMINISTRADOR']}><ListaNuevosProyectos /></PrivateRoute>}/>
 
                 {/* LÍDER */}
                 <Route path='page/lider/estudiantes' element={<PrivateRoute roleList={['LIDER']}><ListaEstudiantes /></PrivateRoute>} />
@@ -61,7 +54,7 @@ function App() {
                 <Route path='page/estudiantes/proyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarProyectosEstudiantes /></PrivateRoute>} />
                 <Route path='page/estudiantes/proyectos/misProyectos' element={<PrivateRoute roleList={['ESTUDIANTE']}><ListarMisProyectosEstudiante /></PrivateRoute>} />
                 <Route path='page/estudiantes/proyectos/misProyectos/detalle/:id' element={<PrivateRoute roleList={['ESTUDIANTE']}><DetalleProyectoEstudiante/></PrivateRoute>} />
-               
+
               </Route>
             </Routes>
           </BrowserRouter>

@@ -14,7 +14,7 @@ const Login = () => {
     const{form, formData, updateFormData} = useFormData();
     const[login, {data:dataLogin}]= useMutation(LOGIN);
 
-    const decode= async ()=>{  
+    const decode= async ()=>{
         const decoded = await jwt_decode(JSON.parse(localStorage.getItem('token')));
 
             localStorage.setItem('userData',JSON.stringify(decoded))
@@ -37,7 +37,7 @@ const Login = () => {
                 if(localStorage.getItem('userData')){
                     if(JSON.parse(localStorage.getItem('userData')).estado==="AUTORIZADO"){
                         if(JSON.parse(localStorage.getItem('userData')).rol==="ADMINISTRADOR"){
-                            navigate('/page/administracion');
+                            navigate('/page/');
                         }else if(JSON.parse(localStorage.getItem('userData')).rol==="LIDER"){
                             navigate('/page/lider/estudiantes')
                         }else if(JSON.parse(localStorage.getItem('userData')).rol==="ESTUDIANTE"){

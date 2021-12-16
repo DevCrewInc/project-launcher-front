@@ -22,4 +22,11 @@ mutation EditarUsuario($_id: String!, $aboutMe: String, $celular: String) {
 }
 `
 
-export {borrarUsuario,EditarUsuario}
+const EditarContra = gql`
+mutation EditarContrasena($_id: String!, $contrasena: String!, $contrasenaNueva: String!) {
+  editarContrasena(_id: $_id, contrasena: $contrasena, contrasenaNueva: $contrasenaNueva)
+}
+`
+
+
+export {borrarUsuario,EditarUsuario,EditarContra}

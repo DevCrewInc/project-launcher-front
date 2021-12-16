@@ -62,7 +62,7 @@ const FilasTablaProyectos = ({inscripcion}) =>{
                 <span className ="overflow-hidden whitespace-nowrap overflow-ellipsis w-14 px-2">{inscripcion.proyecto.faseProyecto}</span>
             </td>
             <td className = "text-center ">
-                {inscripcion.proyecto.estadoProyecto === "ACTIVO" ? <span className = "status-button mx-1 my-1 px-2">{inscripcion.proyecto.estadoProyecto}</span > : (
+                {inscripcion.proyecto.estadoProyecto === " ACTIVO " ? <span className = "status-button mx-1 my-1 px-2">{inscripcion.proyecto.estadoProyecto}</span > : (
                     <span className = "inactivo-button px-2 my-1">{inscripcion.proyecto.estadoProyecto}</span> 
                 )}
             </td>
